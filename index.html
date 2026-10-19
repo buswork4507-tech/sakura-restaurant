@@ -1463,7 +1463,7 @@
               <span>ยอดรวมค่าอาหาร</span><span id="cart-subtotal" style="font-weight:700; color:#0f172a; font-size:14.5px;">฿0</span>
             </div>
             <div style="display: flex; justify-content: space-between; font-size: 12px; color: #94a3b8; margin-bottom: 8px;">
-              <span>ภาษีมูลค่าเพิ่ม (VAT 7%)</span><span id="cart-vat" style="font-weight:700; color:#059669; background:#ecfdf5; border:1px solid #a7f3d0; padding:1px 7px; border-radius:6px; font-size:11px;">คิดตอนเช็คบิล</span>
+              <span>ภาษีมูลค่าเพิ่ม (VAT)</span><span id="cart-vat" style="font-weight:700; color:#059669; background:#ecfdf5; border:1px solid #a7f3d0; padding:1px 7px; border-radius:6px; font-size:11px;">ไม่มี VAT</span>
             </div>
             <div style="display: flex; justify-content: space-between; font-size: 17px; font-weight: 800; color: #0f172a; padding-top:6px; border-top:1px dashed #e2e8f0;">
               <span>ยอดสั่งออเดอร์นี้</span><span id="cart-total" style="color:#e11d48; letter-spacing: -0.5px;">฿0</span>
@@ -2293,7 +2293,7 @@
         <div>
           <div style="font-size:11.5px; color:#64748b; font-weight:600;">ยอดอาหารรวม</div>
           <div id="mbill-subtotal" style="font-size:18px; font-weight:800; color:#0f172a; margin-top:2px;">฿0</div>
-          <div style="font-size:11px; color:#64748b;">+ VAT 7% <span id="mbill-vat">฿0</span></div>
+          <div style="font-size:11px; color:#059669; font-weight:600;">ไม่มี VAT <span id="mbill-vat" style="display:none;">฿0</span></div>
         </div>
         <div style="border-left:1px dashed #cbd5e1; padding-left:14px;">
           <div style="font-size:11.5px; color:#0f172a; font-weight:700;">💰 ยอดรวมทั้งสิ้น</div>
@@ -2440,8 +2440,8 @@
         <span id="confirm-modal-total-qty" style="font-weight: 700; color: #0f172a;">0 จาน</span>
       </div>
       <div style="display: flex; justify-content: space-between; font-size: 12px; color: #94a3b8; margin-bottom: 6px;">
-        <span>ภาษีมูลค่าเพิ่ม (VAT 7%)</span>
-        <span style="font-weight: 700; color: #059669; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 1px 7px; border-radius: 6px; font-size: 11px;">คิดตอนเช็คบิลรวม</span>
+        <span>ภาษีมูลค่าเพิ่ม (VAT)</span>
+        <span style="font-weight: 700; color: #059669; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 1px 7px; border-radius: 6px; font-size: 11px;">ไม่มี VAT (ราคาเน็ต)</span>
       </div>
       <div style="display: flex; justify-content: space-between; font-size: 17px; font-weight: 800; color: #0f172a; padding-top: 8px; border-top: 1px dashed #cbd5e1;">
         <span>ยอดรวมออเดอร์นี้</span>
@@ -5312,12 +5312,12 @@ function changeQty(idx, delta) {
 function updateCartTotals() {
   const totalQty = cart.reduce((s, c) => s + (Number(c.qty) || 1), 0);
   const subtotal = cart.reduce((s, c) => s + c.price * c.qty, 0);
-  const total = subtotal; // ไม่คิด VAT 7% ตอนเลือกเมนู (จะคิดตอนเช็คบิล)
+  const total = subtotal; // ยกเลิก VAT 7% (คิดราคาเน็ต)
   const subtotalEl = document.getElementById('cart-subtotal');
   const vatEl = document.getElementById('cart-vat');
   const totalEl = document.getElementById('cart-total');
   if (subtotalEl) subtotalEl.textContent = formatMoney(subtotal);
-  if (vatEl) vatEl.textContent = 'คิดตอนเช็คบิล';
+  if (vatEl) vatEl.textContent = 'ไม่มี VAT';
   if (totalEl) totalEl.textContent = formatMoney(total);
 
   // Update cart confirmation button badge
@@ -5506,7 +5506,7 @@ function placeOrder() {
 
   const overallNote = (document.getElementById('order-note') ? document.getElementById('order-note').value : '').trim();
   const subtotal = cart.reduce((s, c) => s + c.price * c.qty, 0);
-  const total = subtotal; // ตอนเลือกเมนู/สั่งออเดอร์ ไม่คิด VAT (จะคิดตอนเช็คบิล)
+  const total = subtotal; // ยกเลิก VAT 7% (คิดราคาเน็ต)
   const commRate = staff ? staff.commissionRate : 5;
   const commAmount = (subtotal * commRate) / 100;
 
@@ -5723,7 +5723,7 @@ function viewOrderDetail(id) {
         <span>ยอดรวมค่าอาหาร</span><span>${formatMoney(o.subtotal)}</span>
       </div>
       <div style="display:flex;justify-content:space-between;font-size:13px;color:#666;margin-bottom:4px;">
-        <span>ภาษีมูลค่าเพิ่ม (VAT 7%)</span><span style="color:#059669; font-weight:600;">คิดตอนเช็คบิล</span>
+        <span>ภาษีมูลค่าเพิ่ม (VAT)</span><span style="color:#059669; font-weight:600;">ไม่มี VAT</span>
       </div>
       <div style="display:flex;justify-content:space-between;font-size:13px;color:#f57f17;margin-bottom:6px;font-weight:600;">
         <span>ค่าคอมมิชชั่นพนักงาน (${o.commissionRate || 5}%)</span><span>${formatMoney(o.commissionAmount || 0)}</span>
@@ -6144,8 +6144,8 @@ function formatTimeElapsed(isoStr) {
 
 function calculateBillTotals(bill) {
   const subtotal = (bill.items || []).reduce((sum, it) => sum + (Number(it.price) * Number(it.qty)), 0);
-  const vat = subtotal * 0.07;
-  const total = subtotal * 1.07;
+  const vat = 0; // ยกเลิก VAT 7%
+  const total = subtotal; // ยอดรวมทั้งสิ้นเท่ากับยอดค่าอาหาร (ไม่มี VAT)
   const commRate = Number(bill.commissionRate) || 0;
   const commissionAmount = (subtotal * commRate) / 100;
   const netRevenue = total - commissionAmount;
@@ -6304,7 +6304,7 @@ function renderBillingPage() {
         </td>
         <td style="text-align:right;">
           <div style="font-size:15.5px; font-weight:800; color:#0f172a;">${formatMoney(calc.total)}</div>
-          <div style="font-size:11px; color:#64748b;">รวม VAT 7%</div>
+          <div style="font-size:11px; color:#059669; font-weight:600;">(ไม่มี VAT)</div>
         </td>
         <td style="text-align:center;">
           <span class="badge badge-pink" style="font-size:11.5px; font-weight:700;">${b.commissionRate || 5}%</span>
@@ -6827,8 +6827,8 @@ function renderBillReceipt(bill) {
         <span style="font-weight:600; color:#1e293b;">${formatMoney(calc.subtotal)}</span>
       </div>
       <div style="display:flex; justify-content:space-between; margin-bottom:4px; color:#64748b;">
-        <span>ภาษีมูลค่าเพิ่ม VAT 7%</span>
-        <span style="font-weight:600; color:#1e293b;">${formatMoney(calc.vat)}</span>
+        <span>ภาษีมูลค่าเพิ่ม (VAT)</span>
+        <span style="font-weight:600; color:#059669;">ไม่มี VAT (0%)</span>
       </div>
       <div style="display:flex; justify-content:space-between; font-size:18px; font-weight:800; color:#0f172a; margin-top:6px; border-top:1px solid #e2e8f0; padding-top:6px;">
         <span>ยอดรวมทั้งสิ้น</span>
@@ -6885,8 +6885,8 @@ function renderCustomerOrderSuccessModal(table, orderedItems) {
         <span>ยอดรวมออเดอร์นี้</span>
         <span>฿${totalAmount.toLocaleString()}</span>
       </div>
-      <div style="font-size:11px; color:#64748b; text-align:right; margin-top:2px;">
-        * คิดภาษีมูลค่าเพิ่ม (VAT 7%) ในขั้นตอนเช็คบิลรวม
+      <div style="font-size:11px; color:#059669; text-align:right; margin-top:2px; font-weight:600;">
+        * ราคาสุทธิ ไม่มีภาษีมูลค่าเพิ่ม (VAT)
       </div>
     `;
   }
