@@ -1395,12 +1395,12 @@
     <div style="display: grid; grid-template-columns: 1fr 340px; gap: 24px;" id="order-main-layout">
       <!-- Menu -->
       <div>
-        <div style="display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; align-items: center;">
-          <button class="btn-primary" style="font-size: 13px; padding: 8px 16px;" onclick="filterMenu('all')">ทั้งหมด</button>
-          <button class="btn-secondary" style="font-size: 13px; padding: 8px 16px;" onclick="filterMenu('อาหารหลัก')">🍜 อาหารหลัก</button>
-          <button class="btn-secondary" style="font-size: 13px; padding: 8px 16px;" onclick="filterMenu('ของทานเล่น')">🍡 ของทานเล่น</button>
-          <button class="btn-secondary" style="font-size: 13px; padding: 8px 16px;" onclick="filterMenu('เครื่องดื่ม')">🧃 เครื่องดื่ม</button>
-          <button class="btn-secondary" style="font-size: 13px; padding: 8px 16px;" onclick="filterMenu('ของหวาน')">🍰 ของหวาน</button>
+        <div id="menu-category-filter-bar" style="display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch;">
+          <button type="button" class="btn-primary category-filter-btn" data-cat="all" style="font-size: 13px; padding: 8px 18px; border-radius: 12px; cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: all 0.2s;" onclick="filterMenu('all')">ทั้งหมด</button>
+          <button type="button" class="btn-secondary category-filter-btn" data-cat="อาหารหลัก" style="font-size: 13px; padding: 8px 18px; border-radius: 12px; cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: all 0.2s;" onclick="filterMenu('อาหารหลัก')">🍜 อาหารหลัก</button>
+          <button type="button" class="btn-secondary category-filter-btn" data-cat="ของทานเล่น" style="font-size: 13px; padding: 8px 18px; border-radius: 12px; cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: all 0.2s;" onclick="filterMenu('ของทานเล่น')">🍡 ของทานเล่น</button>
+          <button type="button" class="btn-secondary category-filter-btn" data-cat="เครื่องดื่ม" style="font-size: 13px; padding: 8px 18px; border-radius: 12px; cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: all 0.2s;" onclick="filterMenu('เครื่องดื่ม')">🧃 เครื่องดื่ม</button>
+          <button type="button" class="btn-secondary category-filter-btn" data-cat="ของหวาน" style="font-size: 13px; padding: 8px 18px; border-radius: 12px; cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: all 0.2s;" onclick="filterMenu('ของหวาน')">🍰 ของหวาน</button>
         </div>
         <div id="menu-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;"></div>
       </div>
@@ -4993,10 +4993,36 @@ function renderCostChart() {
 // ===================== ORDER / MENU =====================
 function filterMenu(cat) {
   currentMenuFilter = cat;
+  updateMenuCategoryButtons(cat);
   renderMenu();
 }
 
+function updateMenuCategoryButtons(selectedCat) {
+  const container = document.getElementById('menu-category-filter-bar');
+  if (!container) return;
+  const buttons = container.querySelectorAll('.category-filter-btn');
+  buttons.forEach(b => {
+    const bCat = b.getAttribute('data-cat') || 'all';
+    if (bCat === selectedCat) {
+      b.className = 'btn-primary category-filter-btn active';
+      b.style.background = 'linear-gradient(135deg, #f43f5e, #e11d48)';
+      b.style.color = '#ffffff';
+      b.style.borderColor = 'transparent';
+      b.style.boxShadow = '0 4px 14px rgba(244,63,94,0.35)';
+      b.style.fontWeight = '800';
+    } else {
+      b.className = 'btn-secondary category-filter-btn';
+      b.style.background = '#ffffff';
+      b.style.color = '#1e293b';
+      b.style.borderColor = '#e2e8f0';
+      b.style.boxShadow = '0 1px 3px rgba(0,0,0,0.04)';
+      b.style.fontWeight = '600';
+    }
+  });
+}
+
 function renderMenu() {
+  updateMenuCategoryButtons(currentMenuFilter);
   const items = currentMenuFilter === 'all' ? menuItems : menuItems.filter(m => m.category === currentMenuFilter);
   const grid = document.getElementById('menu-grid');
   grid.innerHTML = items.map(m => `
