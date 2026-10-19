@@ -6217,7 +6217,7 @@ function openOrderConfirmationModal() {
     ? openBills.filter(b => b.status === 'open') 
     : [];
   let existingBill = activeBills.find(b => String(b.table) === table);
-  if (!existingBill && currentOrderBillId) {
+  if (!existingBill && typeof currentOrderBillId !== 'undefined' && currentOrderBillId) {
     existingBill = activeBills.find(b => b.id === currentOrderBillId);
   }
   const billBadgeEl = document.getElementById('confirm-modal-bill-badge');
@@ -6334,7 +6334,7 @@ function placeOrder() {
     ? openBills.filter(b => b.status === 'open') 
     : [];
   let existingBill = activeBills.find(b => String(b.table) === table);
-  if (!existingBill && currentOrderBillId) {
+  if (!existingBill && typeof currentOrderBillId !== 'undefined' && currentOrderBillId) {
     existingBill = activeBills.find(b => b.id === currentOrderBillId);
   }
 
@@ -6350,6 +6350,7 @@ function placeOrder() {
 
   const overallNote = (document.getElementById('order-note') ? document.getElementById('order-note').value : '').trim();
   const subtotal = cart.reduce((s, c) => s + c.price * c.qty, 0);
+  const total = subtotal; // VAT 0%
   const ratePerDish = staff ? (staff.commissionPerDish !== undefined ? staff.commissionPerDish : (staff.commissionRate || 10)) : 10;
   let foodQty = 0;
   let commAmount = 0;
