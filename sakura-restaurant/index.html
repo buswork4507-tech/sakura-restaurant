@@ -90,8 +90,6 @@
     }
     body.customer-ordering-mode #sidebar-guest,
     body.customer-ordering-mode #sidebar-user,
-    body.customer-ordering-mode #login-overlay,
-    body.customer-ordering-mode #password-verify-modal,
     body.customer-ordering-mode #sidebar-sync-badge {
       display: none !important;
       pointer-events: none !important;
@@ -618,15 +616,157 @@
       animation: cardAlertGlow 1.2s infinite ease-in-out;
     }
 
-    /* Responsive adjustments */
-    @media (max-width: 960px) {
-      .main-content { margin-left: 0 !important; padding: 18px 16px; }
-      .sidebar { transform: translateX(-100%); }
-      .sidebar.mobile-open { transform: translateX(0); }
-      #menu-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    /* Mobile Navigation & Header */
+    .mobile-only-header {
+      display: none;
     }
+    .mobile-bottom-navbar {
+      display: none;
+    }
+    .mobile-sidebar-close-btn {
+      display: none;
+    }
+    #sidebar-mobile-backdrop {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(15, 23, 42, 0.65);
+      z-index: 1040;
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      opacity: 0;
+      transition: opacity 0.25s ease-in-out;
+    }
+
+    /* Responsive adjustments for Mobile & Tablets (<= 960px) */
+    @media (max-width: 960px) {
+      .main-content {
+        margin-left: 0 !important;
+        padding: 14px 14px 85px !important; /* Extra bottom padding for mobile bottom bar */
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      .sidebar {
+        position: fixed !important;
+        left: 0 !important; top: 0 !important; bottom: 0 !important;
+        width: 285px !important;
+        max-width: 86vw !important;
+        height: 100dvh !important;
+        height: 100vh !important;
+        min-height: 100dvh !important;
+        transform: translateX(-100%) !important;
+        z-index: 1050 !important;
+        transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.6) !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        display: flex !important;
+        flex-direction: column !important;
+      }
+      .sidebar.mobile-open {
+        transform: translateX(0) !important;
+      }
+      .mobile-sidebar-close-btn {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 32px; height: 32px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        margin-left: auto;
+      }
+      .mobile-only-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 14px;
+        background: #ffffff;
+        border-bottom: 1px solid #e2e8f0;
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+      }
+      .mobile-hamburger-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        padding: 6px 11px;
+        border-radius: 10px;
+        color: #1e293b;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .mobile-hamburger-btn:active {
+        background: #e2e8f0;
+        transform: scale(0.97);
+      }
+      .mobile-bottom-navbar {
+        display: flex;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        height: 64px;
+        background: #ffffff;
+        border-top: 1px solid #e2e8f0;
+        z-index: 99;
+        box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 4px;
+      }
+      .mobile-bottom-tab {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        background: none;
+        border: none;
+        color: #64748b;
+        font-size: 10.5px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: color 0.15s;
+        position: relative;
+        padding: 4px 2px;
+      }
+      .mobile-bottom-tab .tab-icon {
+        font-size: 18px;
+        margin-bottom: 2px;
+        line-height: 1;
+      }
+      .mobile-bottom-tab.active {
+        color: #e11d48;
+        font-weight: 800;
+      }
+      .mobile-bottom-tab.active .tab-icon {
+        transform: scale(1.1);
+      }
+      #menu-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+      #kitchen-orders-grid { grid-template-columns: 1fr !important; }
+      .stat-card { padding: 12px 14px !important; }
+      .section-title { font-size: 20px !important; }
+      .card { padding: 14px 16px !important; border-radius: 14px !important; }
+    }
+
+    body.customer-ordering-mode .mobile-only-header,
+    body.customer-ordering-mode .mobile-bottom-navbar {
+      display: none !important;
+    }
+
     @media (max-width: 540px) {
       #menu-grid { grid-template-columns: 1fr !important; }
+      .main-content { padding: 10px 10px 85px !important; }
     }
   </style>
 </head>
@@ -634,14 +774,16 @@
 
 <!-- Sidebar -->
 <div class="sidebar">
-  <div style="padding: 24px 20px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); display:flex; align-items:center; gap:12px;">
+  <div style="padding: 20px 18px 18px; border-bottom: 1px solid rgba(255,255,255,0.08); display:flex; align-items:center; gap:12px;">
     <div style="width:38px; height:38px; border-radius:12px; background:linear-gradient(135deg, #f43f5e, #be123c); display:flex; align-items:center; justify-content:center; font-size:20px; box-shadow:0 4px 14px rgba(244,63,94,0.4); flex-shrink:0;">
       🌸
     </div>
-    <div>
-      <div style="font-size: 19px; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; line-height:1.2;">Sakura</div>
+    <div style="flex:1;">
+      <div style="font-size: 18px; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; line-height:1.2;">Sakura</div>
       <div style="font-size: 10px; font-weight: 600; color: #94a3b8; letter-spacing: 1.2px; text-transform:uppercase; margin-top: 2px;">Restaurant POS</div>
     </div>
+    <!-- Mobile sidebar close button -->
+    <button class="mobile-sidebar-close-btn" onclick="closeMobileSidebar()" aria-label="ปิดเมนู" title="ปิดเมนู">✕</button>
   </div>
 
   <div style="padding: 14px 0; flex: 1; overflow-y:auto;">
@@ -690,7 +832,7 @@
   </div>
 
   <!-- Live Sync & Data Audit Status in Sidebar -->
-  <div id="sidebar-sync-container" style="padding: 12px 16px; border-top: 1px solid rgba(255,255,255,0.08);">
+  <div id="sidebar-sync-container" style="padding: 12px 16px; border-top: 1px solid rgba(255,255,255,0.08); flex-shrink: 0;">
     <button id="sidebar-sync-badge" onclick="openDataAuditModal()" style="width:100%; background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.3); color:#34d399; padding:9px 12px; border-radius:12px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:space-between; transition:all 0.2s;" title="คลิกเพื่อตรวจสอบความถูกต้องของข้อมูล (Data Integrity Check)">
       <span style="display:flex; align-items:center; gap:8px;">
         <span class="live-pulse-dot" style="display:inline-block; width:8px; height:8px; background:#10b981; border-radius:50%;"></span>
@@ -701,12 +843,12 @@
   </div>
 
   <!-- Sidebar bottom: login/user -->
-  <div id="sidebar-guest" style="padding: 14px 16px; border-top: 1px solid rgba(255,255,255,0.08);">
-    <button onclick="openLoginModal()" style="width:100%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#ffffff;padding:10px 14px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px;justify-content:center;transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.14)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+  <div id="sidebar-guest" style="padding: 14px 16px; padding-bottom: max(22px, env(safe-area-inset-bottom, 22px)); border-top: 1px solid rgba(255,255,255,0.08); flex-shrink: 0;">
+    <button onclick="openLoginModal()" style="width:100%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#ffffff;padding:11px 14px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px;justify-content:center;transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.14)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
       🔑 เข้าสู่ระบบ (เจ้าของร้าน / ครัว)
     </button>
   </div>
-  <div id="sidebar-user" style="display:none;" class="sidebar-user">
+  <div id="sidebar-user" style="display:none; padding-bottom: max(22px, env(safe-area-inset-bottom, 22px)); flex-shrink: 0;" class="sidebar-user">
     <div id="sidebar-user-avatar" class="sidebar-avatar">จ</div>
     <div style="flex:1; overflow:hidden;">
       <div id="sidebar-user-name" style="font-size:12.5px;font-weight:700;color:#ffffff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">เจ้าของร้าน</div>
@@ -715,6 +857,35 @@
     <button class="btn-logout" onclick="doLogout()">ออก</button>
   </div>
 </div>
+
+<!-- Mobile Backdrop Overlay -->
+<div id="sidebar-mobile-backdrop" onclick="closeMobileSidebar()"></div>
+
+<!-- Mobile Top Navigation Bar (Visible on screens <= 960px when not customer mode) -->
+<header id="mobile-topbar" class="mobile-only-header">
+  <div style="display:flex; align-items:center; gap:10px;">
+    <button type="button" class="mobile-hamburger-btn" onclick="toggleMobileSidebar()" aria-label="เปิดแถบเมนู" title="เปิดแถบเมนูระบบ">
+      <span style="font-size:18px; line-height:1;">☰</span>
+      <span style="font-size:12.5px; font-weight:800;">แถบเมนู</span>
+    </button>
+    <div style="display:flex; align-items:center; gap:6px;">
+      <span style="font-size:20px;">🌸</span>
+      <span style="font-weight:800; font-size:16px; color:#0f172a;">Sakura POS</span>
+    </div>
+  </div>
+  <div style="display:flex; align-items:center; gap:8px;">
+    <!-- Guest Login button on mobile topbar -->
+    <button id="mobile-top-login-btn" onclick="openLoginModal()" class="btn-primary" style="padding:7px 14px; font-size:12.5px; font-weight:800; border-radius:10px; display:inline-flex; align-items:center; gap:5px; box-shadow:0 2px 8px rgba(244,63,94,0.3);">
+      <span>🔑</span> <span>เข้าสู่ระบบ</span>
+    </button>
+    <!-- Logged in pill on mobile topbar -->
+    <div id="mobile-top-user-pill" style="display:none; align-items:center; gap:6px; background:#fff; border:1px solid #e2e8f0; padding:4px 8px 4px 6px; border-radius:20px; box-shadow:0 2px 6px rgba(0,0,0,0.06);">
+      <span id="mobile-top-user-avatar" style="font-size:16px;">👑</span>
+      <span id="mobile-top-user-name" style="font-size:12px; font-weight:700; color:#1e293b; max-width:85px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">เจ้าของร้าน</span>
+      <button onclick="doLogout()" style="background:#fee2e2; border:none; color:#dc2626; border-radius:6px; padding:3px 7px; font-size:11px; font-weight:700; cursor:pointer;">ออก</button>
+    </div>
+  </div>
+</header>
 
 <!-- Main -->
 <div class="main-content">
@@ -1180,6 +1351,9 @@
         <span id="customer-header-table-badge" style="background:linear-gradient(135deg, #f43f5e, #e11d48); color:#fff; font-size:14px; font-weight:800; padding:6px 16px; border-radius:12px; box-shadow:0 2px 8px rgba(244,63,94,0.25);">
           🪑 โต๊ะ 1
         </span>
+        <button type="button" onclick="openLoginModal()" style="background:#ffffff; border:1.5px solid #fecdd3; color:#be123c; border-radius:10px; padding:6px 12px; font-size:12px; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:4px;">
+          <span>🔑</span> <span>เข้าสู่ระบบ</span>
+        </button>
       </div>
     </div>
 
@@ -1206,6 +1380,9 @@
           </div>
         </div>
         <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <button type="button" onclick="openLoginModal()" style="background:#ffffff; border:1.5px solid #fecdd3; color:#be123c; border-radius:10px; padding:6px 12px; font-size:12px; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:5px; box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+            <span>🔑</span> <span>เข้าสู่ระบบร้านค้า</span>
+          </button>
           <span class="badge" style="background:#ecfdf5; color:#047857; border:1px solid #a7f3d0; font-size:12px; padding:6px 14px; display:inline-flex; align-items:center; gap:6px;">
             <span class="live-pulse-dot" style="display:inline-block; width:7px; height:7px; background:#10b981; border-radius:50%;"></span>
             ⚡ ซิงค์เรียลไทม์กับครัว & แคชเชียร์
@@ -1296,10 +1473,11 @@
           <div style="display: flex; flex-direction: column; gap: 10px;">
             <div>
               <label style="font-size:12px; font-weight:700; color:#475569; margin-bottom:4px;">หมายเหตุถึงครัว</label>
-              <input type="text" id="order-note" placeholder="เช่น ไม่เผ็ด, แยกน้ำ, ไม่ใส่ผัก">
+              <input type="text" id="order-note" placeholder="เช่น ไม่เผ็ด, แยกน้ำ, ไม่ใส่ผัก" style="color: #000000 !important;">
             </div>
-            <button class="btn-primary" onclick="placeOrder()" style="width: 100%; padding:12px; font-size:14px; font-weight:700;">
-              ✅ ยืนยันสั่งอาหาร
+            <button type="button" class="btn-primary" onclick="openOrderConfirmationModal()" style="width: 100%; padding:13px; font-size:14.5px; font-weight:800; border-radius:12px; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 4px 14px rgba(225,29,72,0.25);">
+              <span>📋 ตรวจสอบและยืนยันออเดอร์</span>
+              <span id="cart-btn-qty-badge" style="background:rgba(255,255,255,0.25); padding:2px 8px; border-radius:10px; font-size:12px;">(<span id="cart-btn-qty">0</span>)</span>
             </button>
             <button class="btn-secondary" onclick="clearCart()" style="width: 100%; padding:9px; font-size:13px; color:#64748b;">
               🗑️ ล้างตะกร้า
@@ -2212,6 +2390,83 @@
   </div>
 </div>
 
+<!-- Order Confirmation & Review Modal (ขั้นตอนตรวจสอบและยืนยันก่อนส่งเข้าครัว) -->
+<div class="modal-overlay" id="order-confirm-modal" style="z-index: 1065;" onclick="if(event.target === this) closeOrderConfirmModal()">
+  <div class="modal-box" style="width: 520px; max-width: 95vw; max-height: 90vh; display: flex; flex-direction: column; padding: 22px 24px; border-radius: 20px; box-sizing: border-box;">
+    <!-- Modal Header -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 26px;">📋</span>
+        <div>
+          <div style="font-size: 17.5px; font-weight: 800; color: #0f172a; line-height: 1.2;">ตรวจสอบรายการอาหารก่อนส่งครัว</div>
+          <div style="font-size: 12px; color: #64748b; margin-top: 2px;">กรุณาตรวจสอบความถูกต้องก่อนกดยืนยันส่งเข้าห้องครัว</div>
+        </div>
+      </div>
+      <button type="button" onclick="closeOrderConfirmModal()" style="border:none; background:#f1f5f9; color:#64748b; width:32px; height:32px; border-radius:50%; font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0;" onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f1f5f9'">✕</button>
+    </div>
+
+    <!-- Table Badge Row -->
+    <div style="background: linear-gradient(135deg, #fff1f2, #ffe4e6); border: 1.5px solid #fecdd3; border-radius: 14px; padding: 11px 16px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 22px;">🪑</span>
+        <div>
+          <div style="font-size: 11px; font-weight: 700; color: #9f1239;">สั่งสำหรับโต๊ะอาหาร</div>
+          <div id="confirm-modal-table-name" style="font-size: 17px; font-weight: 800; color: #e11d48;">โต๊ะ 1</div>
+        </div>
+      </div>
+      <div id="confirm-modal-bill-badge" style="font-size: 11.5px; background: #ffffff; color: #9f1239; border: 1px solid #fecdd3; padding: 4px 10px; border-radius: 8px; font-weight: 700;">
+        ออเดอร์ใหม่
+      </div>
+    </div>
+
+    <!-- Scrollable Items List -->
+    <div style="font-size: 12px; font-weight: 700; color: #475569; margin-bottom: 6px;">
+      รายการอาหารที่เลือก:
+    </div>
+    <div id="confirm-modal-items-list" style="flex: 1; overflow-y: auto; max-height: 250px; padding-right: 4px; margin-bottom: 14px; border: 1px solid #f1f5f9; background: #fafbfc; border-radius: 12px; padding: 6px 12px;">
+      <!-- Dynamically filled with order items -->
+    </div>
+
+    <!-- Overall Note to Kitchen -->
+    <div style="margin-bottom: 14px;">
+      <label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">📝 หมายเหตุภาพรวมถึงห้องครัว (ถ้ามี):</label>
+      <input type="text" id="confirm-modal-order-note" placeholder="เช่น ไม่เผ็ด, แยกน้ำ, ขอจานแบ่งเพิ่ม..." style="width: 100%; font-size: 12.5px; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 10px; background: #ffffff; color: #000000 !important; outline: none; box-sizing: border-box;" oninput="syncConfirmNoteToCart(this.value)">
+    </div>
+
+    <!-- Price Summary Box -->
+    <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 12px 14px; margin-bottom: 14px;">
+      <div style="display: flex; justify-content: space-between; font-size: 13px; color: #64748b; margin-bottom: 6px;">
+        <span>จำนวนรายการอาหาร</span>
+        <span id="confirm-modal-total-qty" style="font-weight: 700; color: #0f172a;">0 จาน</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 12px; color: #94a3b8; margin-bottom: 6px;">
+        <span>ภาษีมูลค่าเพิ่ม (VAT 7%)</span>
+        <span style="font-weight: 700; color: #059669; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 1px 7px; border-radius: 6px; font-size: 11px;">คิดตอนเช็คบิลรวม</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 17px; font-weight: 800; color: #0f172a; padding-top: 8px; border-top: 1px dashed #cbd5e1;">
+        <span>ยอดรวมออเดอร์นี้</span>
+        <span id="confirm-modal-total-price" style="color: #e11d48; letter-spacing: -0.5px;">฿0</span>
+      </div>
+    </div>
+
+    <!-- Safety / Confirmation Notice -->
+    <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 8px 12px; font-size: 11.5px; color: #92400e; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+      <span style="font-size: 16px; flex-shrink: 0;">⚠️</span>
+      <span>เมื่อกดยืนยัน <strong>"ส่งออเดอร์เข้าครัว"</strong> ระบบจะส่งรายการนี้ให้แม่ครัวปรุงอาหารทันที</span>
+    </div>
+
+    <!-- Action Buttons Row -->
+    <div style="display: flex; gap: 10px;">
+      <button type="button" class="btn-secondary" onclick="closeOrderConfirmModal()" style="flex: 1; padding: 12px; font-size: 14px; border-radius: 12px; color: #64748b; font-weight: 700;">
+        ↩️ กลับไปแก้ไข
+      </button>
+      <button type="button" id="confirm-submit-order-btn" class="btn-primary" onclick="submitFinalOrderToKitchen()" style="flex: 1.6; padding: 12px; font-size: 14.5px; font-weight: 800; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 16px rgba(225,29,72,0.35);">
+        <span>🚀 ยืนยันส่งออเดอร์เข้าครัว</span>
+      </button>
+    </div>
+  </div>
+</div>
+
 <!-- Customer Order Success Modal (สำหรับลูกค้าหลังกดยืนยันออเดอร์) -->
 <div class="modal-overlay" id="customer-order-success-modal" style="z-index:1070;">
   <div class="modal-box" style="width: 460px; text-align:center;">
@@ -2404,6 +2659,143 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
+// ===================== MOBILE NAVIGATION CONTROLLER =====================
+function toggleMobileSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  if (!sidebar) return;
+  if (sidebar.classList.contains('mobile-open')) {
+    closeMobileSidebar();
+  } else {
+    openMobileSidebar();
+  }
+}
+
+function openMobileSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  const backdrop = document.getElementById('sidebar-mobile-backdrop');
+  if (sidebar) sidebar.classList.add('mobile-open');
+  if (backdrop) {
+    backdrop.style.display = 'block';
+    setTimeout(() => { backdrop.style.opacity = '1'; }, 10);
+  }
+}
+
+function closeMobileSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  const backdrop = document.getElementById('sidebar-mobile-backdrop');
+  if (sidebar) sidebar.classList.remove('mobile-open');
+  if (backdrop) {
+    backdrop.style.opacity = '0';
+    setTimeout(() => { backdrop.style.display = 'none'; }, 240);
+  }
+}
+
+function updateMobileNavUI() {
+  const mobileTop = document.getElementById('mobile-topbar');
+  const mobileBottom = document.getElementById('mobile-bottom-nav');
+  const loginBtn = document.getElementById('mobile-top-login-btn');
+  const userPill = document.getElementById('mobile-top-user-pill');
+  const avatar = document.getElementById('mobile-top-user-avatar');
+  const name = document.getElementById('mobile-top-user-name');
+
+  if (isCustomerMode) {
+    if (mobileTop) mobileTop.style.display = 'none';
+    if (mobileBottom) mobileBottom.style.display = 'none';
+    return;
+  }
+
+  if (mobileTop) mobileTop.style.display = 'flex';
+  if (mobileBottom) mobileBottom.style.display = 'flex';
+
+  if (isLoggedIn) {
+    if (loginBtn) loginBtn.style.display = 'none';
+    if (userPill) userPill.style.display = 'inline-flex';
+    if (currentUserRole === 'kitchen') {
+      if (avatar) avatar.textContent = '🍳';
+      if (name) name.textContent = 'ห้องครัว';
+    } else {
+      if (avatar) avatar.textContent = '👑';
+      if (name) name.textContent = 'เจ้าของร้าน';
+    }
+  } else {
+    if (loginBtn) loginBtn.style.display = 'inline-flex';
+    if (userPill) userPill.style.display = 'none';
+  }
+
+  // Active page detection
+  const activePageEl = document.querySelector('.page.active');
+  const curPage = activePageEl ? activePageEl.id.replace('page-', '') : 'order';
+  const unacceptedKitchenOrders = (typeof orders !== 'undefined' && Array.isArray(orders)) 
+    ? orders.filter(o => o.kitchenAccepted === false && o.status === 'กำลังทำ').length 
+    : 0;
+
+  if (!mobileBottom) return;
+
+  if (currentUserRole === 'kitchen') {
+    mobileBottom.innerHTML = `
+      <button type="button" class="mobile-bottom-tab ${curPage==='kitchen'?'active':''}" onclick="showPage('kitchen', document.getElementById('nav-kitchen'))">
+        <span class="tab-icon">🍳</span>
+        <span>ออเดอร์เข้าครัว ${unacceptedKitchenOrders > 0 ? `<span class="badge" style="background:#ef4444;color:#fff;font-size:9.5px;padding:1px 5px;border-radius:10px;font-weight:800;">${unacceptedKitchenOrders}</span>` : ''}</span>
+      </button>
+      <button type="button" class="mobile-bottom-tab ${curPage==='kitchen-revenue'?'active':''}" onclick="showPage('kitchen-revenue', document.getElementById('nav-kitchen-revenue'))">
+        <span class="tab-icon">💵</span>
+        <span>รายได้อาหาร</span>
+      </button>
+      <button type="button" class="mobile-bottom-tab" onclick="doLogout()" style="color:#ef4444;">
+        <span class="tab-icon">🚪</span>
+        <span>ออกจากระบบ</span>
+      </button>
+    `;
+  } else if (isLoggedIn && currentUserRole === 'owner') {
+    mobileBottom.innerHTML = `
+      <button type="button" class="mobile-bottom-tab ${curPage==='dashboard'?'active':''}" onclick="showPage('dashboard', document.getElementById('nav-dashboard'))">
+        <span class="tab-icon">📊</span>
+        <span>แดชบอร์ด</span>
+      </button>
+      <button type="button" class="mobile-bottom-tab ${curPage==='order'?'active':''}" onclick="showPage('order', document.getElementById('nav-order'))">
+        <span class="tab-icon">🍽️</span>
+        <span>สั่งอาหาร</span>
+      </button>
+      <button type="button" class="mobile-bottom-tab ${curPage==='billing'?'active':''}" onclick="showPage('billing', document.getElementById('nav-billing'))">
+        <span class="tab-icon">🧾</span>
+        <span>เปิดบิล</span>
+      </button>
+      <button type="button" class="mobile-bottom-tab ${curPage==='kitchen'?'active':''}" onclick="showPage('kitchen', document.getElementById('nav-kitchen'))">
+        <span class="tab-icon">🍳</span>
+        <span>ครัว ${unacceptedKitchenOrders > 0 ? `<span class="badge" style="background:#ef4444;color:#fff;font-size:9.5px;padding:1px 5px;border-radius:10px;font-weight:800;">${unacceptedKitchenOrders}</span>` : ''}</span>
+      </button>
+      <button type="button" class="mobile-bottom-tab" onclick="openMobileSidebar()">
+        <span class="tab-icon">☰</span>
+        <span>เมนูทั้งหมด</span>
+      </button>
+    `;
+  } else {
+    // Guest (Not logged in)
+    mobileBottom.innerHTML = `
+      <button type="button" class="mobile-bottom-tab ${curPage==='order'?'active':''}" onclick="showPage('order', document.getElementById('nav-order'))">
+        <span class="tab-icon">🍽️</span>
+        <span>สั่งอาหาร</span>
+      </button>
+      <button type="button" class="mobile-bottom-tab ${curPage==='billing'?'active':''}" onclick="showPage('billing', document.getElementById('nav-billing'))">
+        <span class="tab-icon">🧾</span>
+        <span>เปิดบิล</span>
+      </button>
+      <button type="button" class="mobile-bottom-tab ${curPage==='kitchen'?'active':''}" onclick="showPage('kitchen', document.getElementById('nav-kitchen'))">
+        <span class="tab-icon">🍳</span>
+        <span>ครัว</span>
+      </button>
+      <button type="button" class="mobile-bottom-tab" onclick="openMobileSidebar()" style="color:#0f172a; font-weight:700;">
+        <span class="tab-icon">☰</span>
+        <span>แถบเมนู</span>
+      </button>
+      <button type="button" class="mobile-bottom-tab" onclick="openLoginModal()" style="color:#e11d48; font-weight:700;">
+        <span class="tab-icon">🔑</span>
+        <span>เข้าสู่ระบบ</span>
+      </button>
+    `;
+  }
+}
+
 // ===================== STATE =====================
 let stockItems = [
   { id: 1, name: 'ข้าวหอมมะลิ', category: 'วัตถุดิบสด', qty: 50, unit: 'กิโลกรัม', minQty: 10, price: 40 },
@@ -2458,62 +2850,13 @@ let orders = [
   { id: 1003, table: '2', staffId: 3, staffName: 'พลอย ไพลิน', items: [{ menuId: 5, name: 'สปาเก็ตตี้', price: 130, qty: 2, emoji: '🍝' }, { menuId: 8, name: 'เกี๊ยวซ่า', price: 70, qty: 1, emoji: '🥟' }, { menuId: 13, name: 'ไอศกรีมซากุระ', price: 75, qty: 2, emoji: '🍦' }], subtotal: 480, total: 513.6, note: '', date: todayDateStr + 'T13:00:00', status: 'เสร็จสิ้น', commissionRate: 4, commissionAmount: 19.2 },
   { id: 1004, table: '5', staffId: 1, staffName: 'มินต์ สุชาดา', items: [{ menuId: 6, name: 'แกงเขียวหวาน', price: 110, qty: 2, emoji: '🥘' }, { menuId: 4, name: 'ข้าวมันไก่', price: 80, qty: 2, emoji: '🍗' }, { menuId: 11, name: 'โกโก้เย็น', price: 50, qty: 2, emoji: '🧋' }], subtotal: 480, total: 513.6, note: '', date: todayDateStr + 'T14:20:00', status: 'เสร็จสิ้น', commissionRate: 5, commissionAmount: 24.0 },
   { id: 1005, table: '4', staffId: 4, staffName: 'เต้ ธีรเดช', items: [{ menuId: 7, name: 'ทาโกะยากิ', price: 60, qty: 3, emoji: '🐙' }, { menuId: 14, name: 'โมจิสตรอเบอร์รี่', price: 65, qty: 2, emoji: '🍡' }, { menuId: 10, name: 'ชาเขียวเย็น', price: 45, qty: 3, emoji: '🍵' }], subtotal: 445, total: 476.15, note: '', date: todayDateStr + 'T15:45:00', status: 'เสร็จสิ้น', commissionRate: 4, commissionAmount: 17.8 },
-  { id: 1006, table: '6', staffId: 2, staffName: 'ก้อง เกริกไกร', items: [{ menuId: 1, name: 'ข้าวผัดกุ้ง', price: 120, qty: 3, emoji: '🍳' }, { menuId: 3, name: 'ต้มยำกุ้ง', price: 150, qty: 2, emoji: '🍲' }, { menuId: 15, name: 'ชีสเค้กซากุระ', price: 90, qty: 2, emoji: '🍰' }], subtotal: 840, total: 898.8, note: '', date: todayDateStr + 'T17:10:00', status: 'กำลังทำ', commissionRate: 5, commissionAmount: 42.0 },
+  { id: 1006, table: '6', staffId: 2, staffName: 'ก้อง เกริกไกร', items: [{ menuId: 1, name: 'ข้าวผัดกุ้ง', price: 120, qty: 3, emoji: '🍳' }, { menuId: 3, name: 'ต้มยำกุ้ง', price: 150, qty: 2, emoji: '🍲' }, { menuId: 15, name: 'ชีสเค้กซากุระ', price: 90, qty: 2, emoji: '🍰' }], subtotal: 840, total: 898.8, note: '', date: todayDateStr + 'T17:10:00', status: 'เสร็จสิ้น', commissionRate: 5, commissionAmount: 42.0 },
 ];
 let nextOrderId = 1007;
 let currentMenuFilter = 'all';
 
 // ===================== OPEN BILLS STATE =====================
-let openBills = [
-  {
-    id: 2001,
-    billNo: 'BILL-1001',
-    table: '3',
-    staffId: 2,
-    staffName: 'ก้อง เกริกไกร',
-    commissionRate: 5,
-    openedAt: todayDateStr + 'T12:15',
-    status: 'open',
-    note: 'ลูกค้า 4 ท่าน โซนริมกระจก',
-    items: [
-      { menuId: 3, name: 'ต้มยำกุ้ง', price: 150, qty: 1, emoji: '🍲' },
-      { menuId: 2, name: 'ผัดไทย', price: 90, qty: 2, emoji: '🍜' },
-      { menuId: 12, name: 'น้ำส้มคั้น', price: 55, qty: 2, emoji: '🍊' }
-    ]
-  },
-  {
-    id: 2002,
-    billNo: 'BILL-1002',
-    table: '1',
-    staffId: 1,
-    staffName: 'มินต์ สุชาดา',
-    commissionRate: 5,
-    openedAt: todayDateStr + 'T12:45',
-    status: 'open',
-    note: 'ไม่ใส่ผักชี',
-    items: [
-      { menuId: 1, name: 'ข้าวผัดกุ้ง', price: 120, qty: 2, emoji: '🍳' },
-      { menuId: 10, name: 'ชาเขียวเย็น', price: 45, qty: 2, emoji: '🍵' },
-      { menuId: 7, name: 'ทาโกะยากิ', price: 60, qty: 1, emoji: '🐙' }
-    ]
-  },
-  {
-    id: 2003,
-    billNo: 'BILL-1003',
-    table: '6',
-    staffId: 4,
-    staffName: 'เต้ ธีรเดช',
-    commissionRate: 4,
-    openedAt: todayDateStr + 'T13:10',
-    status: 'open',
-    note: 'ขอจานแบ่ง 2 ใบ',
-    items: [
-      { menuId: 5, name: 'สปาเก็ตตี้', price: 130, qty: 1, emoji: '🍝' },
-      { menuId: 15, name: 'ชีสเค้กซากุระ', price: 90, qty: 2, emoji: '🍰' },
-      { menuId: 11, name: 'โกโก้เย็น', price: 50, qty: 2, emoji: '🧋' }
-    ]
-  }
-];
+let openBills = [];
 let nextBillId = 2004;
 let editingBill = null;
 
@@ -2530,7 +2873,7 @@ const DEFAULT_INITIAL_STATE = {
   menuItems: JSON.parse(JSON.stringify(menuItems)),
   staffMembers: JSON.parse(JSON.stringify(staffMembers)),
   orders: JSON.parse(JSON.stringify(orders)),
-  openBills: JSON.parse(JSON.stringify(openBills)),
+  openBills: [],
   nextOrderId: 1007,
   nextBillId: 2004
 };
@@ -3339,15 +3682,15 @@ function showPage(name, btn) {
   if (name === 'order') { renderMenu(); updateOrderTableAndStaffUI(); }
   if (name === 'history') renderHistory();
   if (name === 'menu-manage') renderMenuManage();
+
+  if (typeof closeMobileSidebar === 'function') closeMobileSidebar();
+  if (typeof updateMobileNavUI === 'function') updateMobileNavUI();
 }
 
 let _pendingPage = null;
 
 function openLoginModal(pendingPage) {
-  if (isCustomerMode) {
-    showToast('⚠️ ไม่อนุญาตให้เข้าสู่ระบบในโหมดสั่งอาหารของลูกค้า');
-    return;
-  }
+  if (typeof closeMobileSidebar === 'function') closeMobileSidebar();
   _pendingPage = pendingPage || null;
   document.getElementById('login-err').style.display = 'none';
   document.getElementById('login-user').value = '';
@@ -3357,7 +3700,6 @@ function openLoginModal(pendingPage) {
 }
 
 function doLogin() {
-  if (isCustomerMode) return;
   const u = document.getElementById('login-user').value.trim().toLowerCase();
   const p = document.getElementById('login-pass').value;
   const errEl = document.getElementById('login-err');
@@ -3365,6 +3707,8 @@ function doLogin() {
   if (u === OWNER_USER.toLowerCase() && p === OWNER_PASS) {
     isLoggedIn = true;
     currentUserRole = 'owner';
+    isCustomerMode = false;
+    document.body.classList.remove('customer-ordering-mode');
     try {
       localStorage.setItem('sakura_user_role', 'owner');
       localStorage.setItem('sakura_is_logged_in', 'true');
@@ -3383,6 +3727,8 @@ function doLogin() {
              (u === KITCHEN_USER_ALIAS.toLowerCase() && p === KITCHEN_PASS_ALIAS)) {
     isLoggedIn = true;
     currentUserRole = 'kitchen';
+    isCustomerMode = false;
+    document.body.classList.remove('customer-ordering-mode');
     try {
       localStorage.setItem('sakura_user_role', 'kitchen');
       localStorage.setItem('sakura_is_logged_in', 'true');
@@ -3402,6 +3748,7 @@ function doLogin() {
 }
 
 function doLogout() {
+  if (typeof closeMobileSidebar === 'function') closeMobileSidebar();
   stopKitchenAlarm();
   isLoggedIn = false;
   currentUserRole = null;
@@ -3687,6 +4034,7 @@ function updateAuthUI() {
     populateStaffDropdown();
     updateCustomerTableUI();
     renderMenu();
+    if (typeof updateMobileNavUI === 'function') updateMobileNavUI();
     return;
   }
 
@@ -3737,6 +4085,7 @@ function updateAuthUI() {
     if (!activePage || (activePage.id !== 'page-kitchen' && activePage.id !== 'page-kitchen-revenue')) {
       showPage('kitchen', document.getElementById('nav-kitchen'));
     }
+    if (typeof updateMobileNavUI === 'function') updateMobileNavUI();
     return;
   }
 
@@ -3767,6 +4116,7 @@ function updateAuthUI() {
   populateStaffDropdown();
   updateCustomerTableUI();
   renderMenu();
+  if (typeof updateMobileNavUI === 'function') updateMobileNavUI();
 }
 
 // ===================== PASSWORD VERIFICATION =====================
@@ -4673,8 +5023,8 @@ function renderMenu() {
       </div>
       <div style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px dashed #f1f5f9;">
         <span style="font-weight: 800; color: #e11d48; font-size: 16px; letter-spacing: -0.3px;">${formatMoney(m.price)}</span>
-        <button type="button" onclick="event.stopPropagation(); addToCart(${m.id})" title="สั่งเมนูนี้ทันที 1 จาน" style="background: #fff1f2; color: #e11d48; border: 1px solid #fecdd3; padding: 5px 12px; border-radius: 8px; font-size: 12.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 4px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#f43f5e';this.style.color='#fff';" onmouseout="this.style.background='#fff1f2';this.style.color='#e11d48';">
-          + สั่ง
+        <button type="button" onclick="event.stopPropagation(); addToCart(${m.id})" title="เพิ่มเมนูนี้ลงในตะกร้า" style="background: #fff1f2; color: #e11d48; border: 1px solid #fecdd3; padding: 5px 12px; border-radius: 8px; font-size: 12.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 4px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#f43f5e';this.style.color='#fff';" onmouseout="this.style.background='#fff1f2';this.style.color='#e11d48';">
+          + ใส่ตะกร้า
         </button>
       </div>
     </div>
@@ -4934,6 +5284,7 @@ function changeQty(idx, delta) {
 }
 
 function updateCartTotals() {
+  const totalQty = cart.reduce((s, c) => s + (Number(c.qty) || 1), 0);
   const subtotal = cart.reduce((s, c) => s + c.price * c.qty, 0);
   const total = subtotal; // ไม่คิด VAT 7% ตอนเลือกเมนู (จะคิดตอนเช็คบิล)
   const subtotalEl = document.getElementById('cart-subtotal');
@@ -4942,11 +5293,154 @@ function updateCartTotals() {
   if (subtotalEl) subtotalEl.textContent = formatMoney(subtotal);
   if (vatEl) vatEl.textContent = 'คิดตอนเช็คบิล';
   if (totalEl) totalEl.textContent = formatMoney(total);
+
+  // Update cart confirmation button badge
+  const btnQty = document.getElementById('cart-btn-qty');
+  if (btnQty) btnQty.textContent = totalQty;
+
+  // Update floating mobile cart bar
+  const floatingBar = document.getElementById('customer-floating-cart-bar');
+  const floatingCount = document.getElementById('floating-cart-count');
+  const floatingTotal = document.getElementById('floating-cart-total');
+  if (floatingBar) {
+    if (cart.length > 0) {
+      floatingBar.style.display = 'flex';
+      if (floatingCount) floatingCount.textContent = totalQty;
+      if (floatingTotal) floatingTotal.textContent = formatMoney(total);
+    } else {
+      floatingBar.style.display = 'none';
+    }
+  }
 }
 
 function clearCart() {
   cart = [];
   renderCart();
+}
+
+// ---------------- EXPLICIT CUSTOMER ORDER REVIEW & CONFIRMATION FLOW ----------------
+function openOrderConfirmationModal() {
+  if (cart.length === 0) {
+    showToast('❌ กรุณาเลือกรายการอาหารก่อนยืนยันออเดอร์');
+    return;
+  }
+
+  // Target table verification
+  let table = customerTable || (document.getElementById('table-num') ? document.getElementById('table-num').value : null);
+  if (!table || table === 'null' || table === 'undefined' || table === '') {
+    const pickerBox = document.getElementById('customer-table-picker-box');
+    if (pickerBox) {
+      pickerBox.style.display = 'block';
+      pickerBox.scrollIntoView({ behavior: 'smooth' });
+    }
+    showToast('⚠️ กรุณาระบุหรือแตะเลือกหมายเลขโต๊ะของคุณก่อนสั่งอาหาร');
+    return;
+  }
+  table = String(table).trim();
+
+  // Populate table label
+  const tableNameEl = document.getElementById('confirm-modal-table-name');
+  if (tableNameEl) tableNameEl.textContent = `โต๊ะ ${table}`;
+
+  // Check active bill
+  const activeBills = (typeof openBills !== 'undefined' && Array.isArray(openBills)) 
+    ? openBills.filter(b => b.status === 'open') 
+    : [];
+  let existingBill = activeBills.find(b => String(b.table) === table);
+  if (!existingBill && currentOrderBillId) {
+    existingBill = activeBills.find(b => b.id === currentOrderBillId);
+  }
+  const billBadgeEl = document.getElementById('confirm-modal-bill-badge');
+  if (billBadgeEl) {
+    if (existingBill) {
+      billBadgeEl.textContent = `บิล ${existingBill.billNo || 'เดิม'} (สั่งเพิ่ม)`;
+      billBadgeEl.style.background = '#eff6ff';
+      billBadgeEl.style.color = '#1d4ed8';
+      billBadgeEl.style.borderColor = '#bfdbfe';
+    } else {
+      billBadgeEl.textContent = 'เปิดบิลใหม่';
+      billBadgeEl.style.background = '#f0fdf4';
+      billBadgeEl.style.color = '#15803d';
+      billBadgeEl.style.borderColor = '#bbf7d0';
+    }
+  }
+
+  // Populate items list
+  const listEl = document.getElementById('confirm-modal-items-list');
+  if (listEl) {
+    listEl.innerHTML = cart.map((item, idx) => `
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; padding:10px 0; border-bottom:1px dashed #e2e8f0; gap:10px;">
+        <div style="display:flex; align-items:center; gap:10px; min-width:0; flex:1;">
+          ${item.image ? `
+            <img src="${item.image}" alt="${escapeHtml(item.name)}" style="width:38px; height:38px; border-radius:10px; object-fit:cover; flex-shrink:0; box-shadow:0 1px 3px rgba(0,0,0,0.1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+            <span style="display:none; font-size:22px;">${item.emoji || '🍽️'}</span>
+          ` : `
+            <span style="font-size:22px;">${item.emoji || '🍽️'}</span>
+          `}
+          <div style="min-width:0;">
+            <div style="font-weight:700; font-size:13.5px; color:#0f172a; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+              ${escapeHtml(item.name)}
+            </div>
+            ${item.note ? `<div style="font-size:11.5px; color:#e11d48; font-weight:600; margin-top:2px;">📝 หมายเหตุ: ${escapeHtml(item.note)}</div>` : ''}
+            <div style="font-size:11.5px; color:#64748b; margin-top:1px;">฿${item.price.toLocaleString()} / จาน</div>
+          </div>
+        </div>
+        <div style="text-align:right; flex-shrink:0;">
+          <div style="font-weight:800; font-size:14px; color:#0f172a;">×${item.qty}</div>
+          <div style="font-size:13px; font-weight:800; color:#e11d48;">฿${(item.price * item.qty).toLocaleString()}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Populate overall note
+  const cartOverallNote = (document.getElementById('order-note') ? document.getElementById('order-note').value : '').trim();
+  const confirmNoteInput = document.getElementById('confirm-modal-order-note');
+  if (confirmNoteInput) confirmNoteInput.value = cartOverallNote;
+
+  // Calculate totals
+  const totalQty = cart.reduce((sum, it) => sum + (Number(it.qty) || 1), 0);
+  const subtotal = cart.reduce((sum, it) => sum + (Number(it.price) * Number(it.qty)), 0);
+
+  const qtyEl = document.getElementById('confirm-modal-total-qty');
+  const priceEl = document.getElementById('confirm-modal-total-price');
+  if (qtyEl) qtyEl.textContent = `${totalQty} จาน (${cart.length} รายการ)`;
+  if (priceEl) priceEl.textContent = `฿${subtotal.toLocaleString()}`;
+
+  // Enable submit button
+  const submitBtn = document.getElementById('confirm-submit-order-btn');
+  if (submitBtn) {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = '<span>🚀 ยืนยันส่งออเดอร์เข้าครัว</span>';
+  }
+
+  document.getElementById('order-confirm-modal').classList.add('open');
+}
+
+function closeOrderConfirmModal() {
+  const modal = document.getElementById('order-confirm-modal');
+  if (modal) modal.classList.remove('open');
+}
+
+function syncConfirmNoteToCart(val) {
+  const noteInput = document.getElementById('order-note');
+  if (noteInput) noteInput.value = val;
+}
+
+function submitFinalOrderToKitchen() {
+  const submitBtn = document.getElementById('confirm-submit-order-btn');
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span>⏳ กำลังส่งเข้าครัว...</span>';
+  }
+
+  // Sync note from modal back to order-note before placeOrder executes
+  const confirmNote = (document.getElementById('confirm-modal-order-note')?.value || '').trim();
+  const noteInput = document.getElementById('order-note');
+  if (noteInput) noteInput.value = confirmNote;
+
+  closeOrderConfirmModal();
+  placeOrder();
 }
 
 function placeOrder() {
@@ -5381,14 +5875,16 @@ function renderKitchenPage() {
 
 function updateKitchenBadge() {
   const badge = document.getElementById('nav-kitchen-badge');
-  if (!badge) return;
-  const count = orders.filter(o => o.status === 'กำลังทำ').length;
-  if (count > 0) {
-    badge.textContent = count;
-    badge.style.display = 'inline-block';
-  } else {
-    badge.style.display = 'none';
+  if (badge) {
+    const count = orders.filter(o => o.status === 'กำลังทำ').length;
+    if (count > 0) {
+      badge.textContent = count;
+      badge.style.display = 'inline-block';
+    } else {
+      badge.style.display = 'none';
+    }
   }
+  if (typeof updateMobileNavUI === 'function') updateMobileNavUI();
 }
 
 function acceptKitchenOrder(id) {
@@ -6678,6 +7174,27 @@ document.addEventListener('DOMContentLoaded', () => {
     </button>
   </div>
 </div>
+
+<!-- Customer Floating Cart Bar for Mobile & Quick Order (แสดงเมื่อมีรายการในตะกร้า) -->
+<div id="customer-floating-cart-bar" style="display: none; position: fixed; bottom: 16px; left: 14px; right: 14px; max-width: 480px; margin: 0 auto; background: rgba(15, 23, 42, 0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1.5px solid rgba(255, 255, 255, 0.15); border-radius: 18px; padding: 10px 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 1040; align-items: center; justify-content: space-between; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); box-sizing: border-box;">
+  <div style="display: flex; align-items: center; gap: 12px; cursor: pointer; min-width: 0; flex: 1;" onclick="openOrderConfirmationModal()">
+    <div style="position: relative; width: 40px; height: 40px; border-radius: 12px; background: rgba(244,63,94,0.18); border: 1px solid rgba(244,63,94,0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+      <span style="font-size: 20px;">🛒</span>
+      <span id="floating-cart-count" style="position: absolute; top: -5px; right: -7px; background: #e11d48; color: #fff; border-radius: 10px; font-size: 11px; font-weight: 800; min-width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; padding: 0 4px; box-shadow: 0 2px 6px rgba(225,29,72,0.5);">0</span>
+    </div>
+    <div style="min-width: 0;">
+      <div style="font-size: 11px; color: #94a3b8; font-weight: 600;">ยอดรวมในตะกร้า</div>
+      <div id="floating-cart-total" style="font-size: 16px; font-weight: 800; color: #ffffff;">฿0</div>
+    </div>
+  </div>
+  <button type="button" onclick="openOrderConfirmationModal()" style="background: linear-gradient(135deg, #f43f5e, #e11d48); color: #fff; border: none; padding: 10px 18px; border-radius: 12px; font-weight: 800; font-size: 13.5px; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 14px rgba(244,63,94,0.4); flex-shrink: 0; transition: transform 0.15s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+    <span>ตรวจสอบ & สั่ง</span>
+    <span style="font-size: 14px;">➔</span>
+  </button>
+</div>
+
+<!-- Mobile Bottom Navigation Bar (Visible on mobile screens <= 960px) -->
+<nav id="mobile-bottom-nav" class="mobile-bottom-navbar"></nav>
 
 </body>
 </html>
