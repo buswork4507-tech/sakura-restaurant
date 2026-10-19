@@ -1,0 +1,819 @@
+{
+  "stockItems": [
+    {
+      "id": 1,
+      "name": "ข้าวหอมมะลิ",
+      "category": "วัตถุดิบสด",
+      "qty": 50,
+      "unit": "กิโลกรัม",
+      "minQty": 10,
+      "price": 40
+    },
+    {
+      "id": 2,
+      "name": "เนื้อหมู",
+      "category": "วัตถุดิบสด",
+      "qty": 8,
+      "unit": "กิโลกรัม",
+      "minQty": 5,
+      "price": 180
+    },
+    {
+      "id": 3,
+      "name": "ซีอิ๊วขาว",
+      "category": "เครื่องปรุง",
+      "qty": 12,
+      "unit": "ขวด",
+      "minQty": 4,
+      "price": 45
+    },
+    {
+      "id": 4,
+      "name": "น้ำมันพืช",
+      "category": "เครื่องปรุง",
+      "qty": 3,
+      "unit": "ลิตร",
+      "minQty": 5,
+      "price": 65
+    },
+    {
+      "id": 5,
+      "name": "กุ้งสด",
+      "category": "วัตถุดิบสด",
+      "qty": 4,
+      "unit": "กิโลกรัม",
+      "minQty": 3,
+      "price": 280
+    },
+    {
+      "id": 6,
+      "name": "น้ำอัดลม",
+      "category": "เครื่องดื่ม",
+      "qty": 24,
+      "unit": "กล่อง",
+      "minQty": 10,
+      "price": 15
+    },
+    {
+      "id": 7,
+      "name": "กล่องใส่อาหาร",
+      "category": "บรรจุภัณฑ์",
+      "qty": 2,
+      "unit": "กล่อง",
+      "minQty": 5,
+      "price": 120
+    }
+  ],
+  "costs": [
+    {
+      "id": 1,
+      "name": "ค่าเช่า",
+      "category": "ค่าเช่า",
+      "amount": 15000,
+      "date": "2026-10-01",
+      "note": ""
+    },
+    {
+      "id": 2,
+      "name": "ค่าไฟฟ้า",
+      "category": "ค่าสาธารณูปโภค",
+      "amount": 3200,
+      "date": "2026-10-05",
+      "note": ""
+    },
+    {
+      "id": 3,
+      "name": "ซื้อวัตถุดิบ",
+      "category": "วัตถุดิบ",
+      "amount": 8500,
+      "date": "2026-10-10",
+      "note": "ตลาดสด"
+    },
+    {
+      "id": 4,
+      "name": "ค่าแรงพนักงาน",
+      "category": "ค่าแรง",
+      "amount": 25000,
+      "date": "2026-10-01",
+      "note": "3 คน"
+    }
+  ],
+  "menuItems": [
+    {
+      "id": 1,
+      "name": "ข้าวผัดกุ้ง",
+      "category": "อาหารหลัก",
+      "price": 120,
+      "emoji": "🍳",
+      "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 10
+    },
+    {
+      "id": 2,
+      "name": "ผัดไทย",
+      "category": "อาหารหลัก",
+      "price": 90,
+      "emoji": "🍜",
+      "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 10
+    },
+    {
+      "id": 3,
+      "name": "ต้มยำกุ้ง",
+      "category": "อาหารหลัก",
+      "price": 150,
+      "emoji": "🍲",
+      "image": "https://images.unsplash.com/photo-1548943487-a2e314328665?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 10
+    },
+    {
+      "id": 4,
+      "name": "ข้าวมันไก่",
+      "category": "อาหารหลัก",
+      "price": 80,
+      "emoji": "🍗",
+      "image": "https://images.unsplash.com/photo-1562967914-608f82629710?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 10
+    },
+    {
+      "id": 5,
+      "name": "สปาเก็ตตี้",
+      "category": "อาหารหลัก",
+      "price": 130,
+      "emoji": "🍝",
+      "image": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 10
+    },
+    {
+      "id": 6,
+      "name": "แกงเขียวหวาน",
+      "category": "อาหารหลัก",
+      "price": 110,
+      "emoji": "🥘",
+      "image": "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 10
+    },
+    {
+      "id": 7,
+      "name": "ทาโกะยากิ",
+      "category": "ของทานเล่น",
+      "price": 60,
+      "emoji": "🐙",
+      "image": "https://images.unsplash.com/photo-1583032015879-119db123d61a?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 10
+    },
+    {
+      "id": 8,
+      "name": "เกี๊ยวซ่า",
+      "category": "ของทานเล่น",
+      "price": 70,
+      "emoji": "🥟",
+      "image": "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 10
+    },
+    {
+      "id": 9,
+      "name": "สปริงโรล",
+      "category": "ของทานเล่น",
+      "price": 55,
+      "emoji": "🌯",
+      "image": "https://images.unsplash.com/photo-1544025162-d76694265947?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 10
+    },
+    {
+      "id": 10,
+      "name": "ชาเขียวเย็น",
+      "category": "เครื่องดื่ม",
+      "price": 45,
+      "emoji": "🍵",
+      "image": "https://images.unsplash.com/photo-1556881286-fc6915169721?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 0
+    },
+    {
+      "id": 11,
+      "name": "โกโก้เย็น",
+      "category": "เครื่องดื่ม",
+      "price": 50,
+      "emoji": "🧋",
+      "image": "https://images.unsplash.com/photo-1541658016709-82535e94bc69?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 0
+    },
+    {
+      "id": 12,
+      "name": "น้ำส้มคั้น",
+      "category": "เครื่องดื่ม",
+      "price": 55,
+      "emoji": "🍊",
+      "image": "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 0
+    },
+    {
+      "id": 13,
+      "name": "ไอศกรีมซากุระ",
+      "category": "ของหวาน",
+      "price": 75,
+      "emoji": "🍦",
+      "image": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 0
+    },
+    {
+      "id": 14,
+      "name": "โมจิสตรอเบอร์รี่",
+      "category": "ของหวาน",
+      "price": 65,
+      "emoji": "🍡",
+      "image": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 0
+    },
+    {
+      "id": 15,
+      "name": "ชีสเค้กซากุระ",
+      "category": "ของหวาน",
+      "price": 90,
+      "emoji": "🍰",
+      "image": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 0
+    }
+  ],
+  "staffMembers": [
+    {
+      "id": 1,
+      "name": "มินต์ สุชาดา",
+      "code": "SK-01",
+      "username": "mint",
+      "password": "1234",
+      "role": "พนักงานขายหน้าร้าน",
+      "commissionRate": 10,
+      "avatar": "👩‍🍳",
+      "phone": "081-234-5678",
+      "paidCommission": 0,
+      "commissionPerDish": 10
+    },
+    {
+      "id": 2,
+      "name": "ก้อง เกริกไกร",
+      "code": "SK-02",
+      "username": "kong",
+      "password": "1234",
+      "role": "พนักงานเสิร์ฟ & ขาย",
+      "commissionRate": 10,
+      "avatar": "👨‍🍳",
+      "phone": "082-345-6789",
+      "paidCommission": 0,
+      "commissionPerDish": 10
+    },
+    {
+      "id": 3,
+      "name": "พลอย ไพลิน",
+      "code": "SK-03",
+      "username": "ploy",
+      "password": "1234",
+      "role": "พนักงานขาย & แนะนำเมนู",
+      "commissionRate": 10,
+      "avatar": "👩‍💼",
+      "phone": "083-456-7890",
+      "paidCommission": 0,
+      "commissionPerDish": 10
+    },
+    {
+      "id": 4,
+      "name": "เต้ ธีรเดช",
+      "code": "SK-04",
+      "username": "tae",
+      "password": "1234",
+      "role": "พนักงานขาย & บาริสต้า",
+      "commissionRate": 10,
+      "avatar": "🧑‍🍳",
+      "phone": "084-567-8901",
+      "paidCommission": 0,
+      "commissionPerDish": 10
+    }
+  ],
+  "orders": [
+    {
+      "id": 1001,
+      "table": "1",
+      "staffId": 1,
+      "staffName": "มินต์ สุชาดา",
+      "items": [
+        {
+          "menuId": 1,
+          "name": "ข้าวผัดกุ้ง",
+          "price": 120,
+          "qty": 2,
+          "emoji": "🍳"
+        },
+        {
+          "menuId": 10,
+          "name": "ชาเขียวเย็น",
+          "price": 45,
+          "qty": 2,
+          "emoji": "🍵"
+        }
+      ],
+      "subtotal": 330,
+      "total": 330,
+      "note": "",
+      "date": "2026-10-18T11:30:00",
+      "status": "เสร็จสิ้น",
+      "commissionRate": 10,
+      "commissionAmount": 20,
+      "commissionPerDish": 10,
+      "foodDishesCount": 2
+    },
+    {
+      "id": 1002,
+      "table": "3",
+      "staffId": 2,
+      "staffName": "ก้อง เกริกไกร",
+      "items": [
+        {
+          "menuId": 3,
+          "name": "ต้มยำกุ้ง",
+          "price": 150,
+          "qty": 1,
+          "emoji": "🍲"
+        },
+        {
+          "menuId": 2,
+          "name": "ผัดไทย",
+          "price": 90,
+          "qty": 2,
+          "emoji": "🍜"
+        },
+        {
+          "menuId": 12,
+          "name": "น้ำส้มคั้น",
+          "price": 55,
+          "qty": 2,
+          "emoji": "🍊"
+        }
+      ],
+      "subtotal": 440,
+      "total": 440,
+      "note": "ไม่เผ็ด",
+      "date": "2026-10-18T12:15:00",
+      "status": "เสร็จสิ้น",
+      "commissionRate": 10,
+      "commissionAmount": 30,
+      "commissionPerDish": 10,
+      "foodDishesCount": 3
+    },
+    {
+      "id": 1003,
+      "table": "2",
+      "staffId": 3,
+      "staffName": "พลอย ไพลิน",
+      "items": [
+        {
+          "menuId": 5,
+          "name": "สปาเก็ตตี้",
+          "price": 130,
+          "qty": 2,
+          "emoji": "🍝"
+        },
+        {
+          "menuId": 8,
+          "name": "เกี๊ยวซ่า",
+          "price": 70,
+          "qty": 1,
+          "emoji": "🥟"
+        },
+        {
+          "menuId": 13,
+          "name": "ไอศกรีมซากุระ",
+          "price": 75,
+          "qty": 2,
+          "emoji": "🍦"
+        }
+      ],
+      "subtotal": 480,
+      "total": 480,
+      "note": "",
+      "date": "2026-10-18T13:00:00",
+      "status": "เสร็จสิ้น",
+      "commissionRate": 10,
+      "commissionAmount": 30,
+      "commissionPerDish": 10,
+      "foodDishesCount": 3
+    },
+    {
+      "id": 1004,
+      "table": "5",
+      "staffId": 1,
+      "staffName": "มินต์ สุชาดา",
+      "items": [
+        {
+          "menuId": 6,
+          "name": "แกงเขียวหวาน",
+          "price": 110,
+          "qty": 2,
+          "emoji": "🥘"
+        },
+        {
+          "menuId": 4,
+          "name": "ข้าวมันไก่",
+          "price": 80,
+          "qty": 2,
+          "emoji": "🍗"
+        },
+        {
+          "menuId": 11,
+          "name": "โกโก้เย็น",
+          "price": 50,
+          "qty": 2,
+          "emoji": "🧋"
+        }
+      ],
+      "subtotal": 480,
+      "total": 480,
+      "note": "",
+      "date": "2026-10-18T14:20:00",
+      "status": "เสร็จสิ้น",
+      "commissionRate": 10,
+      "commissionAmount": 40,
+      "commissionPerDish": 10,
+      "foodDishesCount": 4
+    },
+    {
+      "id": 1005,
+      "table": "4",
+      "staffId": 4,
+      "staffName": "เต้ ธีรเดช",
+      "items": [
+        {
+          "menuId": 7,
+          "name": "ทาโกะยากิ",
+          "price": 60,
+          "qty": 3,
+          "emoji": "🐙"
+        },
+        {
+          "menuId": 14,
+          "name": "โมจิสตรอเบอร์รี่",
+          "price": 65,
+          "qty": 2,
+          "emoji": "🍡"
+        },
+        {
+          "menuId": 10,
+          "name": "ชาเขียวเย็น",
+          "price": 45,
+          "qty": 3,
+          "emoji": "🍵"
+        }
+      ],
+      "subtotal": 445,
+      "total": 445,
+      "note": "",
+      "date": "2026-10-18T15:45:00",
+      "status": "เสร็จสิ้น",
+      "commissionRate": 10,
+      "commissionAmount": 30,
+      "commissionPerDish": 10,
+      "foodDishesCount": 3
+    },
+    {
+      "id": 1006,
+      "table": "6",
+      "staffId": 2,
+      "staffName": "ก้อง เกริกไกร",
+      "items": [
+        {
+          "menuId": 1,
+          "name": "ข้าวผัดกุ้ง",
+          "price": 120,
+          "qty": 3,
+          "emoji": "🍳"
+        },
+        {
+          "menuId": 3,
+          "name": "ต้มยำกุ้ง",
+          "price": 150,
+          "qty": 2,
+          "emoji": "🍲"
+        },
+        {
+          "menuId": 15,
+          "name": "ชีสเค้กซากุระ",
+          "price": 90,
+          "qty": 2,
+          "emoji": "🍰"
+        }
+      ],
+      "subtotal": 840,
+      "total": 840,
+      "note": "",
+      "date": "2026-10-18T17:10:00",
+      "status": "เสร็จสิ้น",
+      "commissionRate": 10,
+      "commissionAmount": 50,
+      "kitchenAccepted": true,
+      "commissionPerDish": 10,
+      "foodDishesCount": 5
+    },
+    {
+      "id": 1008,
+      "table": "2",
+      "staffId": 1,
+      "staffName": "น้องน้ำ (หัวหน้ากะ)",
+      "commissionRate": 10,
+      "commissionAmount": 20,
+      "items": [
+        {
+          "id": 1,
+          "menuId": 1,
+          "name": "แซลมอน ซาซิมิ",
+          "price": 180,
+          "qty": 2,
+          "emoji": "🍣",
+          "note": "ขอวาซาบิเยอะๆ"
+        }
+      ],
+      "subtotal": 360,
+      "total": 360,
+      "note": "รีบหน่อยนะครับ",
+      "date": "2026-10-18T22:35:52.325Z",
+      "status": "เสร็จสิ้น",
+      "kitchenAccepted": true,
+      "commissionPerDish": 10,
+      "foodDishesCount": 2
+    },
+    {
+      "id": 1009,
+      "table": "3",
+      "staffId": 1,
+      "staffName": "น้องน้ำ (หัวหน้ากะ)",
+      "commissionRate": 10,
+      "commissionAmount": 30,
+      "items": [
+        {
+          "id": 3,
+          "menuId": 3,
+          "name": "ต้มยำกุ้ง",
+          "price": 150,
+          "qty": 1,
+          "emoji": "🍲",
+          "note": "เผ็ดน้อย"
+        },
+        {
+          "id": 1,
+          "menuId": 1,
+          "name": "ข้าวผัดกุ้ง",
+          "price": 120,
+          "qty": 2,
+          "emoji": "🍳",
+          "note": "ไม่ใส่ต้นหอม"
+        }
+      ],
+      "subtotal": 390,
+      "total": 390,
+      "note": "โต๊ะ 3 เด็กทานด้วย",
+      "date": "2026-10-19T06:45:41.281Z",
+      "status": "เสร็จสิ้น",
+      "commissionPerDish": 10,
+      "foodDishesCount": 3
+    },
+    {
+      "id": 1010,
+      "table": "5",
+      "staffId": 1,
+      "staffName": "พนักงาน",
+      "commissionRate": 10,
+      "commissionAmount": 20,
+      "items": [
+        {
+          "id": 1,
+          "name": "ข้าวผัด",
+          "price": 120,
+          "qty": 2
+        }
+      ],
+      "subtotal": 240,
+      "total": 240,
+      "note": "",
+      "date": "2026-10-19T08:58:54.143Z",
+      "status": "เสร็จสิ้น",
+      "kitchenAccepted": true,
+      "commissionPerDish": 10,
+      "foodDishesCount": 2
+    },
+    {
+      "id": 1011,
+      "table": "5",
+      "staffId": 1,
+      "staffName": "มินต์ สุชาดา",
+      "commissionRate": 10,
+      "commissionAmount": 0,
+      "items": [
+        {
+          "id": 13,
+          "menuId": 13,
+          "name": "ไอศกรีมซากุระ",
+          "price": 75,
+          "qty": 1,
+          "emoji": "🍦",
+          "image": "",
+          "note": ""
+        },
+        {
+          "id": 14,
+          "menuId": 14,
+          "name": "โมจิสตรอเบอร์รี่",
+          "price": 65,
+          "qty": 1,
+          "emoji": "🍡",
+          "image": "",
+          "note": ""
+        }
+      ],
+      "subtotal": 140,
+      "total": 140,
+      "note": "",
+      "date": "2026-10-19T09:05:17.137Z",
+      "status": "เสร็จสิ้น",
+      "kitchenAccepted": true,
+      "commissionPerDish": 10,
+      "foodDishesCount": 0
+    },
+    {
+      "id": 1012,
+      "table": "4",
+      "staffId": 1,
+      "staffName": "พนักงาน",
+      "commissionRate": 10,
+      "commissionAmount": 10,
+      "items": [
+        {
+          "id": 1,
+          "menuId": 1,
+          "name": "ข้าวผัดซากุระ",
+          "price": 120,
+          "qty": 1
+        }
+      ],
+      "subtotal": 120,
+      "total": 120,
+      "note": "ทดสอบระบบซิงค์",
+      "date": "2026-10-19T09:07:53.899Z",
+      "status": "เสร็จสิ้น",
+      "kitchenAccepted": true,
+      "commissionPerDish": 10,
+      "foodDishesCount": 1
+    },
+    {
+      "id": 1013,
+      "table": "2",
+      "staffId": 1,
+      "staffName": "มินต์ สุชาดา",
+      "commissionRate": 10,
+      "commissionAmount": 20,
+      "items": [
+        {
+          "id": 1,
+          "menuId": 1,
+          "name": "ข้าวผัดกุ้ง",
+          "price": 120,
+          "qty": 1,
+          "emoji": "🍳",
+          "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&auto=format&fit=crop&q=80",
+          "note": ""
+        },
+        {
+          "id": 2,
+          "menuId": 2,
+          "name": "ผัดไทย",
+          "price": 90,
+          "qty": 1,
+          "emoji": "🍜",
+          "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=400&auto=format&fit=crop&q=80",
+          "note": ""
+        }
+      ],
+      "subtotal": 210,
+      "total": 210,
+      "note": "",
+      "date": "2026-10-19T09:14:30.007Z",
+      "status": "เสร็จสิ้น",
+      "kitchenAccepted": true,
+      "commissionPerDish": 10,
+      "foodDishesCount": 2
+    },
+    {
+      "id": 1014,
+      "table": "3",
+      "staffId": 2,
+      "staffName": "ก้อง เกริกไกร",
+      "commissionRate": 10,
+      "commissionAmount": 10,
+      "items": [
+        {
+          "id": 1,
+          "menuId": 1,
+          "name": "ข้าวผัดกุ้ง",
+          "price": 120,
+          "qty": 1,
+          "emoji": "🍳",
+          "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&auto=format&fit=crop&q=80",
+          "note": ""
+        }
+      ],
+      "subtotal": 120,
+      "total": 120,
+      "note": "",
+      "date": "2026-10-19T09:16:28.798Z",
+      "status": "เสร็จสิ้น",
+      "kitchenAccepted": true,
+      "commissionPerDish": 10,
+      "foodDishesCount": 1
+    },
+    {
+      "id": 1007,
+      "table": "2",
+      "staffId": 1,
+      "staffName": "มินต์ สุชาดา",
+      "commissionRate": 10,
+      "commissionAmount": 10,
+      "items": [
+        {
+          "id": 9,
+          "menuId": 9,
+          "name": "สปริงโรล",
+          "price": 55,
+          "qty": 1,
+          "emoji": "🌯",
+          "image": "https://images.unsplash.com/photo-1544025162-d76694265947?w=400&auto=format&fit=crop&q=80",
+          "note": ""
+        },
+        {
+          "id": 12,
+          "menuId": 12,
+          "name": "น้ำส้มคั้น",
+          "price": 55,
+          "qty": 1,
+          "emoji": "🍊",
+          "image": "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=400&auto=format&fit=crop&q=80",
+          "note": ""
+        }
+      ],
+      "subtotal": 110,
+      "total": 110,
+      "note": "",
+      "date": "2026-10-19T09:18:46.738Z",
+      "status": "เสร็จสิ้น",
+      "kitchenAccepted": true,
+      "commissionPerDish": 10,
+      "foodDishesCount": 1
+    },
+    {
+      "id": 1008,
+      "table": "2",
+      "staffId": 1,
+      "staffName": "มินต์ สุชาดา",
+      "commissionRate": 10,
+      "commissionAmount": 10,
+      "items": [
+        {
+          "id": 1,
+          "menuId": 1,
+          "name": "ข้าวผัดกุ้ง",
+          "price": 120,
+          "qty": 1,
+          "emoji": "🍳",
+          "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&auto=format&fit=crop&q=80",
+          "note": ""
+        }
+      ],
+      "subtotal": 120,
+      "total": 120,
+      "note": "",
+      "date": "2026-10-19T09:20:54.539Z",
+      "status": "เสร็จสิ้น",
+      "kitchenAccepted": true,
+      "commissionPerDish": 10,
+      "foodDishesCount": 1
+    }
+  ],
+  "openBills": [],
+  "nextOrderId": 1009,
+  "nextBillId": 2005,
+  "timestamp": 1792434759216,
+  "sender": "diagnostic_script",
+  "action": "CONNECTION_TEST",
+  "lastSavedOnDisk": "2026-10-19T18:32:39.244Z"
+}
