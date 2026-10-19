@@ -829,6 +829,13 @@
         <span>💵</span> รายได้
       </button>
     </div>
+
+    <div id="sidebar-section-staff" style="display:none;">
+      <div style="font-size: 10.5px; font-weight: 700; color: #64748b; letter-spacing: 1.2px; padding: 16px 20px 6px; text-transform:uppercase;">พนักงานบริการ (Staff)</div>
+      <button class="nav-btn" id="nav-my-commission" onclick="showPage('my-commission', this)">
+        <span>💵</span> ค่าคอมมิชชั่นของฉัน
+      </button>
+    </div>
   </div>
 
   <!-- Live Sync & Data Audit Status in Sidebar -->
@@ -1110,12 +1117,12 @@
         <div>
           <div style="font-size:14.5px; font-weight:800; color:#0f172a;">ระบบคำนวณอัตโนมัติ</div>
           <div style="font-size:12.5px; color:#64748b; margin-top:2px;">
-            <strong>ค่าคอมมิชชั่นพนักงาน</strong> = ยอดขายของพนักงานแต่ละคน × อัตรา % ค่าคอมฯ | <strong>กำไรสุทธิร้าน</strong> = ยอดขายรวม − ค่าใช้จ่าย − ค่าคอมมิชชั่นรวม
+            <strong>ค่าคอมมิชชั่นพนักงาน</strong> = จำนวนจานอาหารที่ขายได้ (อาหารหลัก & ของทานเล่น) × ค่าคอมฯ (10 ฿/จาน) | <strong>กำไรสุทธิร้าน</strong> = ยอดขายรวม − ค่าใช้จ่าย − ค่าคอมมิชชั่นรวม
           </div>
         </div>
       </div>
       <div style="font-size:12px; color:#e11d48; font-weight:700; background:#ffffff; padding:6px 14px; border-radius:10px; border:1px solid #fecdd3;">
-        🌸 คิดแยกรายบุคคลตามยอดขายจริง
+        🌸 คิดแยกรายบุคคล (จานละ 10 บาท)
       </div>
     </div>
 
@@ -1125,8 +1132,8 @@
         <div style="display:flex; align-items:center; gap:12px;">
           <div style="width:40px; height:40px; border-radius:12px; background:linear-gradient(135deg, #f43f5e, #be123c); display:flex; align-items:center; justify-content:center; font-size:20px; box-shadow:0 4px 10px rgba(244,63,94,0.3); flex-shrink:0;">🧮</div>
           <div>
-            <div style="font-size:16.5px; font-weight:800; color:#0f172a;">กรอกยอดขายของพนักงาน & คำนวณค่าคอมมิชชั่นอัตโนมัติ</div>
-            <div style="font-size:12.5px; color:#64748b; margin-top:2px;">กรอกยอดเงินที่พนักงานขายได้ ระบบจะคำนวณเงินค่าคอมมิชชั่นและรายได้สุทธิให้ทันทีแบบ Real-Time</div>
+            <div style="font-size:16.5px; font-weight:800; color:#0f172a;">คำนวณค่าคอมมิชชั่นตามจำนวนจานอาหาร (10 ฿/จาน)</div>
+            <div style="font-size:12.5px; color:#64748b; margin-top:2px;">กรอกจำนวนจานอาหารที่พนักงานขายได้ ระบบจะคิดค่าคอมมิชชั่นให้อัตโนมัติแบบ Real-Time</div>
           </div>
         </div>
         <span class="badge badge-pink" style="font-size:12px; padding:6px 14px;">⚡ คิดคำนวณอัตโนมัติ Real-Time</span>
@@ -1140,18 +1147,18 @@
         </div>
 
         <div>
-          <label style="font-weight:700; color:#880e4f; font-size:13px; display:block; margin-bottom:6px;">💰 กรอกยอดที่ขายได้ (บาท) *</label>
-          <input type="number" id="calc-sales-input" placeholder="เช่น 15000" min="0" step="10" oninput="calculateCommissionLive()"
+          <label style="font-weight:700; color:#880e4f; font-size:13px; display:block; margin-bottom:6px;">🍽️ จำนวนจานอาหารที่ขายได้ (จาน) *</label>
+          <input type="number" id="calc-sales-input" placeholder="เช่น 20" min="0" step="1" oninput="calculateCommissionLive()"
             style="padding:10px 14px; border-radius:10px; border:1.5px solid #ffb3ce; width:100%; font-size:15px; font-weight:700; color:#000000; outline:none;"
             onfocus="this.style.borderColor='#e91e8c'" onblur="this.style.borderColor='#ffb3ce'">
         </div>
 
         <div>
-          <label style="font-weight:700; color:#880e4f; font-size:13px; display:block; margin-bottom:6px;">📊 อัตราค่าคอมฯ (%)</label>
+          <label style="font-weight:700; color:#880e4f; font-size:13px; display:block; margin-bottom:6px;">📊 อัตราค่าคอมฯ (฿/จาน)</label>
           <div style="display:flex; align-items:center; gap:6px;">
-            <input type="number" id="calc-rate-input" placeholder="5" min="0" max="100" step="0.5" oninput="calculateCommissionLive()"
+            <input type="number" id="calc-rate-input" placeholder="10" min="0" max="1000" step="1" oninput="calculateCommissionLive()"
               style="padding:10px 14px; border-radius:10px; border:1.5px solid #ffb3ce; width:100%; font-size:14px; font-weight:700;">
-            <span style="font-size:14px; font-weight:700; color:#880e4f;">%</span>
+            <span style="font-size:14px; font-weight:700; color:#880e4f;">฿/จาน</span>
           </div>
         </div>
 
@@ -1165,19 +1172,19 @@
       <!-- Live Calculation Result Display -->
       <div id="calc-result-box" style="margin-top:18px; padding:18px 22px; border-radius:16px; background:linear-gradient(135deg, #f8fafc 0%, #fff1f2 100%); border:1.5px solid #fecdd3; display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; align-items:center;">
         <div>
-          <div style="font-size:12px; color:#64748b; font-weight:700;">ยอดขายที่กรอก</div>
-          <div id="calc-display-sales" style="font-size:24px; font-weight:800; color:#0f172a; margin-top:2px; letter-spacing:-0.5px;">฿0</div>
+          <div style="font-size:12px; color:#64748b; font-weight:700;">จานอาหารที่กรอก</div>
+          <div id="calc-display-sales" style="font-size:24px; font-weight:800; color:#0f172a; margin-top:2px; letter-spacing:-0.5px;">0 จาน</div>
           <div style="font-size:11.5px; color:#94a3b8;" id="calc-staff-info">เลือกพนักงานด้านบน</div>
         </div>
         <div style="border-left:1px dashed #cbd5e1; padding-left:18px;">
           <div style="font-size:12px; color:#e11d48; font-weight:700;">✨ ค่าคอมมิชชั่นที่พนักงานจะได้</div>
           <div id="calc-display-commission" style="font-size:26px; font-weight:800; color:#e11d48; margin-top:2px; letter-spacing:-0.5px;">฿0</div>
-          <div style="font-size:11px; color:#be123c; font-weight:600;" id="calc-formula-text">สูตร: ฿0 × 0% = ฿0</div>
+          <div style="font-size:11px; color:#be123c; font-weight:600;" id="calc-formula-text">สูตร: อาหาร 0 จาน × 10 ฿ = ฿0</div>
         </div>
         <div style="border-left:1px dashed #cbd5e1; padding-left:18px;">
-          <div style="font-size:12px; color:#059669; font-weight:700;">🏪 รายได้ร้านคงเหลือสุทธิ</div>
+          <div style="font-size:12px; color:#059669; font-weight:700;">🏪 ยอดขายอาหารโดยประมาณ</div>
           <div id="calc-display-net" style="font-size:24px; font-weight:800; color:#059669; margin-top:2px; letter-spacing:-0.5px;">฿0</div>
-          <div style="font-size:11px; color:#64748b;">หลังหักค่าคอมมิชชั่นให้พนักงาน</div>
+          <div style="font-size:11px; color:#64748b;">(เฉลี่ย ~100฿ ต่อจาน)</div>
         </div>
       </div>
     </div>
@@ -1197,7 +1204,7 @@
             <th style="width:60px;">โปรไฟล์</th>
             <th>รหัส / ชื่อพนักงาน</th>
             <th>ตำแหน่ง</th>
-            <th style="text-align:center;">อัตราค่าคอมฯ (%)</th>
+            <th style="text-align:center;">ค่าคอมฯ (฿/จาน)</th>
             <th style="text-align:center;">จำนวนออเดอร์</th>
             <th style="text-align:right;">ยอดขายที่ทำได้ (฿)</th>
             <th style="text-align:right;">ค่าคอมมิชชั่นที่จะได้รับ (฿)</th>
@@ -1220,13 +1227,151 @@
             <th>โต๊ะ</th>
             <th>พนักงานผู้ขาย</th>
             <th>ยอดรวมออเดอร์</th>
-            <th>% ค่าคอมฯ</th>
+            <th>จานอาหาร (ค่าคอมฯ)</th>
             <th>ค่าคอมมิชชั่นที่ได้</th>
             <th>วันที่/เวลา</th>
           </tr>
         </thead>
         <tbody id="comm-recent-orders-tbody"></tbody>
       </table>
+    </div>
+  </div>
+
+  <!-- MY COMMISSION (หน้าสรุปค่าคอมมิชชั่น & บิลของพนักงานรายบุคคล) -->
+  <div id="page-my-commission" class="page">
+    <!-- Owner Switcher Bar (only visible when owner is previewing this page) -->
+    <div id="mycomm-owner-bar" style="display:none; background:#f8fafc; border:1.5px solid #cbd5e1; border-radius:16px; padding:12px 18px; margin-bottom:18px; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-size:18px;">👑</span>
+        <span style="font-size:13.5px; font-weight:800; color:#0f172a;">โหมดเจ้าของร้าน: กำลังดูหน้าสรุปค่าคอมมิชชั่นของพนักงาน</span>
+        <span class="badge badge-pink" style="font-size:11px;">พนักงานจริงจะเห็นเฉพาะข้อมูลของตนเองเท่านั้น</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <label style="font-size:12.5px; font-weight:700; color:#334155; margin:0;">สลับดูพนักงาน:</label>
+        <select id="mycomm-staff-switcher" onchange="switchMyCommissionStaff(this.value)" style="padding:6px 12px; font-size:13px; font-weight:700; border-radius:10px; border:1px solid #cbd5e1; background:#fff;">
+        </select>
+        <button type="button" class="btn-secondary" onclick="showPage('commission')" style="padding:6px 12px; font-size:12px; font-weight:700;">
+          ↩️ กลับแดชบอร์ดหลัก
+        </button>
+      </div>
+    </div>
+
+    <!-- Staff Header Card -->
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:14px; background:linear-gradient(135deg, #ffffff 0%, #fff1f2 100%); border:1.5px solid #fecdd3; border-radius:20px; padding:20px 24px; box-shadow:0 4px 20px -2px rgba(244,63,94,0.08);">
+      <div style="display:flex; align-items:center; gap:16px;">
+        <div id="mycomm-avatar" style="width:58px; height:58px; border-radius:18px; background:linear-gradient(135deg, #f43f5e, #be123c); display:flex; align-items:center; justify-content:center; font-size:32px; box-shadow:0 4px 14px rgba(244,63,94,0.3); flex-shrink:0;">
+          👩‍🍳
+        </div>
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <div id="mycomm-staff-name" style="font-size:22px; font-weight:800; color:#0f172a;">มินต์ สุชาดา</div>
+            <span id="mycomm-staff-code-badge" class="badge" style="background:#f43f5e; color:#fff; font-weight:800; font-size:12px; padding:3px 10px; border-radius:8px;">SK-01</span>
+            <span id="mycomm-staff-role-badge" class="badge badge-pink" style="font-size:12px; padding:3px 10px;">พนักงานขายหน้าร้าน</span>
+          </div>
+          <div style="font-size:13px; color:#64748b; margin-top:4px;">
+            📊 อัตราค่าคอมมิชชั่นของคุณ: <strong id="mycomm-rate-text" style="color:#e11d48; font-size:14px;">10 ฿/จาน</strong> จากรายการอาหารที่คุณดูแล (คิดเฉพาะอาหารหลัก & ของทานเล่น)
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+        <select id="mycomm-period-filter" style="width:auto; font-size:13px; padding:9px 16px; border-radius:12px; border:1.5px solid #fecdd3; background:#fff; font-weight:700; color:#0f172a;" onchange="renderMyCommissionPage()">
+          <option value="today">📅 เฉพาะวันนี้</option>
+          <option value="this_month" selected>🗓️ เดือนนี้</option>
+          <option value="all">🌐 ข้อมูลทั้งหมด</option>
+        </select>
+        <button type="button" class="btn-secondary" onclick="renderMyCommissionPage()" style="padding:9px 14px; font-size:13px; font-weight:700; border-radius:12px;" title="รีเฟรชข้อมูล">
+          🔄 รีเฟรช
+        </button>
+      </div>
+    </div>
+
+    <!-- 4 Key Financial Summary Cards -->
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px;" id="mycomm-stats-grid">
+      <!-- 1. Total Bills Opened / Handled -->
+      <div class="stat-card" style="padding:20px; border-radius:18px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size: 11.5px; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">บิลที่ดูแลทั้งหมด</span>
+          <span style="font-size:20px;">🧾</span>
+        </div>
+        <div id="mycomm-bills-count" style="font-size: 30px; font-weight: 800; color: #0f172a; margin: 8px 0; letter-spacing: -0.5px;">0</div>
+        <div style="font-size: 12px; color: #64748b;" id="mycomm-bills-subtext">เปิดอยู่ 0 · ชำระแล้ว 0</div>
+      </div>
+
+      <!-- 2. Gross Revenue Before Commission -->
+      <div class="stat-card" style="padding:20px; border-radius:18px; border-color:#fed7aa; background:linear-gradient(135deg, #fff7ed 0%, #ffffff 100%);">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size: 11.5px; color: #c2410c; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">รายได้ทั้งหมดก่อนหักค่าคอม</span>
+          <span style="font-size:20px;">💰</span>
+        </div>
+        <div id="mycomm-gross-sales" style="font-size: 30px; font-weight: 800; color: #c2410c; margin: 8px 0; letter-spacing: -0.5px;">฿0</div>
+        <div style="font-size: 12px; color: #9a3412;">ยอดขายรวมของบิลที่คุณดูแล</div>
+      </div>
+
+      <!-- 3. Commission Earned (Highlight) -->
+      <div class="stat-card" style="padding:20px; border-radius:18px; border-color:#fecdd3; background:linear-gradient(135deg, #fff1f2 0%, #ffffff 100%); box-shadow:0 6px 20px rgba(244,63,94,0.12);">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size: 11.5px; color: #be123c; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">✨ ค่าคอมมิชชั่นที่ได้รับ</span>
+          <span style="font-size:20px;">🎁</span>
+        </div>
+        <div id="mycomm-earned" style="font-size: 32px; font-weight: 800; color: #e11d48; margin: 8px 0; letter-spacing: -0.5px;">฿0</div>
+        <div style="font-size: 12px; color: #9f1239; font-weight:600;" id="mycomm-payout-status">รอรับเงิน: ฿0</div>
+      </div>
+
+      <!-- 4. Net Revenue After Commission (ส่งเข้าร้าน) -->
+      <div class="stat-card" style="padding:20px; border-radius:18px; border-color:#a7f3d0; background:linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%);">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size: 11.5px; color: #047857; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">รายได้หลังหักค่าคอม</span>
+          <span style="font-size:20px;">🏪</span>
+        </div>
+        <div id="mycomm-net-revenue" style="font-size: 30px; font-weight: 800; color: #047857; margin: 8px 0; letter-spacing: -0.5px;">฿0</div>
+        <div style="font-size: 12px; color: #065f46;">ยอดรายได้สุทธิส่งให้ทางร้าน</div>
+      </div>
+    </div>
+
+    <!-- Section: Bills & Orders Handled Table -->
+    <div class="card" style="margin-bottom:24px; border-radius:20px; box-shadow:var(--card-shadow);">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; flex-wrap:wrap; gap:10px;">
+        <div>
+          <div style="font-size:17px; font-weight:800; color:#0f172a; display:flex; align-items:center; gap:8px;">
+            <span>🧾</span> <span>ข้อมูลการเปิดบิล & รายการออเดอร์ที่คุณดูแล</span>
+          </div>
+          <div style="font-size:12.5px; color:#64748b; margin-top:3px;">
+            รายละเอียดบิลทั้งหมดที่คุณเป็นผู้เปิดและรับผิดชอบ พร้อมยอดก่อนและหลังหักค่าคอมมิชชั่น
+          </div>
+        </div>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <span class="badge" style="background:#ecfdf5; color:#047857; border:1px solid #a7f3d0; font-size:12px; padding:6px 12px;">
+            ⚡ อัปเดตแบบเรียลไทม์
+          </span>
+        </div>
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>เลขที่บิล / เวลา</th>
+              <th>โต๊ะ</th>
+              <th>รายการอาหารที่สั่ง</th>
+              <th style="text-align:right;">ยอดก่อนหักค่าคอม</th>
+              <th style="text-align:center;">จานอาหาร</th>
+              <th style="text-align:center;">ค่าคอมฯ (฿/จาน)</th>
+              <th style="text-align:right;">ค่าคอมฯ ที่ได้</th>
+              <th style="text-align:right;">รายได้หลังหักค่าคอม</th>
+              <th style="text-align:center;">สถานะบิล</th>
+              <th style="text-align:center;">ดูรายการอาหาร</th>
+            </tr>
+          </thead>
+          <tbody id="mycomm-bills-tbody">
+          </tbody>
+        </table>
+      </div>
+
+      <div id="mycomm-bills-empty" style="text-align:center; padding:40px 20px; color:#94a3b8; display:none;">
+        <span style="font-size:38px;">🍽️</span>
+        <div style="margin-top:10px; font-weight:700; color:#0f172a; font-size:15px;">ยังไม่มีข้อมูลการเปิดบิลในช่วงเวลานี้</div>
+        <div style="font-size:12.5px; color:#94a3b8; margin-top:4px;">เมื่อมีลูกค้าเปิดบิลและคุณเป็นผู้ดูแลบิล รายการจะปรากฏที่นี่ทันที</div>
+      </div>
     </div>
   </div>
 
@@ -1317,7 +1462,7 @@
             <th>เวลาเปิดบิล</th>
             <th>รายการออเดอร์</th>
             <th style="text-align:right;">ยอดรวมบิล</th>
-            <th style="text-align:center;">% ค่าคอมฯ</th>
+            <th style="text-align:center;">จานอาหาร (฿/จาน)</th>
             <th style="text-align:right;">ค่าคอมฯ ของบิลนี้</th>
             <th style="text-align:center;">สถานะ</th>
             <th style="text-align:right;">จัดการ</th>
@@ -1463,7 +1608,7 @@
               <span>ยอดรวมค่าอาหาร</span><span id="cart-subtotal" style="font-weight:700; color:#0f172a; font-size:14.5px;">฿0</span>
             </div>
             <div style="display: flex; justify-content: space-between; font-size: 12px; color: #94a3b8; margin-bottom: 8px;">
-              <span>ภาษีมูลค่าเพิ่ม (VAT 7%)</span><span id="cart-vat" style="font-weight:700; color:#059669; background:#ecfdf5; border:1px solid #a7f3d0; padding:1px 7px; border-radius:6px; font-size:11px;">คิดตอนเช็คบิล</span>
+              <span>ภาษีมูลค่าเพิ่ม (VAT)</span><span id="cart-vat" style="font-weight:700; color:#059669; background:#ecfdf5; border:1px solid #a7f3d0; padding:1px 7px; border-radius:6px; font-size:11px;">ไม่มี VAT</span>
             </div>
             <div style="display: flex; justify-content: space-between; font-size: 17px; font-weight: 800; color: #0f172a; padding-top:6px; border-top:1px dashed #e2e8f0;">
               <span>ยอดสั่งออเดอร์นี้</span><span id="cart-total" style="color:#e11d48; letter-spacing: -0.5px;">฿0</span>
@@ -1566,6 +1711,7 @@
             <th>ชื่อสินค้า</th>
             <th>หมวดหมู่</th>
             <th>ราคาขาย</th>
+            <th style="text-align:center;">ค่าคอมมิชชั่นพนักงาน</th>
             <th>สถานะ</th>
             <th style="text-align:right;">จัดการ</th>
           </tr>
@@ -1999,7 +2145,7 @@
 
       <div>
         <label>หมวดหมู่ *</label>
-        <select id="m-category">
+        <select id="m-category" onchange="onMenuCategoryChange()">
           <option>อาหารหลัก</option>
           <option>ของทานเล่น</option>
           <option>เครื่องดื่ม</option>
@@ -2010,6 +2156,29 @@
       <div>
         <label>ราคาขาย (บาท) *</label>
         <input type="number" id="m-price" placeholder="0.00" min="0" step="1">
+      </div>
+
+      <!-- 3-Tier Commission Configuration -->
+      <div>
+        <label style="font-weight:700; color:#334155; font-size:12.5px; display:block; margin-bottom:6px;">✨ การคิดค่าคอมมิชชั่นสำหรับพนักงาน</label>
+        <div style="background:#f8fafc; border:1.5px solid #e2e8f0; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:8px;">
+          <label style="display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600; cursor:pointer; color:#334155;">
+            <input type="radio" name="m-comm-type" id="m-comm-type-default" value="default" checked onchange="onMenuCommTypeChange()">
+            <span>ตามค่ามาตรฐานของหมวด (<span id="m-comm-default-preview" style="color:#e11d48; font-weight:700;">10 ฿/จาน</span>)</span>
+          </label>
+          <label style="display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600; cursor:pointer; color:#334155;">
+            <input type="radio" name="m-comm-type" id="m-comm-type-custom" value="custom" onchange="onMenuCommTypeChange()">
+            <span>⭐ กำหนดค่าคอมฯ เฉพาะเมนูนี้ (เชียร์ขาย / พิเศษ)</span>
+          </label>
+          <div id="m-comm-custom-container" style="display:none; padding-left:26px; align-items:center; gap:8px;">
+            <input type="number" id="m-comm-custom-amount" placeholder="เช่น 20" min="0" step="1" style="width:120px; font-weight:700; color:#000000 !important; font-size:14px; padding:6px 10px; border:1.5px solid #ffb3ce; border-radius:8px;">
+            <span style="font-size:13px; font-weight:700; color:#be123c;">บาท / ชิ้น</span>
+          </div>
+          <label style="display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600; cursor:pointer; color:#64748b;">
+            <input type="radio" name="m-comm-type" id="m-comm-type-none" value="none" onchange="onMenuCommTypeChange()">
+            <span>🚫 ไม่คิดค่าคอมมิชชั่นสำหรับเมนูนี้ (0 บาท)</span>
+          </label>
+        </div>
       </div>
 
       <div style="background:#fff0f5; border:1px dashed #ffb3ce; border-radius:10px; padding:10px 12px; font-size:12px; color:#c2185b; display:flex; align-items:center; gap:8px;">
@@ -2096,14 +2265,33 @@
           </select>
         </div>
         <div>
-          <label>อัตราค่าคอมมิชชั่น (%) *</label>
-          <input type="number" id="staff-comm-rate" placeholder="5" min="0" max="100" step="0.5">
+          <label>อัตราค่าคอมมิชชั่น (บาท / จานอาหาร) *</label>
+          <input type="number" id="staff-comm-rate" placeholder="10" min="0" max="1000" step="1" style="color:#000000 !important;">
+          <div style="font-size:11px; color:#64748b; margin-top:2px;">ได้ค่าคอมฯ ต่อจานอาหารที่ขายได้ (ค่าเริ่มต้น 10 ฿/จาน)</div>
         </div>
       </div>
 
       <div>
         <label>เบอร์โทรศัพท์</label>
         <input type="text" id="staff-phone" placeholder="เช่น 089-123-4567">
+      </div>
+
+      <div style="background:#fff1f2; border:1.5px solid #fecdd3; border-radius:12px; padding:12px 14px;">
+        <div style="font-size:12.5px; font-weight:800; color:#9f1239; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+          <span>🔑</span> <span>ข้อมูลเข้าสู่ระบบของพนักงาน (Login Credentials)</span>
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+          <div>
+            <label style="font-size:12px; font-weight:700; color:#475569;">ชื่อผู้ใช้ (Username) *</label>
+            <input type="text" id="staff-username" placeholder="เช่น mint, sk01" style="color:#000000 !important; background:#ffffff;">
+            <div style="font-size:10.5px; color:#64748b; margin-top:2px;">ใช้ล็อกอินดูค่าคอมฯ ของตัวเอง</div>
+          </div>
+          <div>
+            <label style="font-size:12px; font-weight:700; color:#475569;">รหัสผ่าน (Password) *</label>
+            <input type="text" id="staff-password" placeholder="เช่น 1234" style="color:#000000 !important; background:#ffffff;">
+            <div style="font-size:10.5px; color:#64748b; margin-top:2px;">รหัสผ่านสำหรับพนักงานคนนี้</div>
+          </div>
+        </div>
       </div>
 
       <div style="background:#fff0f5; border:1px dashed #ffb3ce; border-radius:10px; padding:10px 12px; font-size:12px; color:#c2185b; display:flex; align-items:center; gap:8px;">
@@ -2162,7 +2350,7 @@
         <select id="nbill-staff-select" onchange="onNewBillStaffChange()" style="font-weight:600; font-size:14px; padding:10px 14px;">
         </select>
         <div id="nbill-staff-hint" style="font-size:12px; color:#e11d48; margin-top:6px; font-weight:600;">
-          💡 อัตราค่าคอมมิชชั่นที่จะได้รับ: 5% ของยอดขายบิลนี้
+          💡 อัตราค่าคอมมิชชั่นที่จะได้รับ: 10 บาท ต่อจานอาหารที่ขายได้ (อาหารหลัก & ของทานเล่น)
         </div>
       </div>
 
@@ -2286,14 +2474,14 @@
     <div style="background: linear-gradient(135deg, #f8fafc 0%, #fff1f2 100%); border:1.5px solid #fecdd3; border-radius:16px; padding:18px 22px; margin-bottom:22px;">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px dashed #cbd5e1; padding-bottom:10px;">
         <span style="font-size:14px; font-weight:800; color:#0f172a;">📊 คำนวณยอดเงินและค่าคอมมิชชั่นของบิลนี้ (Real-Time)</span>
-        <span class="badge badge-pink" id="mbill-calc-staff-badge">ผู้รับผิดชอบ: มินต์ สุชาดา (5%)</span>
+        <span class="badge badge-pink" id="mbill-calc-staff-badge">ผู้รับผิดชอบ: มินต์ สุชาดา (10 ฿/จาน)</span>
       </div>
 
       <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; align-items:center;">
         <div>
           <div style="font-size:11.5px; color:#64748b; font-weight:600;">ยอดอาหารรวม</div>
           <div id="mbill-subtotal" style="font-size:18px; font-weight:800; color:#0f172a; margin-top:2px;">฿0</div>
-          <div style="font-size:11px; color:#64748b;">+ VAT 7% <span id="mbill-vat">฿0</span></div>
+          <div style="font-size:11px; color:#059669; font-weight:600;">ไม่มี VAT <span id="mbill-vat" style="display:none;">฿0</span></div>
         </div>
         <div style="border-left:1px dashed #cbd5e1; padding-left:14px;">
           <div style="font-size:11.5px; color:#0f172a; font-weight:700;">💰 ยอดรวมทั้งสิ้น</div>
@@ -2303,7 +2491,7 @@
         <div style="border-left:1px dashed #cbd5e1; padding-left:14px; background:rgba(255,255,255,0.7); border-radius:12px; padding:10px 14px;">
           <div style="font-size:11.5px; color:#e11d48; font-weight:800;">✨ ค่าคอมมิชชั่นบิลนี้</div>
           <div id="mbill-comm-amount" style="font-size:24px; font-weight:800; color:#e11d48; margin-top:2px; letter-spacing:-0.5px;">฿0</div>
-          <div id="mbill-comm-formula" style="font-size:11px; color:#be123c; font-weight:600;">สูตร: ยอด ฿0 × 5% = ฿0</div>
+          <div id="mbill-comm-formula" style="font-size:11px; color:#be123c; font-weight:600;">สูตร: อาหาร 0 จาน × 10 ฿ = ฿0</div>
         </div>
         <div style="border-left:1px dashed #cbd5e1; padding-left:14px;">
           <div style="font-size:11.5px; color:#059669; font-weight:700;">🏪 ร้านค้ารับสุทธิ</div>
@@ -2440,8 +2628,8 @@
         <span id="confirm-modal-total-qty" style="font-weight: 700; color: #0f172a;">0 จาน</span>
       </div>
       <div style="display: flex; justify-content: space-between; font-size: 12px; color: #94a3b8; margin-bottom: 6px;">
-        <span>ภาษีมูลค่าเพิ่ม (VAT 7%)</span>
-        <span style="font-weight: 700; color: #059669; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 1px 7px; border-radius: 6px; font-size: 11px;">คิดตอนเช็คบิลรวม</span>
+        <span>ภาษีมูลค่าเพิ่ม (VAT)</span>
+        <span style="font-weight: 700; color: #059669; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 1px 7px; border-radius: 6px; font-size: 11px;">ไม่มี VAT (ราคาเน็ต)</span>
       </div>
       <div style="display: flex; justify-content: space-between; font-size: 17px; font-weight: 800; color: #0f172a; padding-top: 8px; border-top: 1px dashed #cbd5e1;">
         <span>ยอดรวมออเดอร์นี้</span>
@@ -2517,6 +2705,61 @@
       </div>
       <button class="btn-secondary" style="width:100%;" onclick="closeTableQrModal()">ปิด</button>
     </div>
+  </div>
+</div>
+
+<!-- Staff Bill Detail Modal (สำหรับพนักงานดูรายละเอียดอาหารและค่าคอมมิชชั่นของบิลนั้น) -->
+<div class="modal-overlay" id="staff-bill-detail-modal" style="z-index:1075;">
+  <div class="modal-box" style="width: 580px; max-width: 95vw; max-height: 90vh; overflow-y: auto;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; border-bottom:1px dashed #cbd5e1; padding-bottom:10px;">
+      <div>
+        <div style="font-size:18px; font-weight:800; color:#0f172a;" id="sbd-modal-title">รายละเอียดบิล</div>
+        <div style="font-size:12px; color:#64748b; margin-top:2px;" id="sbd-modal-subtitle">ข้อมูลการเปิดบิลและอาหารที่สั่ง</div>
+      </div>
+      <button onclick="closeStaffBillDetailModal()" style="background:none; border:none; font-size:22px; color:#94a3b8; cursor:pointer;">&times;</button>
+    </div>
+
+    <!-- Bill Items Table -->
+    <div style="max-height:240px; overflow-y:auto; border:1px solid #f1f5f9; border-radius:12px; margin-bottom:16px;">
+      <table style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr style="background:#f8fafc; font-size:12px; color:#64748b;">
+            <th style="padding:8px 12px; text-align:left;">รายการอาหาร</th>
+            <th style="padding:8px 12px; text-align:center;">จำนวน</th>
+            <th style="padding:8px 12px; text-align:right;">ราคา/จาน</th>
+            <th style="padding:8px 12px; text-align:right;">รวม</th>
+          </tr>
+        </thead>
+        <tbody id="sbd-items-tbody"></tbody>
+      </table>
+    </div>
+
+    <!-- Commission & Revenue Breakdown Box for this Bill -->
+    <div style="background:linear-gradient(135deg, #f8fafc 0%, #fff1f2 100%); border:1.5px solid #fecdd3; border-radius:14px; padding:14px 18px; margin-bottom:18px;">
+      <div style="font-size:13px; font-weight:800; color:#880e4f; margin-bottom:10px; border-bottom:1px dashed #fecdd3; padding-bottom:6px;">
+        📊 สรุปยอดเงินและส่วนแบ่งค่าคอมมิชชั่นของบิลนี้
+      </div>
+      <div style="display:flex; justify-content:space-between; font-size:13px; color:#64748b; margin-bottom:6px;">
+        <span>ยอดขายรวม (ก่อนหักค่าคอม):</span>
+        <strong id="sbd-subtotal" style="color:#0f172a; font-size:15px;">฿0</strong>
+      </div>
+      <div style="display:flex; justify-content:space-between; font-size:13px; color:#475569; margin-bottom:6px;">
+        <span>🍽️ จานอาหารที่ได้รับค่าคอม:</span>
+        <strong id="sbd-food-count" style="color:#0f172a; font-size:14px;">0 จาน (อาหารหลัก & ของทานเล่น)</strong>
+      </div>
+      <div style="display:flex; justify-content:space-between; font-size:13px; color:#e11d48; margin-bottom:6px; font-weight:700;">
+        <span>✨ ค่าคอมมิชชั่นที่คุณได้รับ (<span id="sbd-rate">10 ฿/จาน</span>):</span>
+        <strong id="sbd-commission" style="font-size:16px; color:#e11d48;">฿0</strong>
+      </div>
+      <div style="display:flex; justify-content:space-between; font-size:13px; color:#059669; padding-top:6px; border-top:1px dashed #cbd5e1; font-weight:700;">
+        <span>🏪 รายได้หลังหักค่าคอม (ส่งร้าน):</span>
+        <strong id="sbd-net" style="font-size:15px; color:#059669;">฿0</strong>
+      </div>
+    </div>
+
+    <button type="button" class="btn-secondary" onclick="closeStaffBillDetailModal()" style="width:100%; padding:10px; font-weight:700;">
+      ปิดหน้าต่าง
+    </button>
   </div>
 </div>
 
@@ -2713,6 +2956,10 @@ function updateMobileNavUI() {
     if (currentUserRole === 'kitchen') {
       if (avatar) avatar.textContent = '🍳';
       if (name) name.textContent = 'ห้องครัว';
+    } else if (currentUserRole === 'staff') {
+      const staff = staffMembers.find(s => s.id === currentStaffId) || { name: 'พนักงาน', avatar: '👩‍🍳' };
+      if (avatar) avatar.textContent = staff.avatar || '👩‍🍳';
+      if (name) name.textContent = staff.name;
     } else {
       if (avatar) avatar.textContent = '👑';
       if (name) name.textContent = 'เจ้าของร้าน';
@@ -2731,7 +2978,18 @@ function updateMobileNavUI() {
 
   if (!mobileBottom) return;
 
-  if (currentUserRole === 'kitchen') {
+  if (currentUserRole === 'staff') {
+    mobileBottom.innerHTML = `
+      <button type="button" class="mobile-bottom-tab ${curPage==='my-commission'?'active':''}" onclick="showPage('my-commission', document.getElementById('nav-my-commission'))">
+        <span class="tab-icon">💵</span>
+        <span>ค่าคอมของฉัน</span>
+      </button>
+      <button type="button" class="mobile-bottom-tab" onclick="doLogout()" style="color:#ef4444; font-weight:700;">
+        <span class="tab-icon">🚪</span>
+        <span>ออกจากระบบ</span>
+      </button>
+    `;
+  } else if (currentUserRole === 'kitchen') {
     mobileBottom.innerHTML = `
       <button type="button" class="mobile-bottom-tab ${curPage==='kitchen'?'active':''}" onclick="showPage('kitchen', document.getElementById('nav-kitchen'))">
         <span class="tab-icon">🍳</span>
@@ -2815,42 +3073,42 @@ let costs = [
 ];
 
 let menuItems = [
-  { id: 1, name: 'ข้าวผัดกุ้ง', category: 'อาหารหลัก', price: 120, emoji: '🍳', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&auto=format&fit=crop&q=80' },
-  { id: 2, name: 'ผัดไทย', category: 'อาหารหลัก', price: 90, emoji: '🍜', image: 'https://images.unsplash.com/photo-1559847844-5315695dadae?w=400&auto=format&fit=crop&q=80' },
-  { id: 3, name: 'ต้มยำกุ้ง', category: 'อาหารหลัก', price: 150, emoji: '🍲', image: 'https://images.unsplash.com/photo-1548943487-a2e314328665?w=400&auto=format&fit=crop&q=80' },
-  { id: 4, name: 'ข้าวมันไก่', category: 'อาหารหลัก', price: 80, emoji: '🍗', image: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=400&auto=format&fit=crop&q=80' },
-  { id: 5, name: 'สปาเก็ตตี้', category: 'อาหารหลัก', price: 130, emoji: '🍝', image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&auto=format&fit=crop&q=80' },
-  { id: 6, name: 'แกงเขียวหวาน', category: 'อาหารหลัก', price: 110, emoji: '🥘', image: 'https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=400&auto=format&fit=crop&q=80' },
-  { id: 7, name: 'ทาโกะยากิ', category: 'ของทานเล่น', price: 60, emoji: '🐙', image: 'https://images.unsplash.com/photo-1583032015879-119db123d61a?w=400&auto=format&fit=crop&q=80' },
-  { id: 8, name: 'เกี๊ยวซ่า', category: 'ของทานเล่น', price: 70, emoji: '🥟', image: 'https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=400&auto=format&fit=crop&q=80' },
-  { id: 9, name: 'สปริงโรล', category: 'ของทานเล่น', price: 55, emoji: '🌯', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=400&auto=format&fit=crop&q=80' },
-  { id: 10, name: 'ชาเขียวเย็น', category: 'เครื่องดื่ม', price: 45, emoji: '🍵', image: 'https://images.unsplash.com/photo-1556881286-fc6915169721?w=400&auto=format&fit=crop&q=80' },
-  { id: 11, name: 'โกโก้เย็น', category: 'เครื่องดื่ม', price: 50, emoji: '🧋', image: 'https://images.unsplash.com/photo-1541658016709-82535e94bc69?w=400&auto=format&fit=crop&q=80' },
-  { id: 12, name: 'น้ำส้มคั้น', category: 'เครื่องดื่ม', price: 55, emoji: '🍊', image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?w=400&auto=format&fit=crop&q=80' },
-  { id: 13, name: 'ไอศกรีมซากุระ', category: 'ของหวาน', price: 75, emoji: '🍦', image: 'https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=400&auto=format&fit=crop&q=80' },
-  { id: 14, name: 'โมจิสตรอเบอร์รี่', category: 'ของหวาน', price: 65, emoji: '🍡', image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&auto=format&fit=crop&q=80' },
-  { id: 15, name: 'ชีสเค้กซากุระ', category: 'ของหวาน', price: 90, emoji: '🍰', image: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&auto=format&fit=crop&q=80' },
+  { id: 1, name: 'ข้าวผัดกุ้ง', category: 'อาหารหลัก', price: 120, emoji: '🍳', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&auto=format&fit=crop&q=80', commissionType: 'default', commission: 10 },
+  { id: 2, name: 'ผัดไทย', category: 'อาหารหลัก', price: 90, emoji: '🍜', image: 'https://images.unsplash.com/photo-1559847844-5315695dadae?w=400&auto=format&fit=crop&q=80', commissionType: 'default', commission: 10 },
+  { id: 3, name: 'ต้มยำกุ้ง', category: 'อาหารหลัก', price: 150, emoji: '🍲', image: 'https://images.unsplash.com/photo-1548943487-a2e314328665?w=400&auto=format&fit=crop&q=80', commissionType: 'default', commission: 10 },
+  { id: 4, name: 'ข้าวมันไก่', category: 'อาหารหลัก', price: 80, emoji: '🍗', image: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=400&auto=format&fit=crop&q=80', commissionType: 'default', commission: 10 },
+  { id: 5, name: 'สปาเก็ตตี้', category: 'อาหารหลัก', price: 130, emoji: '🍝', image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&auto=format&fit=crop&q=80', commissionType: 'default', commission: 10 },
+  { id: 6, name: 'แกงเขียวหวาน', category: 'อาหารหลัก', price: 110, emoji: '🥘', image: 'https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=400&auto=format&fit=crop&q=80', commissionType: 'default', commission: 10 },
+  { id: 7, name: 'ทาโกะยากิ', category: 'ของทานเล่น', price: 60, emoji: '🐙', image: 'https://images.unsplash.com/photo-1583032015879-119db123d61a?w=400&auto=format&fit=crop&q=80', commissionType: 'default', commission: 10 },
+  { id: 8, name: 'เกี๊ยวซ่า', category: 'ของทานเล่น', price: 70, emoji: '🥟', image: 'https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=400&auto=format&fit=crop&q=80', commissionType: 'default', commission: 10 },
+  { id: 9, name: 'สปริงโรล', category: 'ของทานเล่น', price: 55, emoji: '🌯', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=400&auto=format&fit=crop&q=80', commissionType: 'default', commission: 10 },
+  { id: 10, name: 'ชาเขียวเย็น', category: 'เครื่องดื่ม', price: 45, emoji: '🍵', image: 'https://images.unsplash.com/photo-1556881286-fc6915169721?w=400&auto=format&fit=crop&q=80', commissionType: 'default', commission: 0 },
+  { id: 11, name: 'โกโก้เย็น', category: 'เครื่องดื่ม', price: 50, emoji: '🧋', image: 'https://images.unsplash.com/photo-1541658016709-82535e94bc69?w=400&auto=format&fit=crop&q=80', commissionType: 'default', commission: 0 },
+  { id: 12, name: 'น้ำส้มคั้น', category: 'เครื่องดื่ม', price: 55, emoji: '🍊', image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?w=400&auto=format&fit=crop&q=80', commissionType: 'default', commission: 0 },
+  { id: 13, name: 'ไอศกรีมซากุระ', category: 'ของหวาน', price: 75, emoji: '🍦', image: 'https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=400&auto=format&fit=crop&q=80', commissionType: 'default', commission: 0 },
+  { id: 14, name: 'โมจิสตรอเบอร์รี่', category: 'ของหวาน', price: 65, emoji: '🍡', image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&auto=format&fit=crop&q=80', commissionType: 'default', commission: 0 },
+  { id: 15, name: 'ชีสเค้กซากุระ', category: 'ของหวาน', price: 90, emoji: '🍰', image: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&auto=format&fit=crop&q=80', commissionType: 'default', commission: 0 },
 ];
 
 let cart = [];
 
 // ===================== SALES STAFF & COMMISSION STATE =====================
 let staffMembers = [
-  { id: 1, name: 'มินต์ สุชาดา', code: 'SK-01', role: 'พนักงานขายหน้าร้าน', commissionRate: 5, avatar: '👩‍🍳', phone: '081-234-5678', paidCommission: 0 },
-  { id: 2, name: 'ก้อง เกริกไกร', code: 'SK-02', role: 'พนักงานเสิร์ฟ & ขาย', commissionRate: 5, avatar: '👨‍🍳', phone: '082-345-6789', paidCommission: 0 },
-  { id: 3, name: 'พลอย ไพลิน', code: 'SK-03', role: 'พนักงานขาย & แนะนำเมนู', commissionRate: 4, avatar: '👩‍💼', phone: '083-456-7890', paidCommission: 0 },
-  { id: 4, name: 'เต้ ธีรเดช', code: 'SK-04', role: 'พนักงานขาย & บาริสต้า', commissionRate: 4, avatar: '🧑‍🍳', phone: '084-567-8901', paidCommission: 0 },
+  { id: 1, name: 'มินต์ สุชาดา', code: 'SK-01', username: 'mint', password: '1234', role: 'พนักงานขายหน้าร้าน', commissionRate: 10, commissionPerDish: 10, avatar: '👩‍🍳', phone: '081-234-5678', paidCommission: 0 },
+  { id: 2, name: 'ก้อง เกริกไกร', code: 'SK-02', username: 'kong', password: '1234', role: 'พนักงานเสิร์ฟ & ขาย', commissionRate: 10, commissionPerDish: 10, avatar: '👨‍🍳', phone: '082-345-6789', paidCommission: 0 },
+  { id: 3, name: 'พลอย ไพลิน', code: 'SK-03', username: 'ploy', password: '1234', role: 'พนักงานขาย & แนะนำเมนู', commissionRate: 10, commissionPerDish: 10, avatar: '👩‍💼', phone: '083-456-7890', paidCommission: 0 },
+  { id: 4, name: 'เต้ ธีรเดช', code: 'SK-04', username: 'tae', password: '1234', role: 'พนักงานขาย & บาริสต้า', commissionRate: 10, commissionPerDish: 10, avatar: '🧑‍🍳', phone: '084-567-8901', paidCommission: 0 },
 ];
 
 const todayDateStr = new Date().toISOString().split('T')[0];
 
 let orders = [
-  { id: 1001, table: '1', staffId: 1, staffName: 'มินต์ สุชาดา', items: [{ menuId: 1, name: 'ข้าวผัดกุ้ง', price: 120, qty: 2, emoji: '🍳' }, { menuId: 10, name: 'ชาเขียวเย็น', price: 45, qty: 2, emoji: '🍵' }], subtotal: 330, total: 353.1, note: '', date: todayDateStr + 'T11:30:00', status: 'เสร็จสิ้น', commissionRate: 5, commissionAmount: 16.5 },
-  { id: 1002, table: '3', staffId: 2, staffName: 'ก้อง เกริกไกร', items: [{ menuId: 3, name: 'ต้มยำกุ้ง', price: 150, qty: 1, emoji: '🍲' }, { menuId: 2, name: 'ผัดไทย', price: 90, qty: 2, emoji: '🍜' }, { menuId: 12, name: 'น้ำส้มคั้น', price: 55, qty: 2, emoji: '🍊' }], subtotal: 440, total: 470.8, note: 'ไม่เผ็ด', date: todayDateStr + 'T12:15:00', status: 'เสร็จสิ้น', commissionRate: 5, commissionAmount: 22.0 },
-  { id: 1003, table: '2', staffId: 3, staffName: 'พลอย ไพลิน', items: [{ menuId: 5, name: 'สปาเก็ตตี้', price: 130, qty: 2, emoji: '🍝' }, { menuId: 8, name: 'เกี๊ยวซ่า', price: 70, qty: 1, emoji: '🥟' }, { menuId: 13, name: 'ไอศกรีมซากุระ', price: 75, qty: 2, emoji: '🍦' }], subtotal: 480, total: 513.6, note: '', date: todayDateStr + 'T13:00:00', status: 'เสร็จสิ้น', commissionRate: 4, commissionAmount: 19.2 },
-  { id: 1004, table: '5', staffId: 1, staffName: 'มินต์ สุชาดา', items: [{ menuId: 6, name: 'แกงเขียวหวาน', price: 110, qty: 2, emoji: '🥘' }, { menuId: 4, name: 'ข้าวมันไก่', price: 80, qty: 2, emoji: '🍗' }, { menuId: 11, name: 'โกโก้เย็น', price: 50, qty: 2, emoji: '🧋' }], subtotal: 480, total: 513.6, note: '', date: todayDateStr + 'T14:20:00', status: 'เสร็จสิ้น', commissionRate: 5, commissionAmount: 24.0 },
-  { id: 1005, table: '4', staffId: 4, staffName: 'เต้ ธีรเดช', items: [{ menuId: 7, name: 'ทาโกะยากิ', price: 60, qty: 3, emoji: '🐙' }, { menuId: 14, name: 'โมจิสตรอเบอร์รี่', price: 65, qty: 2, emoji: '🍡' }, { menuId: 10, name: 'ชาเขียวเย็น', price: 45, qty: 3, emoji: '🍵' }], subtotal: 445, total: 476.15, note: '', date: todayDateStr + 'T15:45:00', status: 'เสร็จสิ้น', commissionRate: 4, commissionAmount: 17.8 },
-  { id: 1006, table: '6', staffId: 2, staffName: 'ก้อง เกริกไกร', items: [{ menuId: 1, name: 'ข้าวผัดกุ้ง', price: 120, qty: 3, emoji: '🍳' }, { menuId: 3, name: 'ต้มยำกุ้ง', price: 150, qty: 2, emoji: '🍲' }, { menuId: 15, name: 'ชีสเค้กซากุระ', price: 90, qty: 2, emoji: '🍰' }], subtotal: 840, total: 898.8, note: '', date: todayDateStr + 'T17:10:00', status: 'เสร็จสิ้น', commissionRate: 5, commissionAmount: 42.0 },
+  { id: 1001, table: '1', staffId: 1, staffName: 'มินต์ สุชาดา', items: [{ menuId: 1, name: 'ข้าวผัดกุ้ง', price: 120, qty: 2, emoji: '🍳' }, { menuId: 10, name: 'ชาเขียวเย็น', price: 45, qty: 2, emoji: '🍵' }], subtotal: 330, total: 330, note: '', date: todayDateStr + 'T11:30:00', status: 'เสร็จสิ้น', commissionRate: 10, commissionPerDish: 10, foodDishesCount: 2, commissionAmount: 20 },
+  { id: 1002, table: '3', staffId: 2, staffName: 'ก้อง เกริกไกร', items: [{ menuId: 3, name: 'ต้มยำกุ้ง', price: 150, qty: 1, emoji: '🍲' }, { menuId: 2, name: 'ผัดไทย', price: 90, qty: 2, emoji: '🍜' }, { menuId: 12, name: 'น้ำส้มคั้น', price: 55, qty: 2, emoji: '🍊' }], subtotal: 440, total: 440, note: 'ไม่เผ็ด', date: todayDateStr + 'T12:15:00', status: 'เสร็จสิ้น', commissionRate: 10, commissionPerDish: 10, foodDishesCount: 3, commissionAmount: 30 },
+  { id: 1003, table: '2', staffId: 3, staffName: 'พลอย ไพลิน', items: [{ menuId: 5, name: 'สปาเก็ตตี้', price: 130, qty: 2, emoji: '🍝' }, { menuId: 8, name: 'เกี๊ยวซ่า', price: 70, qty: 1, emoji: '🥟' }, { menuId: 13, name: 'ไอศกรีมซากุระ', price: 75, qty: 2, emoji: '🍦' }], subtotal: 480, total: 480, note: '', date: todayDateStr + 'T13:00:00', status: 'เสร็จสิ้น', commissionRate: 10, commissionPerDish: 10, foodDishesCount: 3, commissionAmount: 30 },
+  { id: 1004, table: '5', staffId: 1, staffName: 'มินต์ สุชาดา', items: [{ menuId: 6, name: 'แกงเขียวหวาน', price: 110, qty: 2, emoji: '🥘' }, { menuId: 4, name: 'ข้าวมันไก่', price: 80, qty: 2, emoji: '🍗' }, { menuId: 11, name: 'โกโก้เย็น', price: 50, qty: 2, emoji: '🧋' }], subtotal: 480, total: 480, note: '', date: todayDateStr + 'T14:20:00', status: 'เสร็จสิ้น', commissionRate: 10, commissionPerDish: 10, foodDishesCount: 4, commissionAmount: 40 },
+  { id: 1005, table: '4', staffId: 4, staffName: 'เต้ ธีรเดช', items: [{ menuId: 7, name: 'ทาโกะยากิ', price: 60, qty: 3, emoji: '🐙' }, { menuId: 14, name: 'โมจิสตรอเบอร์รี่', price: 65, qty: 2, emoji: '🍡' }, { menuId: 10, name: 'ชาเขียวเย็น', price: 45, qty: 3, emoji: '🍵' }], subtotal: 445, total: 445, note: '', date: todayDateStr + 'T15:45:00', status: 'เสร็จสิ้น', commissionRate: 10, commissionPerDish: 10, foodDishesCount: 3, commissionAmount: 30 },
+  { id: 1006, table: '6', staffId: 2, staffName: 'ก้อง เกริกไกร', items: [{ menuId: 1, name: 'ข้าวผัดกุ้ง', price: 120, qty: 3, emoji: '🍳' }, { menuId: 3, name: 'ต้มยำกุ้ง', price: 150, qty: 2, emoji: '🍲' }, { menuId: 15, name: 'ชีสเค้กซากุระ', price: 90, qty: 2, emoji: '🍰' }], subtotal: 840, total: 840, note: '', date: todayDateStr + 'T17:10:00', status: 'เสร็จสิ้น', commissionRate: 10, commissionPerDish: 10, foodDishesCount: 5, commissionAmount: 50 },
 ];
 let nextOrderId = 1007;
 let currentMenuFilter = 'all';
@@ -2887,7 +3145,19 @@ function applyLoadedState(data, silent = false) {
   if (Array.isArray(data.stockItems)) stockItems = data.stockItems;
   if (Array.isArray(data.costs)) costs = data.costs;
   if (Array.isArray(data.menuItems)) menuItems = data.menuItems;
-  if (Array.isArray(data.staffMembers)) staffMembers = data.staffMembers;
+  if (Array.isArray(data.staffMembers)) {
+    staffMembers = data.staffMembers.map(s => {
+      let rate = s.commissionPerDish !== undefined ? s.commissionPerDish : s.commissionRate;
+      if (rate === 4 || rate === 5 || !rate) rate = 10;
+      return {
+        ...s,
+        commissionRate: rate,
+        commissionPerDish: rate,
+        username: s.username || (s.code ? s.code.toLowerCase().replace(/[^a-z0-9]/g, '') : 'staff' + s.id),
+        password: s.password || '1234'
+      };
+    });
+  }
   if (Array.isArray(data.orders)) orders = data.orders;
   if (Array.isArray(data.openBills)) openBills = data.openBills;
   if (typeof data.nextOrderId === 'number') nextOrderId = data.nextOrderId;
@@ -2986,6 +3256,7 @@ function refreshAllActiveViews() {
   else if (activePageId === 'order') { renderMenu(); updateOrderTableAndStaffUI(); if (typeof updatePlacedOrdersUI === 'function') updatePlacedOrdersUI(); }
   else if (activePageId === 'history') renderHistory();
   else if (activePageId === 'menu-manage') renderMenuManage();
+  else if (activePageId === 'my-commission') { if (typeof renderMyCommissionPage === 'function') renderMyCommissionPage(); }
 
   // If manage bill modal is open, refresh it live
   const manageModal = document.getElementById('manage-bill-modal');
@@ -3622,7 +3893,8 @@ function showToast(msg) {
 
 // ===================== AUTH =====================
 let isLoggedIn = false;
-let currentUserRole = null; // 'owner' | 'kitchen' | null
+let currentUserRole = null; // 'owner' | 'kitchen' | 'staff' | null
+let currentStaffId = null;
 const OWNER_USER = 'owner';
 const OWNER_PASS = 'sakura2026';
 const KITCHEN_USER = 'kitchen';
@@ -3634,9 +3906,13 @@ const KITCHEN_PASS_ALIAS = 'chef2026';
 try {
   const savedRole = localStorage.getItem('sakura_user_role');
   const savedLoggedIn = localStorage.getItem('sakura_is_logged_in');
-  if (savedLoggedIn === 'true' && (savedRole === 'owner' || savedRole === 'kitchen')) {
+  const savedStaffId = localStorage.getItem('sakura_staff_id');
+  if (savedLoggedIn === 'true' && (savedRole === 'owner' || savedRole === 'kitchen' || savedRole === 'staff')) {
     isLoggedIn = true;
     currentUserRole = savedRole;
+    if (savedRole === 'staff' && savedStaffId) {
+      currentStaffId = parseInt(savedStaffId);
+    }
   }
 } catch (e) {}
 
@@ -3656,6 +3932,12 @@ function showPage(name, btn) {
     // Kitchen role is strictly locked to kitchen and kitchen-revenue only
     if (name !== 'kitchen' && name !== 'kitchen-revenue') {
       name = 'kitchen';
+    }
+  }
+  if (currentUserRole === 'staff') {
+    // Staff can ONLY access their own commission page
+    if (name !== 'my-commission') {
+      name = 'my-commission';
     }
   }
 
@@ -3679,6 +3961,7 @@ function showPage(name, btn) {
   if (name === 'stock') renderStock();
   if (name === 'cost') { renderCosts(); renderCostChart(); }
   if (name === 'commission') renderCommissionPage();
+  if (name === 'my-commission') renderMyCommissionPage();
   if (name === 'order') { renderMenu(); updateOrderTableAndStaffUI(); }
   if (name === 'history') renderHistory();
   if (name === 'menu-manage') renderMenuManage();
@@ -3707,11 +3990,13 @@ function doLogin() {
   if (u === OWNER_USER.toLowerCase() && p === OWNER_PASS) {
     isLoggedIn = true;
     currentUserRole = 'owner';
+    currentStaffId = null;
     isCustomerMode = false;
     document.body.classList.remove('customer-ordering-mode');
     try {
       localStorage.setItem('sakura_user_role', 'owner');
       localStorage.setItem('sakura_is_logged_in', 'true');
+      localStorage.removeItem('sakura_staff_id');
     } catch (e) {}
     document.getElementById('login-overlay').classList.add('hidden');
     updateAuthUI();
@@ -3727,11 +4012,13 @@ function doLogin() {
              (u === KITCHEN_USER_ALIAS.toLowerCase() && p === KITCHEN_PASS_ALIAS)) {
     isLoggedIn = true;
     currentUserRole = 'kitchen';
+    currentStaffId = null;
     isCustomerMode = false;
     document.body.classList.remove('customer-ordering-mode');
     try {
       localStorage.setItem('sakura_user_role', 'kitchen');
       localStorage.setItem('sakura_is_logged_in', 'true');
+      localStorage.removeItem('sakura_staff_id');
     } catch (e) {}
     // Initialize/unlock audio context on login gesture
     getKitchenAudioContext();
@@ -3740,10 +4027,39 @@ function doLogin() {
     showToast('🍳 เข้าสู่ระบบห้องครัวสำเร็จ! ยินดีต้อนรับแม่ครัว');
     showPage('kitchen', document.getElementById('nav-kitchen'));
   } else {
-    errEl.style.display = 'block';
-    errEl.textContent = '❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบ';
-    document.getElementById('login-pass').value = '';
-    document.getElementById('login-pass').focus();
+    // Check staff members credentials (individual username/code and password)
+    const staffMatch = staffMembers.find(s => {
+      const staffUser = (s.username || '').trim().toLowerCase();
+      const staffCode = (s.code || '').trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+      const inputClean = u.replace(/[^a-z0-9]/g, '');
+      const userMatches = (staffUser && staffUser === u) || 
+                          (s.code && s.code.toLowerCase() === u) || 
+                          (staffCode && staffCode === inputClean);
+      const passMatches = String(s.password || '').trim() === p;
+      return userMatches && passMatches;
+    });
+
+    if (staffMatch) {
+      isLoggedIn = true;
+      currentUserRole = 'staff';
+      currentStaffId = staffMatch.id;
+      isCustomerMode = false;
+      document.body.classList.remove('customer-ordering-mode');
+      try {
+        localStorage.setItem('sakura_user_role', 'staff');
+        localStorage.setItem('sakura_staff_id', String(staffMatch.id));
+        localStorage.setItem('sakura_is_logged_in', 'true');
+      } catch (e) {}
+      document.getElementById('login-overlay').classList.add('hidden');
+      updateAuthUI();
+      showToast(`🌸 เข้าสู่ระบบสำเร็จ ยินดีต้อนรับ ${staffMatch.name} (${staffMatch.code})!`);
+      showPage('my-commission', document.getElementById('nav-my-commission'));
+    } else {
+      errEl.style.display = 'block';
+      errEl.textContent = '❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบ';
+      document.getElementById('login-pass').value = '';
+      document.getElementById('login-pass').focus();
+    }
   }
 }
 
@@ -3752,9 +4068,11 @@ function doLogout() {
   stopKitchenAlarm();
   isLoggedIn = false;
   currentUserRole = null;
+  currentStaffId = null;
   try {
     localStorage.removeItem('sakura_user_role');
     localStorage.removeItem('sakura_is_logged_in');
+    localStorage.removeItem('sakura_staff_id');
   } catch (e) {}
   updateAuthUI();
   showPage('order', document.getElementById('nav-order'));
@@ -4055,11 +4373,41 @@ function updateAuthUI() {
   const adminSec = document.getElementById('sidebar-section-admin');
   const serviceSec = document.getElementById('sidebar-section-service');
   const kitchenSec = document.getElementById('sidebar-section-kitchen');
+  const staffSec = document.getElementById('sidebar-section-staff');
   const kitchenRevBtn = document.getElementById('nav-kitchen-revenue');
   const syncContainer = document.getElementById('sidebar-sync-container');
   const userAvatar = document.getElementById('sidebar-user-avatar');
   const userName = document.getElementById('sidebar-user-name');
   const userRole = document.getElementById('sidebar-user-role');
+
+  if (currentUserRole === 'staff') {
+    // STAFF ACCOUNT:
+    // Strictly show ONLY "ค่าคอมมิชชั่นของฉัน" on sidebar
+    if (adminSec) adminSec.style.display = 'none';
+    if (serviceSec) serviceSec.style.display = 'none';
+    if (kitchenSec) kitchenSec.style.display = 'none';
+    if (staffSec) staffSec.style.display = 'block';
+    if (syncContainer) syncContainer.style.display = 'none';
+
+    if (guestEl) guestEl.style.display = 'none';
+    if (userEl) userEl.style.display = 'flex';
+    
+    const staff = staffMembers.find(s => s.id === currentStaffId) || staffMembers[0];
+    if (userAvatar) userAvatar.textContent = staff ? (staff.avatar || '👩‍🍳') : '👩‍🍳';
+    if (userName) userName.textContent = staff ? staff.name : 'พนักงาน';
+    if (userRole) userRole.textContent = staff ? `พนักงาน (${staff.code})` : 'Service Staff';
+
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('locked'));
+    document.querySelectorAll('.lock-icon').forEach(lock => lock.style.display = 'none');
+
+    // Make sure we are on my-commission page
+    const activePage = document.querySelector('.page.active');
+    if (!activePage || activePage.id !== 'page-my-commission') {
+      showPage('my-commission', document.getElementById('nav-my-commission'));
+    }
+    if (typeof updateMobileNavUI === 'function') updateMobileNavUI();
+    return;
+  }
 
   if (currentUserRole === 'kitchen') {
     // KITCHEN ACCOUNT:
@@ -4067,6 +4415,7 @@ function updateAuthUI() {
     if (adminSec) adminSec.style.display = 'none';
     if (serviceSec) serviceSec.style.display = 'none';
     if (kitchenSec) kitchenSec.style.display = 'block';
+    if (staffSec) staffSec.style.display = 'none';
     if (kitchenRevBtn) kitchenRevBtn.style.display = 'flex';
     if (syncContainer) syncContainer.style.display = 'none';
 
@@ -4093,6 +4442,7 @@ function updateAuthUI() {
   if (adminSec) adminSec.style.display = 'block';
   if (serviceSec) serviceSec.style.display = 'block';
   if (kitchenSec) kitchenSec.style.display = 'block';
+  if (staffSec) staffSec.style.display = (isLoggedIn && currentUserRole === 'owner') ? 'block' : 'none';
   if (kitchenRevBtn) kitchenRevBtn.style.display = 'none';
   if (syncContainer) syncContainer.style.display = 'block';
 
@@ -4156,7 +4506,42 @@ function confirmPasswordVerify() {
   }
 }
 
-// ===================== MENU MANAGEMENT =====================
+function onMenuCategoryChange() {
+  updateMenuCommDefaultHint();
+}
+
+function updateMenuCommDefaultHint() {
+  const cat = document.getElementById('m-category')?.value || 'อาหารหลัก';
+  const hintEl = document.getElementById('m-comm-default-preview');
+  if (hintEl) {
+    if (cat === 'อาหารหลัก' || cat === 'ของทานเล่น') {
+      hintEl.textContent = '10 ฿/จาน';
+      hintEl.style.color = '#e11d48';
+    } else {
+      hintEl.textContent = '0 ฿ (ไม่มีคอมฯ)';
+      hintEl.style.color = '#64748b';
+    }
+  }
+}
+
+function onMenuCommTypeChange() {
+  const commType = document.querySelector('input[name="m-comm-type"]:checked')?.value || 'default';
+  const customBox = document.getElementById('m-comm-custom-container');
+  const customInput = document.getElementById('m-comm-custom-amount');
+  
+  if (customBox) {
+    if (commType === 'custom') {
+      customBox.style.display = 'flex';
+      if (customInput && !customInput.value) {
+        customInput.value = '15';
+        setTimeout(() => { customInput.focus(); customInput.select(); }, 50);
+      }
+    } else {
+      customBox.style.display = 'none';
+    }
+  }
+}
+
 function openMenuModal(isEdit, id) {
   const titleEl = document.getElementById('menu-modal-title');
   if (isEdit && id) {
@@ -4168,6 +4553,28 @@ function openMenuModal(isEdit, id) {
     document.getElementById('m-category').value = m.category;
     document.getElementById('m-price').value = m.price;
     document.getElementById('m-emoji').value = m.emoji || '🍜';
+    
+    // 3-Tier Commission configuration
+    const commType = m.commissionType || (m.commission !== undefined && m.commission !== null ? (m.commission === 0 ? 'none' : 'custom') : 'default');
+    if (commType === 'custom') {
+      const customRadio = document.getElementById('m-comm-type-custom');
+      if (customRadio) customRadio.checked = true;
+      const customAmt = document.getElementById('m-comm-custom-amount');
+      if (customAmt) customAmt.value = (m.commission !== undefined && m.commission !== null) ? m.commission : 15;
+    } else if (commType === 'none') {
+      const noneRadio = document.getElementById('m-comm-type-none');
+      if (noneRadio) noneRadio.checked = true;
+      const customAmt = document.getElementById('m-comm-custom-amount');
+      if (customAmt) customAmt.value = '';
+    } else {
+      const defRadio = document.getElementById('m-comm-type-default');
+      if (defRadio) defRadio.checked = true;
+      const customAmt = document.getElementById('m-comm-custom-amount');
+      if (customAmt) customAmt.value = '';
+    }
+    onMenuCommTypeChange();
+    updateMenuCommDefaultHint();
+
     if (m.image) {
       setMenuImagePreview(m.image);
     } else {
@@ -4180,6 +4587,13 @@ function openMenuModal(isEdit, id) {
     document.getElementById('m-category').value = 'อาหารหลัก';
     document.getElementById('m-price').value = '';
     document.getElementById('m-emoji').value = '🍜';
+    
+    const defRadio = document.getElementById('m-comm-type-default');
+    if (defRadio) defRadio.checked = true;
+    const customAmt = document.getElementById('m-comm-custom-amount');
+    if (customAmt) customAmt.value = '';
+    onMenuCommTypeChange();
+    updateMenuCommDefaultHint();
     removeMenuImage();
   }
   document.getElementById('menu-modal').classList.add('open');
@@ -4294,6 +4708,18 @@ function submitMenuForm() {
   const emoji = document.getElementById('m-emoji').value.trim() || '🍽️';
   const image = (document.getElementById('m-image-data') ? document.getElementById('m-image-data').value : '') || '';
 
+  const commType = document.querySelector('input[name="m-comm-type"]:checked')?.value || 'default';
+  let commValue = null;
+  if (commType === 'custom') {
+    commValue = parseFloat(document.getElementById('m-comm-custom-amount')?.value);
+    if (isNaN(commValue) || commValue < 0) {
+      showToast('❌ กรุณาระบุอัตราค่าคอมมิชชั่นที่ถูกต้อง');
+      return;
+    }
+  } else if (commType === 'none') {
+    commValue = 0;
+  }
+
   if (!name) { showToast('❌ กรุณากรอกชื่อสินค้า'); return; }
   if (isNaN(price) || price < 0) { showToast('❌ กรุณาระบุราคาที่ถูกต้อง'); return; }
 
@@ -4303,15 +4729,15 @@ function submitMenuForm() {
     : `ยืนยันการเพิ่มสินค้าใหม่: "${name}" (ราคา ฿${price.toLocaleString()})`;
 
   requestOwnerPassword(actionDesc, () => {
-    actuallySaveMenu(id ? parseInt(id) : null, name, category, price, emoji, image);
+    actuallySaveMenu(id ? parseInt(id) : null, name, category, price, emoji, image, commType, commValue);
   });
 }
 
-function actuallySaveMenu(id, name, category, price, emoji, image = '') {
+function actuallySaveMenu(id, name, category, price, emoji, image = '', commissionType = 'default', commission = null) {
   if (id) {
     const idx = menuItems.findIndex(m => m.id === id);
     if (idx !== -1) {
-      menuItems[idx] = { ...menuItems[idx], name, category, price, emoji, image };
+      menuItems[idx] = { ...menuItems[idx], name, category, price, emoji, image, commissionType, commission };
       // Also update current cart items if name or price or image changed
       cart.forEach(c => {
         if (c.menuId === id) {
@@ -4319,6 +4745,8 @@ function actuallySaveMenu(id, name, category, price, emoji, image = '') {
           c.price = price;
           c.emoji = emoji;
           c.image = image;
+          c.commissionType = commissionType;
+          c.commission = commission;
         }
       });
       renderCart();
@@ -4326,7 +4754,7 @@ function actuallySaveMenu(id, name, category, price, emoji, image = '') {
     }
   } else {
     const newId = menuItems.length > 0 ? Math.max(...menuItems.map(m => m.id)) + 1 : 1;
-    menuItems.push({ id: newId, name, category, price, emoji, image });
+    menuItems.push({ id: newId, name, category, price, emoji, image, commissionType, commission });
     showToast(`✅ เพิ่มสินค้า "${name}" สำเร็จ`);
   }
   closeMenuModal();
@@ -4398,6 +4826,20 @@ function renderMenuManage() {
       <td style="font-weight:700; color:#333;">${escapeHtml(m.name)}</td>
       <td><span class="badge badge-pink">${escapeHtml(m.category)}</span></td>
       <td style="font-weight:800; color:#880e4f;">${formatMoney(m.price)}</td>
+      <td style="text-align:center;">
+        ${(() => {
+          if (m.commissionType === 'custom' && typeof m.commission === 'number') {
+            return `<span class="badge" style="background:#fef3c7; color:#b45309; font-weight:700; border:1px solid #fde68a;">⭐ พิเศษ ฿${m.commission}</span>`;
+          }
+          if (m.commissionType === 'none' || m.commission === 0) {
+            return `<span class="badge" style="background:#f1f5f9; color:#94a3b8;">🚫 ไม่มีคอมฯ (0฿)</span>`;
+          }
+          const defaultRate = (m.category === 'อาหารหลัก' || m.category === 'ของทานเล่น') ? 10 : 0;
+          return defaultRate > 0
+            ? `<span class="badge badge-pink" style="font-weight:600;">มาตรฐาน (${defaultRate}฿)</span>`
+            : `<span class="badge" style="background:#f8fafc; color:#64748b; border:1px solid #e2e8f0;">มาตรฐาน (0฿)</span>`;
+        })()}
+      </td>
       <td><span class="badge badge-green">พร้อมจำหน่าย</span></td>
       <td style="text-align:right;">
         <div style="display:inline-flex; gap:6px;">
@@ -4412,19 +4854,74 @@ function renderMenuManage() {
 
 
 // ===================== SALES STAFF & COMMISSION FUNCTIONS =====================
+
+// Helper: 3-Tier Commission Model
+// Level 1: Specific Item Override (custom commission amount or exempt 0฿)
+// Level 2: Category Default (อาหารหลัก & ของทานเล่น = staff rate or 10฿, เครื่องดื่ม & ของหวาน = 0฿)
+// Level 3: Fallback (10฿ or 0฿)
+function getItemCommission(item, staffRate = 10) {
+  if (!item) return 0;
+  
+  // Find menu definition if available
+  const m = (typeof menuItems !== 'undefined' && Array.isArray(menuItems))
+    ? menuItems.find(x => x.id === (item.menuId || item.id) || x.name === item.name)
+    : null;
+
+  const target = m || item;
+
+  // Level 1: Specific Item level
+  if (target) {
+    if (target.commissionType === 'none' || target.commission === 0) return 0;
+    if (target.commissionType === 'custom' && typeof target.commission === 'number') {
+      return target.commission;
+    }
+    if (typeof target.commission === 'number' && target.commissionType !== 'default') {
+      return target.commission;
+    }
+  }
+
+  // Level 2: Category default
+  const cat = (m && m.category) || item.category;
+  if (cat === 'อาหารหลัก' || cat === 'ของทานเล่น') {
+    return (typeof staffRate === 'number' && staffRate > 0) ? staffRate : 10;
+  }
+  if (cat === 'เครื่องดื่ม' || cat === 'ของหวาน') {
+    return 0; // Default for drinks and desserts is 0 unless customized in Level 1
+  }
+
+  // Level 3: Fallback check by name keywords
+  const name = (item.name || '').toLowerCase();
+  if (name.includes('ชา') || name.includes('น้ำ') || name.includes('โกโก้') || name.includes('กาแฟ') || name.includes('เค้ก') || name.includes('ไอศกรีม') || name.includes('โมจิ')) {
+    return 0;
+  }
+
+  return (typeof staffRate === 'number' && staffRate > 0) ? staffRate : 10;
+}
+
+// Helper: Check if item is eligible for commission
+function isFoodItem(item) {
+  return getItemCommission(item) > 0;
+}
+
+// Helper: Count total commission-eligible items
+function countFoodDishes(items) {
+  if (!Array.isArray(items)) return 0;
+  return items.reduce((sum, it) => sum + (getItemCommission(it) > 0 ? (Number(it.qty) || 0) : 0), 0);
+}
+
 function populateStaffDropdown() {
   const staffSelect = document.getElementById('order-staff');
   if (staffSelect && staffSelect.tagName === 'SELECT') {
     const currentVal = staffSelect.value;
     staffSelect.innerHTML = staffMembers.map(s => `
-      <option value="${s.id}" ${s.id == currentVal ? 'selected' : ''}>${s.avatar} ${s.name} (คอมฯ ${s.commissionRate}%)</option>
+      <option value="${s.id}" ${s.id == currentVal ? 'selected' : ''}>${s.avatar} ${s.name} (${s.commissionPerDish || s.commissionRate || 10} ฿/จาน)</option>
     `).join('');
   }
   const calcSelect = document.getElementById('calc-staff-select');
   if (calcSelect) {
     const currentCalcVal = calcSelect.value;
     calcSelect.innerHTML = staffMembers.map(s => `
-      <option value="${s.id}" ${s.id == currentCalcVal ? 'selected' : ''}>${s.avatar} ${s.name} (${s.code} · คอมฯ ${s.commissionRate}%)</option>
+      <option value="${s.id}" ${s.id == currentCalcVal ? 'selected' : ''}>${s.avatar} ${s.name} (${s.code} · ${s.commissionPerDish || s.commissionRate || 10} ฿/จาน)</option>
     `).join('');
     onCalcStaffChange();
   }
@@ -4432,7 +4929,7 @@ function populateStaffDropdown() {
   if (nbillStaff) {
     const currentNVal = nbillStaff.value;
     nbillStaff.innerHTML = staffMembers.map(s => `
-      <option value="${s.id}" ${s.id == currentNVal ? 'selected' : ''}>${s.avatar} ${s.name} (${s.code} · คอมฯ ${s.commissionRate}%)</option>
+      <option value="${s.id}" ${s.id == currentNVal ? 'selected' : ''}>${s.avatar} ${s.name} (${s.code} · ${s.commissionPerDish || s.commissionRate || 10} ฿/จาน)</option>
     `).join('');
     onNewBillStaffChange();
   }
@@ -4445,7 +4942,7 @@ function onCalcStaffChange() {
   const staff = staffMembers.find(s => s.id === staffId);
   if (staff) {
     const rateInput = document.getElementById('calc-rate-input');
-    if (rateInput) rateInput.value = staff.commissionRate;
+    if (rateInput) rateInput.value = staff.commissionPerDish || staff.commissionRate || 10;
     const infoEl = document.getElementById('calc-staff-info');
     if (infoEl) infoEl.textContent = `${staff.avatar} ${staff.name} (${staff.role})`;
   }
@@ -4453,20 +4950,20 @@ function onCalcStaffChange() {
 }
 
 function calculateCommissionLive() {
-  const sales = parseFloat(document.getElementById('calc-sales-input')?.value) || 0;
-  const rate = parseFloat(document.getElementById('calc-rate-input')?.value) || 0;
-  const commission = (sales * rate) / 100;
-  const net = sales - commission;
+  const dishes = parseFloat(document.getElementById('calc-sales-input')?.value) || 0;
+  const rate = parseFloat(document.getElementById('calc-rate-input')?.value) || 10;
+  const commission = dishes * rate;
+  const estimatedSales = dishes * 100;
 
   const salesEl = document.getElementById('calc-display-sales');
   const commEl = document.getElementById('calc-display-commission');
   const netEl = document.getElementById('calc-display-net');
   const formulaEl = document.getElementById('calc-formula-text');
 
-  if (salesEl) salesEl.textContent = formatMoney(sales);
+  if (salesEl) salesEl.textContent = `${dishes} จาน`;
   if (commEl) commEl.textContent = formatMoney(commission);
-  if (netEl) netEl.textContent = formatMoney(net);
-  if (formulaEl) formulaEl.textContent = `สูตร: ${formatMoney(sales)} × ${rate}% = ${formatMoney(commission)}`;
+  if (netEl) netEl.textContent = formatMoney(estimatedSales);
+  if (formulaEl) formulaEl.textContent = `สูตร: อาหาร ${dishes} จาน × ${rate} ฿ = ${formatMoney(commission)}`;
 }
 
 function selectStaffForCalc(staffId) {
@@ -4482,44 +4979,47 @@ function selectStaffForCalc(staffId) {
   }
   const card = document.getElementById('commission-calc-card');
   if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  showToast('🧮 เลือกพนักงานแล้ว กรุณากรอกยอดขายที่ต้องการคำนวณ');
+  showToast('🧮 เลือกพนักงานแล้ว กรุณากรอกจำนวนจานอาหารที่ต้องการคำนวณ');
 }
 
 function saveManualSalesEntry() {
   const calcSelect = document.getElementById('calc-staff-select');
   const staffId = parseInt(calcSelect?.value);
   const staff = staffMembers.find(s => s.id === staffId);
-  const sales = parseFloat(document.getElementById('calc-sales-input')?.value) || 0;
-  const rate = parseFloat(document.getElementById('calc-rate-input')?.value) || 0;
+  const dishes = parseFloat(document.getElementById('calc-sales-input')?.value) || 0;
+  const rate = parseFloat(document.getElementById('calc-rate-input')?.value) || 10;
 
   if (!staff) { showToast('❌ กรุณาเลือกพนักงานขาย'); return; }
-  if (sales <= 0) { showToast('❌ กรุณากรอกยอดขายที่มากกว่า 0'); return; }
+  if (dishes <= 0) { showToast('❌ กรุณากรอกจำนวนจานอาหารที่มากกว่า 0'); return; }
 
-  const commission = (sales * rate) / 100;
+  const commission = dishes * rate;
+  const estimatedSales = dishes * 100;
 
-  requestOwnerPassword(`ยืนยันการบันทึกยอดขาย ฿${sales.toLocaleString()} ให้ "${staff.name}" (ค่าคอมมิชชั่น ฿${commission.toFixed(1)})?`, () => {
+  requestOwnerPassword(`ยืนยันการบันทึกยอดขายอาหาร ${dishes} จาน ให้ "${staff.name}" (ค่าคอมมิชชั่น ฿${commission.toLocaleString()})?`, () => {
     const order = {
       id: nextOrderId++,
       table: 'ยอดขายหน้าร้าน',
       staffId: staff.id,
       staffName: staff.name,
       commissionRate: rate,
+      commissionPerDish: rate,
+      foodDishesCount: dishes,
       commissionAmount: commission,
-      items: [{ menuId: 0, name: 'บันทึกยอดขายพนักงาน', price: sales, qty: 1, emoji: '💵' }],
-      subtotal: sales,
-      total: sales,
-      note: 'บันทึกยอดขายและคิดค่าคอมมิชชั่นรายคน',
+      items: [{ menuId: 1, name: 'จานอาหาร (บันทึกด่วน)', price: 100, qty: dishes, emoji: '🍽️', category: 'อาหารหลัก' }],
+      subtotal: estimatedSales,
+      total: estimatedSales,
+      note: `บันทึกค่าคอมมิชชั่นอาหาร ${dishes} จาน (${rate} ฿/จาน)`,
       date: new Date().toISOString(),
-      status: 'เสร็จสิ้น'
+      status: 'เสร็จสิ้น',
+      kitchenAccepted: true
     };
     orders.push(order);
     saveState(true, 'MANUAL_SALES_RECORDED');
     document.getElementById('calc-sales-input').value = '';
     calculateCommissionLive();
     renderCommissionPage();
-    renderDashboard();
-    renderHistory();
-    showToast(`✅ บันทึกยอดขาย ฿${sales.toLocaleString()} และค่าคอมมิชชั่น ฿${commission.toFixed(1)} ให้ ${staff.name} เรียบร้อย!`);
+    renderMyCommissionPage();
+    showToast(`✅ บันทึกค่าคอมฯ ให้ ${staff.name} สำเร็จ (+฿${commission.toLocaleString()})`);
   });
 }
 
@@ -4573,6 +5073,7 @@ function renderCommissionPage() {
   if (staffTbody) {
     staffTbody.innerHTML = staffMembers.map(s => {
       const staffOrders = filteredOrders.filter(o => o.staffId === s.id);
+      const staffFoodDishes = staffOrders.reduce((sum, o) => sum + (o.foodDishesCount !== undefined ? o.foodDishesCount : countFoodDishes(o.items)), 0);
       const staffSales = staffOrders.reduce((sum, o) => sum + (o.total || 0), 0);
       const staffComm = staffOrders.reduce((sum, o) => sum + (o.commissionAmount || 0), 0);
       const paid = s.paidCommission || 0;
@@ -4584,10 +5085,16 @@ function renderCommissionPage() {
           <td>
             <div style="font-weight:700; color:#333;">${s.name}</div>
             <div style="font-size:12px; color:#888;">รหัส: <span style="font-weight:600; color:#880e4f;">${s.code}</span> · 📞 ${s.phone || '-'}</div>
+            <div style="font-size:11px; color:#0f172a; margin-top:3px; background:#fff1f2; padding:2px 8px; border-radius:6px; display:inline-block; border:1px solid #fecdd3;">
+              👤 ยูสเซอร์: <strong>${s.username || s.code.toLowerCase()}</strong> · 🔑 รหัส: <strong>${s.password || '1234'}</strong>
+            </div>
           </td>
           <td><span class="badge badge-pink">${s.role}</span></td>
-          <td style="text-align:center; font-weight:700; color:#880e4f;">${s.commissionRate}%</td>
-          <td style="text-align:center; font-weight:600;">${staffOrders.length} ออเดอร์</td>
+          <td style="text-align:center; font-weight:700; color:#880e4f;">${s.commissionPerDish || s.commissionRate || 10} ฿/จาน</td>
+          <td style="text-align:center; font-weight:600;">
+            <div>${staffOrders.length} ออเดอร์</div>
+            <div style="font-size:11px; color:#e11d48; font-weight:700;">🍽️ ${staffFoodDishes} จาน</div>
+          </td>
           <td style="text-align:right; font-weight:700; color:#333;">${formatMoney(staffSales)}</td>
           <td style="text-align:right; font-weight:800; color:#f57f17; font-size:15px;">${formatMoney(staffComm)}</td>
           <td style="text-align:center;">
@@ -4597,7 +5104,8 @@ function renderCommissionPage() {
             }
           </td>
           <td style="text-align:right;">
-            <div style="display:inline-flex; gap:6px;">
+            <div style="display:inline-flex; gap:6px; flex-wrap:wrap; justify-content:flex-end;">
+              <button class="btn-secondary" style="padding:5px 9px; font-size:12px; border-color:#0284c7; color:#0369a1; background:#f0f9ff;" onclick="previewStaffCommissionPage(${s.id})" title="ดูหน้าสรุปค่าคอมมิชชั่นของพนักงานคนนี้">👁️ หน้าพนักงาน</button>
               <button class="btn-secondary" style="padding:5px 9px; font-size:12px; border-color:#ff80ad; color:#880e4f; background:#fff8fb;" onclick="selectStaffForCalc(${s.id})" title="กรอกยอดขายของคนนี้เพื่อคำนวณ">🧮 กรอกยอด</button>
               <button class="btn-secondary" style="padding:5px 9px; font-size:12px;" onclick="openStaffModal(true, ${s.id})" title="แก้ไขข้อมูล / อัตราค่าคอมฯ">✏️</button>
               <button class="btn-primary" style="padding:5px 9px; font-size:12px; background:linear-gradient(135deg, #4caf50, #2e7d32);" onclick="markStaffCommissionPaid(${s.id}, ${staffComm})" title="บันทึกว่าจ่ายเงินค่าคอมแล้ว">💵 จ่าย</button>
@@ -4622,7 +5130,7 @@ function renderCommissionPage() {
           <td>โต๊ะ ${o.table}</td>
           <td><span class="badge badge-pink">${o.staffName || 'พนักงาน'}</span></td>
           <td style="font-weight:700; color:#333;">${formatMoney(o.total)}</td>
-          <td style="color:#666;">${o.commissionRate || 5}%</td>
+          <td style="color:#666;">${o.foodDishesCount !== undefined ? o.foodDishesCount + ' จาน' : ''} (${o.commissionPerDish || o.commissionRate || 10} ฿/จาน)</td>
           <td style="font-weight:700; color:#f57f17;">${formatMoney(o.commissionAmount || 0)}</td>
           <td style="font-size:12px; color:#777;">${new Date(o.date).toLocaleTimeString('th-TH', {hour:'2-digit', minute:'2-digit'})} · ${new Date(o.date).toLocaleDateString('th-TH', {day:'numeric', month:'short'})}</td>
         </tr>
@@ -4643,8 +5151,10 @@ function openStaffModal(isEdit, id) {
     document.getElementById('staff-code').value = s.code;
     document.getElementById('staff-name').value = s.name;
     document.getElementById('staff-role').value = s.role;
-    document.getElementById('staff-comm-rate').value = s.commissionRate;
+    document.getElementById('staff-comm-rate').value = s.commissionPerDish !== undefined ? s.commissionPerDish : (s.commissionRate || 10);
     document.getElementById('staff-phone').value = s.phone || '';
+    document.getElementById('staff-username').value = s.username || s.code.toLowerCase().replace(/[^a-z0-9]/g, '');
+    document.getElementById('staff-password').value = s.password || '1234';
   } else {
     titleEl.textContent = '+ เพิ่มพนักงานขายใหม่';
     document.getElementById('edit-staff-id').value = '';
@@ -4653,8 +5163,10 @@ function openStaffModal(isEdit, id) {
     document.getElementById('staff-code').value = nextCode;
     document.getElementById('staff-name').value = '';
     document.getElementById('staff-role').value = 'พนักงานขายหน้าร้าน';
-    document.getElementById('staff-comm-rate').value = '5';
+    document.getElementById('staff-comm-rate').value = '10';
     document.getElementById('staff-phone').value = '';
+    document.getElementById('staff-username').value = 'staff' + (staffMembers.length + 1);
+    document.getElementById('staff-password').value = '1234';
   }
   document.getElementById('staff-modal').classList.add('open');
   setTimeout(() => document.getElementById('staff-name').focus(), 100);
@@ -4672,31 +5184,58 @@ function submitStaffForm() {
   const role = document.getElementById('staff-role').value;
   const commRate = parseFloat(document.getElementById('staff-comm-rate').value);
   const phone = document.getElementById('staff-phone').value.trim();
+  const username = (document.getElementById('staff-username').value || '').trim().toLowerCase();
+  const password = (document.getElementById('staff-password').value || '').trim();
 
   if (!code) { showToast('❌ กรุณากรอกรหัสพนักงาน'); return; }
   if (!name) { showToast('❌ กรุณากรอกชื่อ-นามสกุลพนักงาน'); return; }
-  if (isNaN(commRate) || commRate < 0 || commRate > 100) { showToast('❌ อัตราค่าคอมฯ ต้องอยู่ระหว่าง 0 - 100%'); return; }
+  if (!username) { showToast('❌ กรุณากรอกชื่อผู้ใช้สำหรับเข้าสู่ระบบ'); return; }
+  if (!password) { showToast('❌ กรุณากรอกรหัสผ่านสำหรับเข้าสู่ระบบ'); return; }
+  if (isNaN(commRate) || commRate < 0) { showToast('❌ อัตราค่าคอมฯ ต้องเป็นจำนวนเงิน 0 บาทขึ้นไป'); return; }
 
   const isEdit = Boolean(id);
   const actionDesc = isEdit
-    ? `ยืนยันการแก้ไขข้อมูลพนักงาน "${name}" (อัตราค่าคอมฯ ${commRate}%)`
-    : `ยืนยันการเพิ่มพนักงานใหม่ "${name}" (อัตราค่าคอมฯ ${commRate}%)`;
+    ? `ยืนยันการแก้ไขข้อมูลพนักงาน "${name}" (อัตราค่าคอมฯ ${commRate} บาท/จาน)`
+    : `ยืนยันการเพิ่มพนักงานใหม่ "${name}" (อัตราค่าคอมฯ ${commRate} บาท/จาน)`;
 
   requestOwnerPassword(actionDesc, () => {
-    actuallySaveStaff(id ? parseInt(id) : null, code, name, role, commRate, avatar, phone);
+    actuallySaveStaff(id ? parseInt(id) : null, code, name, role, commRate, avatar, phone, username, password);
   });
 }
 
-function actuallySaveStaff(id, code, name, role, commissionRate, avatar, phone) {
+function actuallySaveStaff(id, code, name, role, commissionRate, avatar, phone, username, password) {
   if (id) {
     const idx = staffMembers.findIndex(s => s.id === id);
     if (idx !== -1) {
-      staffMembers[idx] = { ...staffMembers[idx], code, name, role, commissionRate, avatar, phone };
+      staffMembers[idx] = { 
+        ...staffMembers[idx], 
+        code, 
+        name, 
+        role, 
+        commissionRate, 
+        commissionPerDish: commissionRate,
+        avatar, 
+        phone, 
+        username: username || staffMembers[idx].username || code.toLowerCase(), 
+        password: password || staffMembers[idx].password || '1234' 
+      };
       showToast(`✅ แก้ไขข้อมูลพนักงาน "${name}" สำเร็จ`);
     }
   } else {
     const newId = staffMembers.length > 0 ? Math.max(...staffMembers.map(s => s.id)) + 1 : 1;
-    staffMembers.push({ id: newId, code, name, role, commissionRate, avatar, phone, paidCommission: 0 });
+    staffMembers.push({ 
+      id: newId, 
+      code, 
+      name, 
+      role, 
+      commissionRate, 
+      commissionPerDish: commissionRate,
+      avatar, 
+      phone, 
+      username: username || 'staff' + newId, 
+      password: password || '1234', 
+      paidCommission: 0 
+    });
     showToast(`✅ เพิ่มพนักงานขาย "${name}" สำเร็จ`);
   }
   closeStaffModal();
@@ -4730,6 +5269,304 @@ function markStaffCommissionPaid(staffId, amount) {
     renderCommissionPage();
     showToast(`💵 บันทึกจ่ายค่าคอมมิชชั่นให้ "${s.name}" สำเร็จ`);
   });
+}
+
+// ===================== MY COMMISSION (พนักงานรายบุคคล) =====================
+let _currentStaffBillsList = [];
+
+function previewStaffCommissionPage(staffId) {
+  currentStaffId = parseInt(staffId, 10);
+  localStorage.setItem('sakura_staff_id', String(currentStaffId));
+  showPage('my-commission', document.getElementById('nav-my-commission'));
+  renderMyCommissionPage();
+}
+
+function switchMyCommissionStaff(staffIdStr) {
+  previewStaffCommissionPage(staffIdStr);
+}
+
+function renderMyCommissionPage() {
+  // Determine current active staff
+  let staff = null;
+  if (currentUserRole === 'staff') {
+    staff = staffMembers.find(s => s.id === currentStaffId);
+    if (!staff && staffMembers.length > 0) {
+      staff = staffMembers[0];
+      currentStaffId = staff.id;
+      localStorage.setItem('sakura_staff_id', String(currentStaffId));
+    }
+  } else {
+    // Owner preview mode
+    if (currentStaffId) {
+      staff = staffMembers.find(s => s.id === currentStaffId);
+    }
+    if (!staff && staffMembers.length > 0) {
+      staff = staffMembers[0];
+      currentStaffId = staff.id;
+    }
+  }
+
+  if (!staff) return;
+
+  // 1. Owner preview switcher bar
+  const ownerBar = document.getElementById('mycomm-owner-bar');
+  const staffSwitcher = document.getElementById('mycomm-staff-switcher');
+  if (ownerBar) {
+    if (currentUserRole === 'owner') {
+      ownerBar.style.display = 'flex';
+      if (staffSwitcher) {
+        staffSwitcher.innerHTML = staffMembers.map(s => `
+          <option value="${s.id}" ${s.id === staff.id ? 'selected' : ''}>${s.code} - ${s.name} (${s.commissionPerDish || s.commissionRate || 10} ฿/จาน)</option>
+        `).join('');
+      }
+    } else {
+      ownerBar.style.display = 'none';
+    }
+  }
+
+  // 2. Staff Header Profile Info
+  const avatarEl = document.getElementById('mycomm-avatar');
+  const nameEl = document.getElementById('mycomm-staff-name');
+  const codeBadgeEl = document.getElementById('mycomm-staff-code-badge');
+  const roleBadgeEl = document.getElementById('mycomm-staff-role-badge');
+  const rateTextEl = document.getElementById('mycomm-rate-text');
+
+  if (avatarEl) avatarEl.textContent = staff.avatar || '👩‍🍳';
+  if (nameEl) nameEl.textContent = staff.name;
+  if (codeBadgeEl) codeBadgeEl.textContent = staff.code || ('SK-0' + staff.id);
+  if (roleBadgeEl) roleBadgeEl.textContent = staff.role || 'พนักงานขาย';
+  if (rateTextEl) rateTextEl.textContent = `${staff.commissionPerDish || staff.commissionRate || 10} ฿/จาน`;
+
+  // 3. Period filter & Aggregation
+  const period = document.getElementById('mycomm-period-filter')?.value || 'this_month';
+  const now = new Date();
+  const todayStr = now.toISOString().split('T')[0];
+  const thisMonthStr = todayStr.slice(0, 7);
+
+  function matchesPeriod(dateStr) {
+    if (!dateStr) return true;
+    const clean = dateStr.slice(0, 10);
+    if (period === 'today') return clean === todayStr;
+    if (period === 'this_month') return clean.startsWith(thisMonthStr);
+    return true; // 'all'
+  }
+
+  // Collect all bills handled by this staff
+  const seenBillIds = new Set();
+  const staffBills = [];
+
+  // A) From openBills
+  (openBills || []).filter(b => b.staffId === staff.id).forEach(b => {
+    seenBillIds.add(String(b.id));
+    if (b.billNo) seenBillIds.add(String(b.billNo));
+
+    const billDate = b.openedAt || b.closedAt || new Date().toISOString();
+    if (!matchesPeriod(billDate)) return;
+
+    const calc = calculateBillTotals(b);
+    staffBills.push({
+      billNo: b.billNo || ('B-' + b.id),
+      id: b.id,
+      table: b.table || '-',
+      openedAt: billDate,
+      status: b.status || 'open',
+      items: b.items || [],
+      foodDishesCount: calc.foodDishesCount,
+      subtotal: calc.subtotal,
+      total: calc.total,
+      commRate: calc.commRate,
+      commissionAmount: calc.commissionAmount,
+      netRevenue: calc.netRevenue
+    });
+  });
+
+  // B) From orders (history)
+  (orders || []).filter(o => o.staffId === staff.id).forEach(o => {
+    if (o.billId && seenBillIds.has(String(o.billId))) return;
+    if (o.billNo && seenBillIds.has(String(o.billNo))) return;
+    if (o.id && seenBillIds.has('ORD-' + o.id)) return;
+
+    const orderDate = o.date || new Date().toISOString();
+    if (!matchesPeriod(orderDate)) return;
+
+    const subtotal = Number(o.subtotal !== undefined ? o.subtotal : o.total) || 0;
+    const foodDishesCount = o.foodDishesCount !== undefined ? o.foodDishesCount : countFoodDishes(o.items || []);
+    const rate = o.commissionPerDish !== undefined ? Number(o.commissionPerDish) : (o.commissionRate !== undefined ? Number(o.commissionRate) : (staff.commissionPerDish || staff.commissionRate || 10));
+    const comm = o.commissionAmount !== undefined ? Number(o.commissionAmount) : (foodDishesCount * rate);
+    const net = subtotal - comm;
+
+    staffBills.push({
+      billNo: o.billNo || ('ORD-' + o.id),
+      id: o.id,
+      table: o.table || '-',
+      openedAt: orderDate,
+      status: o.status === 'เสร็จสิ้น' ? 'paid' : (o.status || 'paid'),
+      items: o.items || [],
+      foodDishesCount: foodDishesCount,
+      subtotal: subtotal,
+      total: Number(o.total) || subtotal,
+      commRate: rate,
+      commissionAmount: comm,
+      netRevenue: net
+    });
+  });
+
+  // Sort newest first
+  staffBills.sort((a, b) => new Date(b.openedAt) - new Date(a.openedAt));
+  _currentStaffBillsList = staffBills;
+
+  // 4. Calculate Key Financial Metrics
+  let grossSales = 0;
+  let totalCommission = 0;
+  let netRevenue = 0;
+  let openCount = 0;
+  let paidCount = 0;
+
+  staffBills.forEach(b => {
+    grossSales += b.subtotal;
+    totalCommission += b.commissionAmount;
+    netRevenue += b.netRevenue;
+    if (b.status === 'open') openCount++;
+    else paidCount++;
+  });
+
+  // 5. Update KPI Cards
+  const billsCountEl = document.getElementById('mycomm-bills-count');
+  const billsSubtextEl = document.getElementById('mycomm-bills-subtext');
+  const grossSalesEl = document.getElementById('mycomm-gross-sales');
+  const earnedEl = document.getElementById('mycomm-earned');
+  const payoutStatusEl = document.getElementById('mycomm-payout-status');
+  const netRevenueEl = document.getElementById('mycomm-net-revenue');
+
+  if (billsCountEl) billsCountEl.textContent = staffBills.length;
+  if (billsSubtextEl) billsSubtextEl.textContent = `เปิดอยู่ ${openCount} · ชำระแล้ว ${paidCount}`;
+  if (grossSalesEl) grossSalesEl.textContent = formatMoney(grossSales);
+  if (earnedEl) earnedEl.textContent = formatMoney(totalCommission);
+  if (netRevenueEl) netRevenueEl.textContent = formatMoney(netRevenue);
+
+  if (payoutStatusEl) {
+    const paid = staff.paidCommission || 0;
+    const unpaid = Math.max(0, totalCommission - paid);
+    if (unpaid > 0) {
+      payoutStatusEl.innerHTML = `รอรับเงิน: <strong>${formatMoney(unpaid)}</strong> (เบิกจ่ายแล้ว ${formatMoney(paid)})`;
+      payoutStatusEl.style.color = '#9f1239';
+    } else {
+      payoutStatusEl.innerHTML = `✅ จ่ายครบแล้ว (${formatMoney(paid)})`;
+      payoutStatusEl.style.color = '#047857';
+    }
+  }
+
+  // 6. Render Table
+  const tbody = document.getElementById('mycomm-bills-tbody');
+  const emptyEl = document.getElementById('mycomm-bills-empty');
+
+  if (tbody) {
+    if (staffBills.length === 0) {
+      tbody.innerHTML = '';
+      if (emptyEl) emptyEl.style.display = 'block';
+    } else {
+      if (emptyEl) emptyEl.style.display = 'none';
+      tbody.innerHTML = staffBills.map((b, idx) => {
+        const totalItemsQty = (b.items || []).reduce((sum, it) => sum + (Number(it.qty) || 0), 0);
+        const foodCount = b.foodDishesCount !== undefined ? b.foodDishesCount : countFoodDishes(b.items || []);
+        const itemsSummary = (b.items || []).map(it => `${it.name} x${it.qty}`).join(', ') || '-';
+        const isPaid = b.status === 'paid';
+
+        return `
+          <tr>
+            <td>
+              <div style="font-weight:700; color:#0f172a;">${b.billNo}</div>
+              <div style="font-size:12px; color:#64748b;">${formatBillTime(b.openedAt)}</div>
+            </td>
+            <td>
+              <span class="badge" style="background:#f1f5f9; color:#334155; font-weight:700; font-size:12px;">โต๊ะ ${b.table}</span>
+            </td>
+            <td>
+              <div style="font-size:13px; color:#334155; max-width:240px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${itemsSummary}">
+                ${itemsSummary}
+              </div>
+              <div style="font-size:11.5px; color:#64748b;">ทั้งหมด ${totalItemsQty} ชิ้น</div>
+            </td>
+            <td style="text-align:right; font-weight:700; color:#0f172a;">
+              ${formatMoney(b.subtotal)}
+            </td>
+            <td style="text-align:center;">
+              <span class="badge badge-pink" style="font-weight:800; font-size:12.5px;">🍽️ ${foodCount} จาน</span>
+            </td>
+            <td style="text-align:center; font-weight:700; color:#be123c;">
+              ${b.commRate} ฿/จาน
+            </td>
+            <td style="text-align:right; font-weight:800; color:#e11d48; font-size:14.5px;">
+              ${formatMoney(b.commissionAmount)}
+            </td>
+            <td style="text-align:right; font-weight:700; color:#059669;">
+              ${formatMoney(b.netRevenue)}
+            </td>
+            <td style="text-align:center;">
+              ${isPaid
+                ? '<span class="badge badge-green">ชำระแล้ว</span>'
+                : '<span class="badge badge-yellow">เปิดบิลอยู่</span>'
+              }
+            </td>
+            <td style="text-align:center;">
+              <button type="button" class="btn-secondary" style="padding:5px 10px; font-size:12px; border-color:#fecdd3; color:#be123c;" onclick="openStaffBillDetailModal(${idx})">
+                👁️ ดูบิล
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+  }
+}
+
+function openStaffBillDetailModal(idx) {
+  const bill = _currentStaffBillsList[idx];
+  if (!bill) return;
+
+  const foodCount = bill.foodDishesCount !== undefined ? bill.foodDishesCount : countFoodDishes(bill.items || []);
+
+  document.getElementById('sbd-modal-title').textContent = `รายละเอียดบิล ${bill.billNo} (โต๊ะ ${bill.table})`;
+  document.getElementById('sbd-modal-subtitle').textContent = `เวลาเปิดบิล: ${formatBillTime(bill.openedAt)} · สถานะ: ${bill.status === 'paid' ? 'ชำระเงินแล้ว' : 'กำลังรับประทาน'}`;
+
+  const tbody = document.getElementById('sbd-items-tbody');
+  if (tbody) {
+    if (!bill.items || bill.items.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:16px; color:#94a3b8;">ไม่มีรายการอาหารในบิลนี้</td></tr>`;
+    } else {
+      tbody.innerHTML = bill.items.map(it => {
+        const itemTotal = (Number(it.price) || 0) * (Number(it.qty) || 0);
+        const unitComm = getItemCommission(it, bill.commRate);
+        const itemComm = unitComm * (Number(it.qty) || 0);
+        return `
+          <tr style="border-bottom:1px solid #f1f5f9; font-size:13px;">
+            <td style="padding:10px 12px; color:#0f172a; font-weight:600;">
+              <span>${it.emoji || '🍽️'}</span> ${it.name}
+              ${unitComm > 0 ? `<span class="badge badge-pink" style="font-size:10.5px; margin-left:6px; font-weight:700;">✨ ค่าคอม ${unitComm}฿/ชิ้น (+฿${itemComm})</span>` : `<span class="badge" style="font-size:10.5px; margin-left:6px; background:#f1f5f9; color:#94a3b8;">ไม่มีค่าคอม</span>`}
+              ${it.note ? `<div style="font-size:11px; color:#94a3b8; margin-top:2px;">(หมายเหตุ: ${it.note})</div>` : ''}
+            </td>
+            <td style="padding:10px 12px; text-align:center; font-weight:700; color:#334155;">${it.qty}</td>
+            <td style="padding:10px 12px; text-align:right; color:#64748b;">${formatMoney(it.price)}</td>
+            <td style="padding:10px 12px; text-align:right; font-weight:700; color:#0f172a;">${formatMoney(itemTotal)}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+  }
+
+  document.getElementById('sbd-subtotal').textContent = formatMoney(bill.subtotal);
+  if (document.getElementById('sbd-food-count')) {
+    document.getElementById('sbd-food-count').textContent = `${foodCount} ชิ้น (รายการที่ได้ค่าคอมฯ)`;
+  }
+  document.getElementById('sbd-rate').textContent = `${bill.commRate} ฿/จาน (ตามรายการ)`;
+  document.getElementById('sbd-commission').textContent = formatMoney(bill.commissionAmount);
+  document.getElementById('sbd-net').textContent = formatMoney(bill.netRevenue);
+
+  document.getElementById('staff-bill-detail-modal').classList.add('open');
+}
+
+function closeStaffBillDetailModal() {
+  document.getElementById('staff-bill-detail-modal').classList.remove('open');
 }
 
 // ===================== DASHBOARD =====================
@@ -5044,8 +5881,15 @@ function renderMenu() {
         </div>
       `}
       <div style="font-weight: 700; color: #0f172a; font-size: 14.5px; text-align: center; margin-bottom: 4px; line-height: 1.3;">${escapeHtml(m.name)}</div>
-      <div style="text-align: center; margin-bottom: 12px;">
+      <div style="text-align: center; margin-bottom: 12px; display:flex; gap:4px; justify-content:center; flex-wrap:wrap; align-items:center;">
         <span class="badge badge-pink" style="font-size:11px; padding:2px 8px;">${escapeHtml(m.category)}</span>
+        ${(currentUserRole === 'staff' || currentUserRole === 'owner') ? (() => {
+          const comm = getItemCommission(m, 10);
+          if (comm > 0) {
+            return `<span class="badge" style="background:#fef3c7; color:#b45309; font-size:10.5px; font-weight:700; padding:2px 6px; border:1px solid #fde68a;" title="ค่าคอมมิชชั่นที่จะได้รับ">✨ คอม ฿${comm}</span>`;
+          }
+          return '';
+        })() : ''}
       </div>
       <div style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px dashed #f1f5f9;">
         <span style="font-weight: 800; color: #e11d48; font-size: 16px; letter-spacing: -0.3px;">${formatMoney(m.price)}</span>
@@ -5312,12 +6156,12 @@ function changeQty(idx, delta) {
 function updateCartTotals() {
   const totalQty = cart.reduce((s, c) => s + (Number(c.qty) || 1), 0);
   const subtotal = cart.reduce((s, c) => s + c.price * c.qty, 0);
-  const total = subtotal; // ไม่คิด VAT 7% ตอนเลือกเมนู (จะคิดตอนเช็คบิล)
+  const total = subtotal; // ยกเลิก VAT 7% (คิดราคาเน็ต)
   const subtotalEl = document.getElementById('cart-subtotal');
   const vatEl = document.getElementById('cart-vat');
   const totalEl = document.getElementById('cart-total');
   if (subtotalEl) subtotalEl.textContent = formatMoney(subtotal);
-  if (vatEl) vatEl.textContent = 'คิดตอนเช็คบิล';
+  if (vatEl) vatEl.textContent = 'ไม่มี VAT';
   if (totalEl) totalEl.textContent = formatMoney(total);
 
   // Update cart confirmation button badge
@@ -5506,9 +6350,17 @@ function placeOrder() {
 
   const overallNote = (document.getElementById('order-note') ? document.getElementById('order-note').value : '').trim();
   const subtotal = cart.reduce((s, c) => s + c.price * c.qty, 0);
-  const total = subtotal; // ตอนเลือกเมนู/สั่งออเดอร์ ไม่คิด VAT (จะคิดตอนเช็คบิล)
-  const commRate = staff ? staff.commissionRate : 5;
-  const commAmount = (subtotal * commRate) / 100;
+  const ratePerDish = staff ? (staff.commissionPerDish !== undefined ? staff.commissionPerDish : (staff.commissionRate || 10)) : 10;
+  let foodQty = 0;
+  let commAmount = 0;
+  cart.forEach(c => {
+    const unitComm = getItemCommission(c, ratePerDish);
+    const qty = Number(c.qty) || 0;
+    if (unitComm > 0) {
+      foodQty += qty;
+      commAmount += unitComm * qty;
+    }
+  });
 
   const orderItems = cart.map(c => ({
     id: c.menuId || c.id,
@@ -5526,7 +6378,9 @@ function placeOrder() {
     table,
     staffId: staff ? staff.id : 1,
     staffName: staff ? staff.name : 'พนักงาน',
-    commissionRate: commRate,
+    commissionRate: ratePerDish,
+    commissionPerDish: ratePerDish,
+    foodDishesCount: foodQty,
     commissionAmount: commAmount,
     items: orderItems,
     subtotal,
@@ -5570,7 +6424,8 @@ function placeOrder() {
       table: table,
       staffId: staff ? staff.id : 1,
       staffName: staff ? staff.name : 'พนักงาน',
-      commissionRate: commRate,
+      commissionRate: ratePerDish,
+      commissionPerDish: ratePerDish,
       openedAt: getLocalDateTimeLocalString(),
       status: 'open',
       note: overallNote,
@@ -5597,7 +6452,9 @@ function placeOrder() {
       note: overallNote,
       staffId: staff ? staff.id : 1,
       staffName: staff ? staff.name : 'พนักงาน',
-      commissionRate: commRate,
+      commissionRate: ratePerDish,
+      commissionPerDish: ratePerDish,
+      foodDishesCount: foodQty,
       commissionAmount: commAmount,
       subtotal: subtotal,
       total: total
@@ -5667,7 +6524,7 @@ function renderHistory() {
       <td><span class="badge badge-pink">${o.staffName || 'พนักงาน'}</span></td>
       <td style="max-width:220px; font-size:12px;">${o.items.map(i=>`${i.emoji || '🍽️'}${escapeHtml(i.name)}×${i.qty}${i.note ? ` <span style="color:#e11d48;font-size:11px;font-weight:600;">(📝 ${escapeHtml(i.note)})</span>` : ''}`).join(', ')}</td>
       <td style="font-weight:700;color:#880e4f;">${formatMoney(o.total)}</td>
-      <td style="font-weight:700;color:#f57f17;">${formatMoney(o.commissionAmount || 0)} <span style="font-size:11px;color:#999;">(${o.commissionRate || 5}%)</span></td>
+      <td style="font-weight:700;color:#f57f17;">${formatMoney(o.commissionAmount || 0)} <span style="font-size:11px;color:#999;">(${o.foodDishesCount !== undefined ? o.foodDishesCount + ' จาน' : ''} × ${o.commissionPerDish || o.commissionRate || 10}฿)</span></td>
       <td style="color:#666;font-size:12px;">${new Date(o.date).toLocaleString('th-TH', {hour:'2-digit',minute:'2-digit',day:'2-digit',month:'short'})}</td>
       <td>
         <select style="font-size:12px;padding:4px 8px;width:auto;" onchange="changeOrderStatus(${o.id}, this.value)">
@@ -5723,10 +6580,10 @@ function viewOrderDetail(id) {
         <span>ยอดรวมค่าอาหาร</span><span>${formatMoney(o.subtotal)}</span>
       </div>
       <div style="display:flex;justify-content:space-between;font-size:13px;color:#666;margin-bottom:4px;">
-        <span>ภาษีมูลค่าเพิ่ม (VAT 7%)</span><span style="color:#059669; font-weight:600;">คิดตอนเช็คบิล</span>
+        <span>ภาษีมูลค่าเพิ่ม (VAT)</span><span style="color:#059669; font-weight:600;">ไม่มี VAT</span>
       </div>
       <div style="display:flex;justify-content:space-between;font-size:13px;color:#f57f17;margin-bottom:6px;font-weight:600;">
-        <span>ค่าคอมมิชชั่นพนักงาน (${o.commissionRate || 5}%)</span><span>${formatMoney(o.commissionAmount || 0)}</span>
+        <span>ค่าคอมมิชชั่นพนักงาน (${o.foodDishesCount !== undefined ? o.foodDishesCount + ' จาน' : ''} × ${o.commissionPerDish || o.commissionRate || 10} ฿)</span><span>${formatMoney(o.commissionAmount || 0)}</span>
       </div>
       <div style="display:flex;justify-content:space-between;font-size:16px;font-weight:800;color:#880e4f;">
         <span>ยอดรวมออเดอร์</span><span>${formatMoney(o.total)}</span>
@@ -6144,12 +7001,44 @@ function formatTimeElapsed(isoStr) {
 
 function calculateBillTotals(bill) {
   const subtotal = (bill.items || []).reduce((sum, it) => sum + (Number(it.price) * Number(it.qty)), 0);
-  const vat = subtotal * 0.07;
-  const total = subtotal * 1.07;
-  const commRate = Number(bill.commissionRate) || 0;
-  const commissionAmount = (subtotal * commRate) / 100;
+  const vat = 0; // ยกเลิก VAT 7%
+  const total = subtotal; // ยอดรวมทั้งสิ้นเท่ากับยอดค่าอาหาร (ไม่มี VAT)
+
+  // Rate per food dish (default 10 baht/dish)
+  let ratePerDish = 10;
+  if (bill.commissionPerDish !== undefined && !isNaN(Number(bill.commissionPerDish))) {
+    ratePerDish = Number(bill.commissionPerDish);
+  } else if (bill.commissionRate !== undefined && !isNaN(Number(bill.commissionRate)) && Number(bill.commissionRate) > 0) {
+    ratePerDish = Number(bill.commissionRate);
+  } else if (bill.staffId) {
+    const s = staffMembers.find(x => x.id === bill.staffId);
+    if (s) ratePerDish = Number(s.commissionPerDish !== undefined ? s.commissionPerDish : (s.commissionRate || 10));
+  }
+
+  // 3-Tier Itemized Commission calculation across all items
+  let foodDishesCount = 0;
+  let commissionAmount = 0;
+  (bill.items || []).forEach(it => {
+    const unitComm = getItemCommission(it, ratePerDish);
+    const qty = Number(it.qty) || 0;
+    if (unitComm > 0) {
+      foodDishesCount += qty;
+      commissionAmount += unitComm * qty;
+    }
+  });
+
   const netRevenue = total - commissionAmount;
-  return { subtotal, vat, total, commRate, commissionAmount, netRevenue };
+
+  return { 
+    subtotal, 
+    vat, 
+    total, 
+    commRate: ratePerDish, 
+    commissionPerDish: ratePerDish, 
+    foodDishesCount, 
+    commissionAmount, 
+    netRevenue 
+  };
 }
 
 function renderBillingPage() {
@@ -6288,7 +7177,7 @@ function renderBillingPage() {
             <span style="font-size:20px;">${staffAvatar}</span>
             <div>
               <div style="font-weight:700; color:#0f172a; font-size:13.5px;">${b.staffName}</div>
-              <div style="font-size:11px; color:#64748b; font-weight:600;">คอมมิชชั่น ${b.commissionRate || 5}%</div>
+              <div style="font-size:11px; color:#64748b; font-weight:600;">คอมมิชชั่น ${b.commissionPerDish || b.commissionRate || 10} ฿/จาน</div>
             </div>
           </div>
         </td>
@@ -6297,17 +7186,17 @@ function renderBillingPage() {
           ${isOpen ? `<div style="font-size:11px; color:#e11d48; font-weight:600; margin-top:2px;">${formatTimeElapsed(b.openedAt)}</div>` : ''}
         </td>
         <td>
-          <div style="font-size:12.5px; font-weight:700; color:#334155;">${(b.items || []).length} เมนู (${itemsCount} จาน)</div>
+          <div style="font-size:12.5px; font-weight:700; color:#334155;">${(b.items || []).length} เมนู (${itemsCount} ชิ้น)</div>
           <div style="font-size:11.5px; color:#64748b; margin-top:2px; max-width:220px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
             ${itemsPreview || '<span style="color:#94a3b8;">ยังไม่มีรายการ</span>'}
           </div>
         </td>
         <td style="text-align:right;">
           <div style="font-size:15.5px; font-weight:800; color:#0f172a;">${formatMoney(calc.total)}</div>
-          <div style="font-size:11px; color:#64748b;">รวม VAT 7%</div>
+          <div style="font-size:11px; color:#059669; font-weight:600;">(ไม่มี VAT)</div>
         </td>
         <td style="text-align:center;">
-          <span class="badge badge-pink" style="font-size:11.5px; font-weight:700;">${b.commissionRate || 5}%</span>
+          <span class="badge badge-pink" style="font-size:11.5px; font-weight:700;">🍽️ ${calc.foodDishesCount} จาน (${b.commissionPerDish || b.commissionRate || 10} ฿)</span>
         </td>
         <td style="text-align:right;">
           <div style="font-size:15.5px; font-weight:800; color:#e11d48;">${formatMoney(calc.commissionAmount)}</div>
@@ -6348,8 +7237,8 @@ function openNewBillModal(presetTable) {
   const staffSelect = document.getElementById('nbill-staff-select');
   if (staffSelect) {
     staffSelect.innerHTML = staffMembers.map(s => `
-      <option value="${s.id}" data-rate="${s.commissionRate}">
-        ${s.avatar} ${s.name} (${s.code} · ค่าคอมฯ ${s.commissionRate}%)
+      <option value="${s.id}" data-rate="${s.commissionPerDish || s.commissionRate || 10}">
+        ${s.avatar} ${s.name} (${s.code} · ค่าคอมฯ ${s.commissionPerDish || s.commissionRate || 10} ฿/จาน)
       </option>
     `).join('');
   }
@@ -6379,7 +7268,8 @@ function onNewBillStaffChange() {
   const staff = staffMembers.find(s => s.id === staffId);
   const hintEl = document.getElementById('nbill-staff-hint');
   if (hintEl && staff) {
-    hintEl.innerHTML = `💡 อัตราค่าคอมมิชชั่นที่จะได้รับ: <strong>${staff.commissionRate}%</strong> ของยอดขายบิลนี้ (ผู้ขาย: ${staff.avatar} ${staff.name})`;
+    const rate = staff.commissionPerDish || staff.commissionRate || 10;
+    hintEl.innerHTML = `💡 อัตราค่าคอมมิชชั่นที่จะได้รับ: <strong>${rate} บาท</strong> ต่อจานอาหารที่ขายได้ (ผู้ดูแล: ${staff.avatar} ${staff.name})`;
   }
 }
 
@@ -6406,7 +7296,8 @@ function submitNewBill() {
     table: tableVal,
     staffId: staff.id,
     staffName: staff.name,
-    commissionRate: staff.commissionRate || 5,
+    commissionRate: staff.commissionPerDish || staff.commissionRate || 10,
+    commissionPerDish: staff.commissionPerDish || staff.commissionRate || 10,
     openedAt: timeVal || getLocalDateTimeLocalString(),
     status: 'open',
     note: noteVal,
@@ -6448,7 +7339,7 @@ function openManageBillModal(billId) {
   if (staffSelect) {
     staffSelect.innerHTML = staffMembers.map(s => `
       <option value="${s.id}" ${s.id === editingBill.staffId ? 'selected' : ''}>
-        ${s.avatar} ${s.name} (${s.code} · คอมฯ ${s.commissionRate}%)
+        ${s.avatar} ${s.name} (${s.code} · คอมฯ ${s.commissionPerDish || s.commissionRate || 10} ฿/จาน)
       </option>
     `).join('');
   }
@@ -6501,12 +7392,15 @@ function onManageBillStaffChange() {
   const staffId = parseInt(staffSelect.value);
   const staff = staffMembers.find(s => s.id === staffId);
   if (staff) {
+    const rate = staff.commissionPerDish || staff.commissionRate || 10;
     editingBill.staffId = staff.id;
     editingBill.staffName = staff.name;
-    editingBill.commissionRate = staff.commissionRate;
+    editingBill.commissionRate = rate;
+    editingBill.commissionPerDish = rate;
   }
   renderManageBillItemsAndTotals();
-  showToast(`👤 เปลี่ยนผู้รับผิดชอบบิลเป็น: ${staff.name} (ค่าคอมฯ ${staff.commissionRate}%)`);
+  const rate = staff ? (staff.commissionPerDish || staff.commissionRate || 10) : 10;
+  showToast(`👤 เปลี่ยนผู้รับผิดชอบบิลเป็น: ${staff.name} (ค่าคอมฯ ${rate} ฿/จาน)`);
 }
 
 function addOrderItemToBill() {
@@ -6603,6 +7497,13 @@ function renderManageBillItemsAndTotals() {
               `}
               <div style="flex:1;">
                 <div style="font-weight:700; color:#333; font-size:14px;">${escapeHtml(it.name)}</div>
+                ${(() => {
+                  const uComm = getItemCommission(it, (editingBill && (editingBill.commissionPerDish || editingBill.commissionRate)) || 10);
+                  if (uComm > 0) {
+                    return `<div style="font-size:11px; color:#e11d48; font-weight:700; margin-top:1px;">✨ ค่าคอม ฿${uComm}/ชิ้น (รวม ฿${(uComm * it.qty).toLocaleString()})</div>`;
+                  }
+                  return `<div style="font-size:11px; color:#94a3b8; margin-top:1px;">🚫 ไม่มีค่าคอมฯ</div>`;
+                })()}
                 <div style="margin-top:2px; display:flex; align-items:center; gap:4px;">
                   <span style="font-size:11px; color:#64748b;">📝</span>
                   <input type="text"
@@ -6648,9 +7549,9 @@ function renderManageBillItemsAndTotals() {
   if (subtotalEl) subtotalEl.textContent = formatMoney(calc.subtotal);
   if (vatEl) vatEl.textContent = formatMoney(calc.vat);
   if (totalEl) totalEl.textContent = formatMoney(calc.total);
-  if (staffBadgeEl) staffBadgeEl.textContent = `ผู้รับผิดชอบ: ${editingBill.staffName} (${calc.commRate}%)`;
+  if (staffBadgeEl) staffBadgeEl.textContent = `ผู้รับผิดชอบ: ${editingBill.staffName} (${calc.commRate} ฿/จาน)`;
   if (commAmountEl) commAmountEl.textContent = formatMoney(calc.commissionAmount);
-  if (commFormulaEl) commFormulaEl.textContent = `สูตร: ยอด ฿${calc.subtotal.toLocaleString()} × ${calc.commRate}% = ฿${calc.commissionAmount.toFixed(1)}`;
+  if (commFormulaEl) commFormulaEl.textContent = `คิดค่าคอมฯ รวม: ${calc.foodDishesCount} ชิ้น = ฿${calc.commissionAmount.toFixed(0)}`;
   if (netRevenueEl) netRevenueEl.textContent = formatMoney(calc.netRevenue);
 }
 
@@ -6827,8 +7728,8 @@ function renderBillReceipt(bill) {
         <span style="font-weight:600; color:#1e293b;">${formatMoney(calc.subtotal)}</span>
       </div>
       <div style="display:flex; justify-content:space-between; margin-bottom:4px; color:#64748b;">
-        <span>ภาษีมูลค่าเพิ่ม VAT 7%</span>
-        <span style="font-weight:600; color:#1e293b;">${formatMoney(calc.vat)}</span>
+        <span>ภาษีมูลค่าเพิ่ม (VAT)</span>
+        <span style="font-weight:600; color:#059669;">ไม่มี VAT (0%)</span>
       </div>
       <div style="display:flex; justify-content:space-between; font-size:18px; font-weight:800; color:#0f172a; margin-top:6px; border-top:1px solid #e2e8f0; padding-top:6px;">
         <span>ยอดรวมทั้งสิ้น</span>
@@ -6838,7 +7739,7 @@ function renderBillReceipt(bill) {
 
     <div style="background:#f8fafc; border:1px dashed #e2e8f0; border-radius:10px; padding:10px 14px; font-size:11.5px; color:#475569; margin-top:10px;">
       <div style="display:flex; justify-content:space-between;">
-        <span>✨ ค่าคอมมิชชั่นพนักงาน (${bill.commissionRate || 5}%)</span>
+        <span>✨ ค่าคอมมิชชั่นพนักงาน (${calc.foodDishesCount} ชิ้น)</span>
         <strong style="color:#e11d48;">${formatMoney(calc.commissionAmount)}</strong>
       </div>
       <div style="display:flex; justify-content:space-between; margin-top:4px; color:#059669;">
@@ -6885,8 +7786,8 @@ function renderCustomerOrderSuccessModal(table, orderedItems) {
         <span>ยอดรวมออเดอร์นี้</span>
         <span>฿${totalAmount.toLocaleString()}</span>
       </div>
-      <div style="font-size:11px; color:#64748b; text-align:right; margin-top:2px;">
-        * คิดภาษีมูลค่าเพิ่ม (VAT 7%) ในขั้นตอนเช็คบิลรวม
+      <div style="font-size:11px; color:#059669; text-align:right; margin-top:2px; font-weight:600;">
+        * ราคาสุทธิ ไม่มีภาษีมูลค่าเพิ่ม (VAT)
       </div>
     `;
   }

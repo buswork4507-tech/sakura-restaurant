@@ -105,7 +105,9 @@
       "category": "อาหารหลัก",
       "price": 120,
       "emoji": "🍳",
-      "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 10
     },
     {
       "id": 2,
@@ -113,7 +115,9 @@
       "category": "อาหารหลัก",
       "price": 90,
       "emoji": "🍜",
-      "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=400&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 10
     },
     {
       "id": 3,
@@ -121,7 +125,9 @@
       "category": "อาหารหลัก",
       "price": 150,
       "emoji": "🍲",
-      "image": "https://images.unsplash.com/photo-1548943487-a2e314328665?w=400&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1548943487-a2e314328665?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 10
     },
     {
       "id": 4,
@@ -129,7 +135,9 @@
       "category": "อาหารหลัก",
       "price": 80,
       "emoji": "🍗",
-      "image": "https://images.unsplash.com/photo-1562967914-608f82629710?w=400&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1562967914-608f82629710?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 10
     },
     {
       "id": 5,
@@ -137,7 +145,9 @@
       "category": "อาหารหลัก",
       "price": 130,
       "emoji": "🍝",
-      "image": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 10
     },
     {
       "id": 6,
@@ -145,7 +155,9 @@
       "category": "อาหารหลัก",
       "price": 110,
       "emoji": "🥘",
-      "image": "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=400&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 10
     },
     {
       "id": 7,
@@ -153,7 +165,9 @@
       "category": "ของทานเล่น",
       "price": 60,
       "emoji": "🐙",
-      "image": "https://images.unsplash.com/photo-1583032015879-119db123d61a?w=400&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1583032015879-119db123d61a?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 10
     },
     {
       "id": 8,
@@ -161,7 +175,9 @@
       "category": "ของทานเล่น",
       "price": 70,
       "emoji": "🥟",
-      "image": "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=400&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 10
     },
     {
       "id": 9,
@@ -169,7 +185,9 @@
       "category": "ของทานเล่น",
       "price": 55,
       "emoji": "🌯",
-      "image": "https://images.unsplash.com/photo-1544025162-d76694265947?w=400&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1544025162-d76694265947?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 10
     },
     {
       "id": 10,
@@ -177,7 +195,9 @@
       "category": "เครื่องดื่ม",
       "price": 45,
       "emoji": "🍵",
-      "image": "https://images.unsplash.com/photo-1556881286-fc6915169721?w=400&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1556881286-fc6915169721?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 0
     },
     {
       "id": 11,
@@ -185,7 +205,9 @@
       "category": "เครื่องดื่ม",
       "price": 50,
       "emoji": "🧋",
-      "image": "https://images.unsplash.com/photo-1541658016709-82535e94bc69?w=400&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1541658016709-82535e94bc69?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 0
     },
     {
       "id": 12,
@@ -193,7 +215,9 @@
       "category": "เครื่องดื่ม",
       "price": 55,
       "emoji": "🍊",
-      "image": "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=400&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 0
     },
     {
       "id": 13,
@@ -201,7 +225,9 @@
       "category": "ของหวาน",
       "price": 75,
       "emoji": "🍦",
-      "image": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=400&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 0
     },
     {
       "id": 14,
@@ -209,7 +235,9 @@
       "category": "ของหวาน",
       "price": 65,
       "emoji": "🍡",
-      "image": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 0
     },
     {
       "id": 15,
@@ -217,7 +245,9 @@
       "category": "ของหวาน",
       "price": 90,
       "emoji": "🍰",
-      "image": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&auto=format&fit=crop&q=80",
+      "commissionType": "default",
+      "commission": 0
     }
   ],
   "staffMembers": [
@@ -225,41 +255,53 @@
       "id": 1,
       "name": "มินต์ สุชาดา",
       "code": "SK-01",
+      "username": "mint",
+      "password": "1234",
       "role": "พนักงานขายหน้าร้าน",
-      "commissionRate": 5,
+      "commissionRate": 10,
       "avatar": "👩‍🍳",
       "phone": "081-234-5678",
-      "paidCommission": 0
+      "paidCommission": 0,
+      "commissionPerDish": 10
     },
     {
       "id": 2,
       "name": "ก้อง เกริกไกร",
       "code": "SK-02",
+      "username": "kong",
+      "password": "1234",
       "role": "พนักงานเสิร์ฟ & ขาย",
-      "commissionRate": 5,
+      "commissionRate": 10,
       "avatar": "👨‍🍳",
       "phone": "082-345-6789",
-      "paidCommission": 0
+      "paidCommission": 0,
+      "commissionPerDish": 10
     },
     {
       "id": 3,
       "name": "พลอย ไพลิน",
       "code": "SK-03",
+      "username": "ploy",
+      "password": "1234",
       "role": "พนักงานขาย & แนะนำเมนู",
-      "commissionRate": 4,
+      "commissionRate": 10,
       "avatar": "👩‍💼",
       "phone": "083-456-7890",
-      "paidCommission": 0
+      "paidCommission": 0,
+      "commissionPerDish": 10
     },
     {
       "id": 4,
       "name": "เต้ ธีรเดช",
       "code": "SK-04",
+      "username": "tae",
+      "password": "1234",
       "role": "พนักงานขาย & บาริสต้า",
-      "commissionRate": 4,
+      "commissionRate": 10,
       "avatar": "🧑‍🍳",
       "phone": "084-567-8901",
-      "paidCommission": 0
+      "paidCommission": 0,
+      "commissionPerDish": 10
     }
   ],
   "orders": [
@@ -285,12 +327,14 @@
         }
       ],
       "subtotal": 330,
-      "total": 353.1,
+      "total": 330,
       "note": "",
       "date": "2026-10-18T11:30:00",
       "status": "เสร็จสิ้น",
-      "commissionRate": 5,
-      "commissionAmount": 16.5
+      "commissionRate": 10,
+      "commissionAmount": 20,
+      "commissionPerDish": 10,
+      "foodDishesCount": 2
     },
     {
       "id": 1002,
@@ -321,12 +365,14 @@
         }
       ],
       "subtotal": 440,
-      "total": 470.8,
+      "total": 440,
       "note": "ไม่เผ็ด",
       "date": "2026-10-18T12:15:00",
       "status": "เสร็จสิ้น",
-      "commissionRate": 5,
-      "commissionAmount": 22
+      "commissionRate": 10,
+      "commissionAmount": 30,
+      "commissionPerDish": 10,
+      "foodDishesCount": 3
     },
     {
       "id": 1003,
@@ -357,12 +403,14 @@
         }
       ],
       "subtotal": 480,
-      "total": 513.6,
+      "total": 480,
       "note": "",
       "date": "2026-10-18T13:00:00",
       "status": "เสร็จสิ้น",
-      "commissionRate": 4,
-      "commissionAmount": 19.2
+      "commissionRate": 10,
+      "commissionAmount": 30,
+      "commissionPerDish": 10,
+      "foodDishesCount": 3
     },
     {
       "id": 1004,
@@ -393,12 +441,14 @@
         }
       ],
       "subtotal": 480,
-      "total": 513.6,
+      "total": 480,
       "note": "",
       "date": "2026-10-18T14:20:00",
       "status": "เสร็จสิ้น",
-      "commissionRate": 5,
-      "commissionAmount": 24
+      "commissionRate": 10,
+      "commissionAmount": 40,
+      "commissionPerDish": 10,
+      "foodDishesCount": 4
     },
     {
       "id": 1005,
@@ -429,12 +479,14 @@
         }
       ],
       "subtotal": 445,
-      "total": 476.15,
+      "total": 445,
       "note": "",
       "date": "2026-10-18T15:45:00",
       "status": "เสร็จสิ้น",
-      "commissionRate": 4,
-      "commissionAmount": 17.8
+      "commissionRate": 10,
+      "commissionAmount": 30,
+      "commissionPerDish": 10,
+      "foodDishesCount": 3
     },
     {
       "id": 1006,
@@ -465,21 +517,23 @@
         }
       ],
       "subtotal": 840,
-      "total": 898.8,
+      "total": 840,
       "note": "",
       "date": "2026-10-18T17:10:00",
       "status": "เสร็จสิ้น",
-      "commissionRate": 5,
-      "commissionAmount": 42,
-      "kitchenAccepted": true
+      "commissionRate": 10,
+      "commissionAmount": 50,
+      "kitchenAccepted": true,
+      "commissionPerDish": 10,
+      "foodDishesCount": 5
     },
     {
       "id": 1008,
       "table": "2",
       "staffId": 1,
       "staffName": "น้องน้ำ (หัวหน้ากะ)",
-      "commissionRate": 5,
-      "commissionAmount": 18,
+      "commissionRate": 10,
+      "commissionAmount": 20,
       "items": [
         {
           "id": 1,
@@ -496,15 +550,17 @@
       "note": "รีบหน่อยนะครับ",
       "date": "2026-10-18T22:35:52.325Z",
       "status": "เสร็จสิ้น",
-      "kitchenAccepted": true
+      "kitchenAccepted": true,
+      "commissionPerDish": 10,
+      "foodDishesCount": 2
     },
     {
       "id": 1009,
       "table": "3",
       "staffId": 1,
       "staffName": "น้องน้ำ (หัวหน้ากะ)",
-      "commissionRate": 5,
-      "commissionAmount": 19.5,
+      "commissionRate": 10,
+      "commissionAmount": 30,
       "items": [
         {
           "id": 3,
@@ -529,15 +585,17 @@
       "total": 390,
       "note": "โต๊ะ 3 เด็กทานด้วย",
       "date": "2026-10-19T06:45:41.281Z",
-      "status": "เสร็จสิ้น"
+      "status": "เสร็จสิ้น",
+      "commissionPerDish": 10,
+      "foodDishesCount": 3
     },
     {
       "id": 1010,
       "table": "5",
       "staffId": 1,
       "staffName": "พนักงาน",
-      "commissionRate": 5,
-      "commissionAmount": 0,
+      "commissionRate": 10,
+      "commissionAmount": 20,
       "items": [
         {
           "id": 1,
@@ -551,15 +609,17 @@
       "note": "",
       "date": "2026-10-19T08:58:54.143Z",
       "status": "เสร็จสิ้น",
-      "kitchenAccepted": true
+      "kitchenAccepted": true,
+      "commissionPerDish": 10,
+      "foodDishesCount": 2
     },
     {
       "id": 1011,
       "table": "5",
       "staffId": 1,
       "staffName": "มินต์ สุชาดา",
-      "commissionRate": 5,
-      "commissionAmount": 7,
+      "commissionRate": 10,
+      "commissionAmount": 0,
       "items": [
         {
           "id": 13,
@@ -587,15 +647,17 @@
       "note": "",
       "date": "2026-10-19T09:05:17.137Z",
       "status": "เสร็จสิ้น",
-      "kitchenAccepted": true
+      "kitchenAccepted": true,
+      "commissionPerDish": 10,
+      "foodDishesCount": 0
     },
     {
       "id": 1012,
       "table": "4",
       "staffId": 1,
       "staffName": "พนักงาน",
-      "commissionRate": 5,
-      "commissionAmount": 0,
+      "commissionRate": 10,
+      "commissionAmount": 10,
       "items": [
         {
           "id": 1,
@@ -610,15 +672,17 @@
       "note": "ทดสอบระบบซิงค์",
       "date": "2026-10-19T09:07:53.899Z",
       "status": "เสร็จสิ้น",
-      "kitchenAccepted": true
+      "kitchenAccepted": true,
+      "commissionPerDish": 10,
+      "foodDishesCount": 1
     },
     {
       "id": 1013,
       "table": "2",
       "staffId": 1,
       "staffName": "มินต์ สุชาดา",
-      "commissionRate": 5,
-      "commissionAmount": 10.5,
+      "commissionRate": 10,
+      "commissionAmount": 20,
       "items": [
         {
           "id": 1,
@@ -646,15 +710,17 @@
       "note": "",
       "date": "2026-10-19T09:14:30.007Z",
       "status": "เสร็จสิ้น",
-      "kitchenAccepted": true
+      "kitchenAccepted": true,
+      "commissionPerDish": 10,
+      "foodDishesCount": 2
     },
     {
       "id": 1014,
       "table": "3",
       "staffId": 2,
       "staffName": "ก้อง เกริกไกร",
-      "commissionRate": 5,
-      "commissionAmount": 6,
+      "commissionRate": 10,
+      "commissionAmount": 10,
       "items": [
         {
           "id": 1,
@@ -672,15 +738,17 @@
       "note": "",
       "date": "2026-10-19T09:16:28.798Z",
       "status": "เสร็จสิ้น",
-      "kitchenAccepted": true
+      "kitchenAccepted": true,
+      "commissionPerDish": 10,
+      "foodDishesCount": 1
     },
     {
       "id": 1007,
       "table": "2",
       "staffId": 1,
       "staffName": "มินต์ สุชาดา",
-      "commissionRate": 5,
-      "commissionAmount": 5.5,
+      "commissionRate": 10,
+      "commissionAmount": 10,
       "items": [
         {
           "id": 9,
@@ -708,15 +776,17 @@
       "note": "",
       "date": "2026-10-19T09:18:46.738Z",
       "status": "เสร็จสิ้น",
-      "kitchenAccepted": true
+      "kitchenAccepted": true,
+      "commissionPerDish": 10,
+      "foodDishesCount": 1
     },
     {
       "id": 1008,
       "table": "2",
       "staffId": 1,
       "staffName": "มินต์ สุชาดา",
-      "commissionRate": 5,
-      "commissionAmount": 6,
+      "commissionRate": 10,
+      "commissionAmount": 10,
       "items": [
         {
           "id": 1,
@@ -734,14 +804,16 @@
       "note": "",
       "date": "2026-10-19T09:20:54.539Z",
       "status": "เสร็จสิ้น",
-      "kitchenAccepted": true
+      "kitchenAccepted": true,
+      "commissionPerDish": 10,
+      "foodDishesCount": 1
     }
   ],
   "openBills": [],
   "nextOrderId": 1009,
   "nextBillId": 2005,
-  "timestamp": 1792406238045,
-  "sender": "server_init",
+  "timestamp": 1792427204930,
+  "sender": "server_update",
   "action": "SYNC_COMPLETE",
-  "lastSavedOnDisk": "2026-10-19T10:37:30.000Z"
+  "lastSavedOnDisk": "2026-10-19T16:26:44.930Z"
 }
